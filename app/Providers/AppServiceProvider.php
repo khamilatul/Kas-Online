@@ -24,8 +24,17 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
          // mendaftarkan contact 
-        $this->app->when('App\Http\Controllers\ContactController')
-            ->needs('App\Domain\Contracts\ContactInterface')
-            ->give('App\Domain\Repositories\ContactRepository');
+        
+       $this->app->when('App\Http\Controllers\UserController')
+            ->needs('App\Domain\Contracts\UsertInterface')
+            ->give('App\Domain\Repositories\UserRepository');
+
+       $this->app->when('App\Http\Controllers\MemberController')
+            ->needs('App\Domain\Contracts\MemberInterface')
+            ->give('App\Domain\Repositories\MemberRepository');
+
+       $this->app->when('App\Http\Controllers\TransactionController')
+            ->needs('App\Domain\Contracts\TransactionInterface')
+            ->give('App\Domain\Repositories\TransactionRepository');
     }
 }
