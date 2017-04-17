@@ -31,6 +31,7 @@ class UserCreateRequest extends Request
         'class'   => 'Class',
         'level' => 'Level',
         'phone'   => 'Phone',
+        'email'  => 'Email',
         'password'   => 'Password'
     ];
 
@@ -46,6 +47,7 @@ class UserCreateRequest extends Request
              'class' => 'required|max:60',
             'level' => 'required|max:60',
             'phone'   => 'required|max:30',
+             'email'  => 'required|email|max:30',
             'password'   => 'required|max:30'
         ];
     }
