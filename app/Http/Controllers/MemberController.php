@@ -65,7 +65,7 @@ class MemberController extends Controller
      * @apiParam {Float} phone phone of member
      * @apiSuccess {Number} id id of member
      */
-    public function store(Request $request)
+    public function store(MemberCreateRequest $request)
     {
         return $this->member->create($request->all());
     }
