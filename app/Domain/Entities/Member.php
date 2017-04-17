@@ -16,8 +16,18 @@ class Member extends Model
     /**
      * @var array
      */
+     protected $table ='members';
     protected $fillable = [
-        'name', 'class', 'email', 'phone','user_id',
+        'name', 'class', 'email', 'phone','users_id',
     ];
+
+protected $with = 'user';
+
+    public function user()
+    {
+        return $this->belongsTo('App\Domain\Entities\User', 'user_id');
+    }
+
+
 
 }

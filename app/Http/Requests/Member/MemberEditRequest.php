@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Contact;
+namespace App\Http\Requests\Member;
 
 use App\Http\Requests\Request;
 
@@ -9,7 +9,7 @@ use App\Http\Requests\Request;
  *
  * @package App\Http\Requests\User
  */
-class ContactEditRequest extends Request
+class MemberEditRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,8 +29,7 @@ class ContactEditRequest extends Request
     protected $attrs = [
         'name'    => 'Name',
         'email'   => 'Email',
-        'address' => 'Address',
-        'phone'   => 'Phone'
+        'phone'   => 'Phone',
     ];
 
     /**
@@ -42,8 +41,7 @@ class ContactEditRequest extends Request
     {
         return [
             'name'    => 'required|max:225',
-            'email'   => 'required|email|unique:contacts,email|max:225',
-            'address' => 'required|max:60',
+            'email'   => 'required|email|unique:Members,email|max:225',
             'phone'   => 'required|max:30'
         ];
     }

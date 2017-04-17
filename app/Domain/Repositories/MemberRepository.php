@@ -19,6 +19,9 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
      */
     protected $model;
 
+    protected $with = 'user';
+
+
     /**
      * MemberRepository constructor.
      * @param Member $member
@@ -47,7 +50,11 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-        return parent::paginate($limit, $page, $column, 'name', $search);
+       $member = $this->model
+            ->where('name', 'like', '%' . $search . '%')
+            ->paginate($limit)
+            ->toArray();
+            return $member;
     }
 
     /**
@@ -62,7 +69,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
             'class'    => e($data['name']),
             'email'   => e($data['email']),
             'phone'   => e($data['phone']),
-            'user_id' => e($data['user_id'])
+            'users_id' => e($data['users_id'])
         ]);
 
     }
@@ -79,7 +86,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
             'class'    => e($data['name']),
             'email'   => e($data['email']),
             'phone'   => e($data['phone']),
-            'user_id' => e($data['user_id'])
+            'users_id' => e($data['users_id'])
         ]);
     }
 
@@ -102,5 +109,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
     {
         return parent::find($id, $columns);
     }
+
+    
 
 }
