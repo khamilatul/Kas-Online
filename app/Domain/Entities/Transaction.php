@@ -16,8 +16,16 @@ class Transaction extends Model
     /**
      * @var array
      */
+
     protected $fillable = [
-        'description', 'amount', 'member_id', 'month',
+        'description', 'amount', 'members_id', 'month',
     ];
+
+    protected $with = ['members'];
+
+    public function members()
+    {
+        return $this->belongsTo('App\Domain\Entities\Member', 'members_id');
+    }
 
 }

@@ -29,7 +29,7 @@ class TransactionCreateRequest extends Request
     protected $attrs = [
         'description'    => 'Description',
         'amount'   => 'Amount',
-        'member_id' => 'Member_id',
+        'members_id' => 'Member_id',
         'Month'   => 'Month'
     ];
 
@@ -43,7 +43,7 @@ class TransactionCreateRequest extends Request
         return [
             'description'    => 'required|max:225',
             'amount' => 'required|max:60',
-            'member_id'   => 'required|max:30',
+            'members_id'   => 'required|max:30',
             'month'   => 'required|max:30'
         ];
     }

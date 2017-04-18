@@ -60,7 +60,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         return parent::create([
             'description'    => e($data['description']),
             'amount'    => e($data['amount']),
-            'member_id'   => e($data['member_id']),
+            'members_id'   => e($data['members_id']),
             'month'   => e($data['month']),
         ]);
 
@@ -76,7 +76,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         return parent::update($id, [
            'description'    => e($data['description']),
             'amount'    => e($data['amount']),
-            'member_id'   => e($data['member_id']),
+            'members_id'   => e($data['members_id']),
             'month'   => e($data['month']),
         ]);
     }

@@ -27,10 +27,10 @@ class ContactEditRequest extends Request
      * @var array
      */
     protected $attrs = [
-        'name'    => 'Name',
-        'email'   => 'Email',
-        'address' => 'Address',
-        'phone'   => 'Phone'
+        'description'    => 'Description',
+        'amount'   => 'Amount',
+        'members_id' => 'Members_id',
+        'month'   => 'Month'
     ];
 
     /**
@@ -41,10 +41,10 @@ class ContactEditRequest extends Request
     public function rules()
     {
         return [
-            'name'    => 'required|max:225',
-            'email'   => 'required|email|unique:contacts,email|max:225',
-            'address' => 'required|max:60',
-            'phone'   => 'required|max:30'
+            'description'    => 'required|max:225',
+            'amount'   => 'required|max:225',
+            'members_id' => 'required|max:60',
+            'month'   => 'required|max:30'
         ];
     }
 
