@@ -21,11 +21,11 @@ class Member extends Model
         'name', 'class', 'email', 'phone','users_id',
     ];
 
-protected $with = 'user';
+    protected $with = ['users'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\Domain\Entities\User', 'user_id');
+        return $this->belongsTo('App\Domain\Entities\User', 'users_id');
     }
 
 

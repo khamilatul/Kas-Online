@@ -41,7 +41,7 @@ class MemberEditRequest extends Request
     {
         return [
             'name'    => 'required|max:225',
-            'email'   => 'required|email|unique:Members,email|max:225',
+            'email'   => 'required|email|max:225',
             'phone'   => 'required|max:30'
         ];
     }

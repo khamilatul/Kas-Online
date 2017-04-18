@@ -31,7 +31,7 @@ class MemberCreateRequest extends Request
         'class' => 'Class',
         'email'   => 'Email',
         'phone'   => 'Phone',
-        'user_id'   => 'User_id'
+        'users_id'   => 'User_id'
         
     ];
 
@@ -45,9 +45,9 @@ class MemberCreateRequest extends Request
         return [
             'name'    => 'required|max:225',
             'class' => 'required|max:60',
-            'email'   => 'required|email|unique:contacts,email|max:225',
+            'email'   => 'required|email|max:225',
             'phone'   => 'required|max:30',
-            'user_id'   => 'required|max:30'
+            'users_id'   => 'required|max:30'
         ];
     }
 
