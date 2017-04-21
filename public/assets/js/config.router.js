@@ -42,7 +42,7 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             label: 'Dashboard'
         }
     })
-    //urusan
+    //members
         .state('app.members', {
             url: '/members',
             templateUrl: 'assets/src/members/members-list.html',
@@ -53,23 +53,21 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             // }
 
         })
-        // //urusan Create
-        // .state('app.urusan-create', {
-        //     url: '/urusan-create',
-        //     templateUrl: 'assets//src/urusan/urusan/urusan-create.html',
-        //     data: {title: 'Tambah Data Urusan Pemerintah Daerah'},
-        //     controller: 'UrusanCreateCtrl',
-        //     resolve: load(['assets//src/urusan/urusan/urusan-service.js', 'assets//src/urusan/urusan/UrusanCreateCtrl.js'])
-        // })
-        //
-        // //urusan Edit
-        // .state('app.urusan-edit', {
-        //     url: '/urusan-edit/:id',
-        //     templateUrl: 'assets//src/urusan/urusan/urusan-edit.html',
-        //     data: {title: 'Edit Data Urusan Pemerintah Daerah'},
-        //     controller: 'UrusanEditCtrl',
-        //     resolve: load(['assets//src/urusan/urusan/urusan-service.js', 'assets//src/urusan/urusan/UrusanEditCtrl.js'])
-        // })
+        //members Create
+        .state('app.members-create', {
+            url: '/members-create',
+            templateUrl: 'assets//src/members/members-create.html',
+            title: 'Tambah Data Members',
+            resolve: loadSequence('memberscreateCtrl', 'members_service'),
+        })
+        
+        //members Edit
+        .state('app.members-edit', {
+            url: '/members-edit/:id',
+            templateUrl: 'assets//src/members/members-edit.html',
+            title: 'Edit Data Members',
+            resolve: loadSequence('memberseditCtrl', 'members_service'),
+        })
 
 
 
