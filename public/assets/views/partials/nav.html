@@ -40,16 +40,25 @@
 					<i class="ti-settings"></i>
 				</div>
 				<div class="item-inner">
-					<span class="title" translate="sidebar.nav.element.MAIN"> UI Elements </span><i class="icon-arrow"></i>
+					<a ui-sref="app.users">
+					<span class="title" > Users </span>
 				</div>
 			</div>
 		</a>
-		<ul class="sub-menu">
+		<!--<ul class="sub-menu">
 			<li ui-sref-active="active">
 				<a ui-sref="app.members">
 					<span class="title" > Members </span>
 				</a>
 			</li>
+
+			<li ui-sref-active="active">
+				<a ui-sref="app.users">
+					<span class="title" > Users </span>
+				</a>
+			</li>
+
+			
 			<li ui-sref-active="active">
 				<a ui-sref="app.ui.elements">
 					<span class="title" translate="sidebar.nav.element.ELEMENTS"> Elements </span>
@@ -119,7 +128,7 @@
 				<a ui-sref="app.ui.typography">
 					<span class="title" translate="sidebar.nav.element.TYPOGRAPHY"> Typography </span>
 				</a>
-			</li>
+			</li>-->
 		</ul>
 	</li>
 	<li ng-class="{'active open':$state.includes('app.table')}">

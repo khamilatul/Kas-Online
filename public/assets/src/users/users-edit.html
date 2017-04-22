@@ -1,0 +1,87 @@
+<!-- start: PAGE TITLE -->
+<div ng-controller="MembersEditCtrl">
+	<section id="page-title">
+		<div class="row">
+			<div class="col-sm-8">
+				<h1 class="mainTitle" >FORM CREATE MEMBERS</h1>
+			</div>
+			<div ncy-breadcrumb></div>
+		</div>
+	</section>
+	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+		{{alert.msg}}
+	</uib-alert>
+	<!-- end: PAGE TITLE -->
+	<!-- start: FORM VALIDATION -->
+	<div class="container-fluid container-fullw bg-white">
+		<div class="row">
+			<div class="col-md-12">
+				<div >
+					<form name="Form" >
+						<div class="row">
+							<div class="col-md-12">
+								<fieldset>
+
+									<div class="form-group" ng-class="{'has-error':Form.name.$dirty && Form.name.$invalid, 'has-success':Form.name.$valid}">
+										<label class="control-label">
+											Name <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Name" class="form-control" name="name" ng-model="myModel.name"
+											   required />
+										<span class="error text-small block" ng-if="Form.name.$dirty && Form.name.$invalid">First Name is required</span>
+										<span class="success text-small" ng-if="Form.name.$valid">Thank You!</span>
+									</div>
+									<div class="form-group" ng-class="{'has-error':Form.class.$dirty && Form.class.$invalid, 'has-success':Form.class.$valid}">
+										<label class="control-label">
+											Phone <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Class" class="form-control" name="class" ng-model="myModel.class"
+											   required />
+										<span class="error text-small block" ng-if="Form.class.$dirty && Form.class.$invalid">First Class is required</span>
+										<span class="success text-small" ng-if="Form.class.$valid">Thank You!</span>
+									</div>
+
+									<div class="form-group" ng-class="{'has-error':Form.email.$dirty && Form.email.$invalid, 'has-success':Form.email.$valid}">
+										<label class="control-label">
+											Email <span class="symbol required"></span>
+										</label>
+										<input type="email" placeholder="Enter a valid E-mail" class="form-control" name="email" ng-model="myModel.email" required>
+										<span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$error.required">Email is required.</span>
+										<span class="error text-small block" ng-if="Form.email.$error.email">Please, enter a valid email address.</span>
+										<span class="success text-small" ng-if="Form.email.$valid">It's a valid e-mail!</span>
+									</div>
+
+									<div class="form-group" ng-class="{'has-error':Form.phone.$dirty && Form.phone.$invalid, 'has-success':Form.phone.$valid}">
+										<label class="control-label">
+											Class <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Class" class="form-control" name="phone" ng-model="myModel.phone"
+											   required />
+										<span class="error text-small block" ng-if="Form.phone.$dirty && Form.phone.$invalid">First Phone is required</span>
+										<span class="success text-small" ng-if="Form.phone.$valid">Thank You!</span>
+									</div>
+
+								</fieldset>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="pull-left">
+									<button md-ink-ripple class="btn btn-primary" ng-click="updateData()"
+											ng-disabled="Form.$invalid || process">Simpan
+									</button>
+									<button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.members"
+											ng-disabled="process">Kembali
+									</button>
+
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end: FORM VALIDATION -->

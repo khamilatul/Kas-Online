@@ -48,9 +48,6 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             templateUrl: 'assets/src/members/members-list.html',
             title: 'Data Members',
             resolve: loadSequence('membersCtrl', 'members_service'),
-            // ncyBreadcrumb: {
-            //     label: 'Dashboard'
-            // }
 
         })
         //members Create
@@ -68,6 +65,31 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             title: 'Edit Data Members',
             resolve: loadSequence('memberseditCtrl', 'members_service'),
         })
+
+        //users
+        .state('app.users', {
+            url: '/users',
+            templateUrl: 'assets/src/users/users-list.html',
+            title: 'Data Users',
+            resolve: loadSequence('usersCtrl', 'users_service'),
+
+        })
+        //users Create
+        .state('app.users-create', {
+            url: '/users-create',
+            templateUrl: 'assets//src/users/users-create.html',
+            title: 'Tambah Data Users',
+            resolve: loadSequence('userscreateCtrl', 'users_service'),
+        })
+        
+        //users Edit
+        .state('app.users-edit', {
+            url: '/users-edit/:id',
+            templateUrl: 'assets//src/users/users-edit.html',
+            title: 'Edit Data Users',
+            resolve: loadSequence('userseditCtrl', 'users_service'),
+        })
+
 
 
 
