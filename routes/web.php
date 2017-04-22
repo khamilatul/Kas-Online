@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('backoffice');
 });
+Route::get('/backoffice', ['as' => 'backoffice', 'uses' => 'PageController@backoffice']);
+Route::get('give-me-token', ['as' => 'token', 'uses' => 'PageController@token']);

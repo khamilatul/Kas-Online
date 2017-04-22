@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Member;
+namespace App\Http\Requests\Master;
 
 use App\Http\Requests\Request;
 use Illuminate\Contracts\Validation\Validator;
+
+
 /**
- * Class UserCreateRequest
- *
- * @package App\Http\Requests\User
+ * Class ProvinsiCreateRequest
+ * @package App\Http\Requests\Provinsi
  */
-class MemberCreateRequest extends Request
+class UserFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,12 +28,8 @@ class MemberCreateRequest extends Request
      * @var array
      */
     protected $attrs = [
-        'name'    => 'Name',
-        'class' => 'Class',
-        'email'   => 'Email',
-        'phone'   => 'Phone',
-        
-        
+        'email'     => 'email',
+        'password'  => 'password',
     ];
 
     /**
@@ -43,10 +40,8 @@ class MemberCreateRequest extends Request
     public function rules()
     {
         return [
-            'name'    => 'required|max:225',
-            'class' => 'required|max:60',
-            'email'   => 'required|email|max:225',
-            'phone'   => 'required|max:30',
+            'email'    => 'required|email',
+            'password' => 'required',
         ];
     }
 
@@ -60,18 +55,19 @@ class MemberCreateRequest extends Request
         return $validator->make($this->all(), $this->container->call([$this, 'rules']), $this->messages(), $this->attrs);
     }
 
-    public function formatErrors(Validator $validator)
+    /**
+     * @param Validator $validator
+     * @return array
+     */
+    protected function formatErrors(Validator $validator)
     {
         $message = $validator->errors();
         return [
             'success'    => false,
             'validation' => [
-                'name' => $message->first('name'),
-                'class' => $message->first('class'),
-                'email' => $message->first('email'),
-                'phone' => $message->first('phone'),
+                'email'     => $message->first('email'),
+                'password'  => $message->first('password'),
             ]
         ];
     }
-
 }

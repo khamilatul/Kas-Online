@@ -1,68 +1,53 @@
-app.controller('UrusanEditCtrl', ['$state', '$scope', 'urusan', '$mdToast', '$stateParams', function ($state, $scope, urusan, $mdToast, $stateParams) {
+app.controller('MembersEditCtrl', ['$state', '$scope', 'members','$timeout', 'SweetAlert','toaster','$http','$stateParams', function ($state, $scope, members, $timeout, SweetAlert,toaster, $stateParams) {
     $scope.id = $scope.$stateParams.id;
-    //edit urusan
+    //edit members
     //If Id is empty, then redirected
     if ($scope.id == null || $scope.id == '') {
-        $state.go("app.urusan")
+        $state.go("app.members")
     }
+    $scope.master = $scope.myModel;
+    $scope.form = {
 
-    $scope.isLoading = true;
-    $scope.isLoaded = false;
+        submit: function (form) {
+            var firstError = null;
+            if (form.$invalid) {
 
-    $scope.setLoader = function (status) {
-        if (status == true) {
-            $scope.isLoading = true;
-            $scope.isLoaded = false;
-        } else {
-            $scope.isLoading = false;
-            $scope.isLoaded = true;
-        }
-    };
+                var field = null, firstError = null;
+                for (field in form) {
+                    if (field[0] != '$') {
+                        if (firstError === null && !form[field].$valid) {
+                            firstError = form[field].$name;
+                        }
 
-    //Init input form variable
-    $scope.input = {};
+                        if (form[field].$pristine) {
+                            form[field].$dirty = true;
+                        }
+                    }
+                }
+                angular.element('.ng-invalid[name=' + firstError + ']').focus();
+                SweetAlert.swal("The form cannot be submitted because it contains validation errors!", "Errors are marked with a red, dashed border!", "error");
+                return;
 
-    //Set process status to false
-    $scope.process = false;
-
-    //Init Alert status
-    $scope.alertset = {
-        show: 'hide',
-        class: 'green',
-        msg: ''
-    };
-    //get lass urusan
-    urusan.getLastUrusan()
-        .success(function (data) {
-            $scope.setLoader(false);
-            $scope.rekening_terakhir = data;
-            if(data.success==true){
-                $scope.rekening_terakhir.msg='Kode Rekening: ' + data.result.kode_rekening;
-            }else{
-                $scope.rekening_terakhir.msg='Data Belum Tersedia';
+            } else {
+                SweetAlert.swal("Good job!", "Your form is ready to be submitted!", "success");
+                //your code for submit
             }
-        })
+
+        },
+        reset: function (form) {
+
+            $scope.myModel = angular.copy($scope.master);
+            form.$setPristine(true);
+        }
+
+    };
 
 
     //Run Ajax
-    urusan.show($scope.id)
+    members.show($scope.id)
         .success(function (data) {
-            $scope.setLoader(false);
-            $scope.input.id = data.id;
-            $scope.input.kode_rekening = data.kode_rekening;
-            $scope.input.urusan = data.urusan;
+            $scope.myModel= data;
         });
-
-    $scope.showToast = function (warna, msg) {
-        $mdToast.show({
-            //controller: 'AkunToastCtrl',
-            template: "<md-toast class='" + warna + "-500'><span flex> " + msg + "</span></md-toast> ",
-            //templateUrl: 'views/ui/material/toast.tmpl.html',
-            hideDelay: 6000,
-            parent: '#toast',
-            position: 'top right'
-        });
-    };
     //Submit Data
     $scope.updateData = function () {
 
@@ -73,16 +58,16 @@ app.controller('UrusanEditCtrl', ['$state', '$scope', 'urusan', '$mdToast', '$st
         $scope.alertset.show = 'hide';
 
         //Check validation status
-        if ($scope.editForm.$valid) {
+        if ($scope.myModel.$valid) {
             //run Ajax
-            urusan.update($scope.input)
+            members.update($scope.myModel)
                 .success(function (data) {
                     if (data.success == true) {
                         //If back to list after submitting
                         if (isBack = true) {
                             //Redirect to akun
                             $scope.alertset.show = 'hide';
-                            $state.go('app.urusan');
+                            $state.go('app.members');
                             $scope.showToast('green', 'Edit Data Berhasil !');
                         }
                     } else {

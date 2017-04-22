@@ -19,7 +19,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
      */
     protected $model;
 
-    protected $with = 'user';
+//    protected $with = 'user';
 
 
     /**
@@ -69,7 +69,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
             'class'    => e($data['name']),
             'email'   => e($data['email']),
             'phone'   => e($data['phone']),
-            'users_id' => e($data['users_id'])
+            'users_id' => 10
         ]);
 
     }

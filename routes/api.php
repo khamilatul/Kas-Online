@@ -21,3 +21,13 @@ Route::resource('users','UserController');
 Route::resource('members','MemberController');
 Route::resource('transactions','TransactionController');
 Route::resource('contacts','ContactController');
+////----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+////auth
+Route::group(['namespace' => 'Auth'], function () {
+
+    // Authentication routes...
+    Route::get('get-login', 'LoginController@getLogin');
+    Route::get('logout', 'LoginController@getLogout');
+    Route::get('post-login', 'LoginController@getLogin');
+    Route::post('post-login', 'LoginController@postLogin');
+});
