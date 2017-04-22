@@ -45,7 +45,7 @@ class MemberCreateRequest extends Request
         return [
             'name'    => 'required|max:225',
             'class' => 'required|max:60',
-            'email'   => 'required|email|max:225',
+            'email'   => 'required|email|unique:members,email||max:225',
             'phone'   => 'required|max:30',
         ];
     }

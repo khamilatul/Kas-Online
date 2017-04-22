@@ -71,6 +71,7 @@ app.controller('MembersCreateCtrl', ['$state', '$scope', 'members','$timeout', '
                             };
                                 toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                         } else {
+                            $scope.clearInput();
                             $scope.sup();
                             $scope.alerts.push({
                                 type: 'success',
@@ -85,25 +86,7 @@ app.controller('MembersCreateCtrl', ['$state', '$scope', 'members','$timeout', '
                             toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                         }
                         //Clear Input
-                    } else {
-                        $scope.process = false;
-                        //$scope.alertset.class = 'orange';
-                        $scope.toaster = {
-                            type: 'success',
-                            title: 'Sukses',
-                            text: 'Simpan Data Berhasil!'
-                        };
-                        toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
-                        $scope.clearInput();
-
-                        //Set Alert message
-                        $scope.sup();
-                        $scope.alerts.push({
-                            type: 'success',
-                            msg: 'Simpan Data Berhasil!'
-                        });
-
-                    }
+                    }  
 
                 })
                 .error(function (data, status) {
