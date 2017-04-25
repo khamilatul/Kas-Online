@@ -90,6 +90,30 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             resolve: loadSequence('userseditCtrl', 'users_service'),
         })
 
+        //transactions
+        .state('app.transactions', {
+            url: '/transactions',
+            templateUrl: 'assets/src/transactions/transactions-list.html',
+            title: 'Data Transactions',
+            resolve: loadSequence('transactionsCtrl', 'transactions_service'),
+
+        })
+        //transactions Create
+        .state('app.transactions-create', {
+            url: '/transactions-create',
+            templateUrl: 'assets//src/transactions/transactions-create.html',
+            title: 'Tambah Data Transactions',
+            resolve: loadSequence('transactionscreateCtrl', 'transactions_service'),
+        })
+        
+        //transactions Edit
+        .state('app.transactions-edit', {
+            url: '/transactions-edit/:id',
+            templateUrl: 'assets//src/transactions/transactions-edit.html',
+            title: 'Edit Data Transactions',
+            resolve: loadSequence('transactionseditCtrl', 'transactions_service'),
+        })
+
 
 
 

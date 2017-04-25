@@ -1,9 +1,9 @@
 <div class="alert {{alertset.class}} lighten-4 {{alertset.class}}-text text-darken-2 {{alertset.show}}">
     <span ng-repeat="(key, value) in alertset.msg">{{value}}</span>
 </div>
-<div class="panel panel-default" ng-controller="MembersCtrl">
+<div class="panel panel-default" ng-controller="TransactionsCtrl">
     <div class="panel-heading bg-white" style="background: #b3c4c7;">
-        <span class="font-bold"><left><font color="black">DATA MEMBERS</font></left></span>
+        <span class="font-bold"><left><font color="black">DATA TRANSACTIONS</font></left></span>
     </div>
     <!--<div ng-show="isLoading" layout="row" layout-sm="column" layout-align="space-around">-->
         <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
@@ -39,24 +39,18 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th class="col-md-2">Nama</th>
-                    <th class="col-md-2">Email</th>
-                    <th class="col-md-2">Phone</th>
-                    <th class="col-md-2">Class</th>
-                    <th class="col-md-2">Level</th>
-                    <th class="col-md-2">Aksi</th>
+                    <th class="col-md-2">Description</th>
+                    <th class="col-md-2">Amount</th>
+                    <th class="col-md-2">Members_id</th>
+                    <th class="col-md-2">Month</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="row in dataMembers">
-                    <td class="col-md-2">{{row.name}}</td>
-                    <td class="col-md-2">{{row.email}}</td>
-                    <td class="col-md-2">{{row.phone}}</td>
-                    <td class="col-md-2">{{row.class}}</td>
-                    <td class="col-md-2">
-                        <span ng-if="row.level==0" class="label label-sm label-warning">administrator</span>
-                        <span ng-if="row.level==1" class="label label-sm label-success">user</span>
-                        </td>
+                <tr ng-repeat="row in dataTransactions">
+                    <td class="col-md-2">{{row.description}}</td>
+                    <td class="col-md-2">{{row.amount}}</td>
+                    <td class="col-md-2">{{row.members_id}}</td>
+                    <td class="col-md-2">{{row.month}}</td>
 
                     <td class="col-md-2">
                         <button type="button" ng-click="detailurusan(row.id)" md-ink-ripple tooltip="Detail Urusan"

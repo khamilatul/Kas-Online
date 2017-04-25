@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UsersCtrl', ['$scope', 'users', 'SweetAlert', '$http','$timeout', function ($scope, users,SweetAlert) {
+app.controller('TransactionsCtrl', ['$scope', 'transactions', 'SweetAlert', '$http','$timeout', function ($scope, transactions,SweetAlert) {
 //urussan tampilan
     $scope.main = {
         page: 1,
@@ -34,19 +34,19 @@ app.controller('UsersCtrl', ['$scope', 'users', 'SweetAlert', '$http','$timeout'
     };
     // go to print preview page
     $scope.print = function () {
-        window.open ('../api/v1/cetak-users','_blank');
+        window.open ('../api/v1/cetak-transactions','_blank');
     };
     //Init dataAkun
-    $scope.dataUsers = '';
+    $scope.dataTransactions = '';
     // init get data
-    users.get($scope.main.page, $scope.main.term)
+    transactions.get($scope.main.page, $scope.main.term)
         .success(function (data) {
 
             //Change Loading status
             $scope.setLoader(false);
 
             // result data
-            $scope.dataUsers = data.data;
+            $scope.dataTransactions = data.data;
             // set the current page
             $scope.current_page = data.current_page;
 
@@ -77,14 +77,14 @@ app.controller('UsersCtrl', ['$scope', 'users', 'SweetAlert', '$http','$timeout'
         //Start loading
         $scope.setLoader(true);
 
-        users.get($scope.main.page, $scope.main.term)
+        transactions.get($scope.main.page, $scope.main.term)
             .success(function (data) {
 
                 //Stop loading
                 $scope.setLoader(false);
 
                 // result data
-                $scope.dataUsers = data.data;
+                $scope.dataTransactions = data.data;
 
                 // set the current page
                 $scope.current_page = data.current_page;
@@ -161,7 +161,7 @@ app.controller('UsersCtrl', ['$scope', 'users', 'SweetAlert', '$http','$timeout'
 //             .targetEvent(id);
 //         //
 //         $mdDialog.show(confirm).then(function () {
-//             users.destroy(id)
+//             transactions.destroy(id)
 //                 .success(function (data) {
 //                     if (data.success == true) {
 //                         $scope.showToast('green', 'Data Berhasil Dihapus');
@@ -188,7 +188,7 @@ app.controller('UsersCtrl', ['$scope', 'users', 'SweetAlert', '$http','$timeout'
             closeOnCancel: false
         }, function (isConfirm) {
             if (isConfirm) {
-                users.destroy(id)
+                transactions.destroy(id)
                     .success(function (data) {
                         if (data.deleted == true) {
                             SweetAlert.swal({

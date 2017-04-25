@@ -58,10 +58,14 @@ app.constant('JS_REQUIRES', {
         'memberscreateCtrl'    : 'assets/src/members/MembersCreateCtrl.js',
         'memberseditCtrl'    : 'assets/src/members/MembersEditCtrl.js',
         'members_service': 'assets/src/members/members-service.js',
-        'usersCtrl'    : 'assets/src/members/UsersCtrl.js',
-        'userscreateCtrl'    : 'assets/src/members/UserscreateCtrl.js',
-        'userseditCtrl'    : 'assets/src/members/UserseditCtrl.js',
-        'users_service': 'assets/src/members/users-service.js',
+        'usersCtrl'    : 'assets/src/users/UsersCtrl.js',
+        'userscreateCtrl'    : 'assets/src/users/UserscreateCtrl.js',
+        'userseditCtrl'    : 'assets/src/users/UserseditCtrl.js',
+        'users_service': 'assets/src/users/users-service.js',
+        'transactionsCtrl'    : 'assets/src/transactions/TransactionsCtrl.js',
+        'transactionscreateCtrl'    : 'assets/src/transactions/TransactionscreateCtrl.js',
+        'transactionseditCtrl'    : 'assets/src/transactions/TransactionseditCtrl.js',
+        'transactions_service': 'assets/src/transactions/Transactions-service.js',
         
         //*** Filters
         'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'

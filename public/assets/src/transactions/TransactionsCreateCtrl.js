@@ -1,6 +1,6 @@
-app.controller('UsersCreateCtrl', ['$state', '$scope', 'users','$timeout', 'SweetAlert','toaster','$http', function ($state, $scope, users,$timeout, SweetAlert,toaster) {
+app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions','$timeout', 'SweetAlert','toaster','$http', function ($state, $scope, transactions,$timeout, SweetAlert,toaster) {
     //Init input addForm variable
-    //create users
+    //create transactions
     $scope.process = false;
 
     $scope.master = $scope.myModel;
@@ -58,12 +58,12 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users','$timeout', 'Swee
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax
-            users.store($scope.myModel)
+            transactions.store($scope.myModel)
                 .success(function (data) {
                     if (data.created == true) {
                         //If back to list after submitting
                         if (isBack == true) {
-                            $state.go('app.users');
+                            $state.go('app.transactions');
                             $scope.toaster = {
                                 type: 'success',
                                 title: 'Sukses',

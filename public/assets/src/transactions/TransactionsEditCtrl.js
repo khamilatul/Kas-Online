@@ -1,9 +1,9 @@
-app.controller('UsersEditCtrl', ['$state', '$scope', 'users','$timeout', 'SweetAlert','toaster','$http','$stateParams', function ($state, $scope, users, $timeout, SweetAlert,toaster, $stateParams) {
+app.controller('TransactionsEditCtrl', ['$state', '$scope', 'transactions','$timeout', 'SweetAlert','toaster','$http','$stateParams', function ($state, $scope, transactions, $timeout, SweetAlert,toaster, $stateParams) {
     $scope.id = $scope.$stateParams.id;
-    //edit users
+    //edit transactions
     //If Id is empty, then redirected
     if ($scope.id == null || $scope.id == '') {
-        $state.go("app.users")
+        $state.go("app.transactions")
     }
     $scope.master = $scope.myModel;
     $scope.form = {
@@ -44,7 +44,7 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users','$timeout', 'SweetA
 
 
     //Run Ajax
-    users.show($scope.id)
+    transactions.show($scope.id)
         .success(function (data) {
             $scope.myModel= data;
         });
@@ -60,14 +60,14 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users','$timeout', 'SweetA
         //Check validation status
         if ($scope.myModel.$valid) {
             //run Ajax
-            users.update($scope.myModel)
+            transactions.update($scope.myModel)
                 .success(function (data) {
                     if (data.success == true) {
                         //If back to list after submitting
                         if (isBack = true) {
                             //Redirect to akun
                             $scope.alertset.show = 'hide';
-                            $state.go('app.users');
+                            $state.go('app.transactions');
                             $scope.showToast('green', 'Edit Data Berhasil !');
                         }
                     } else {

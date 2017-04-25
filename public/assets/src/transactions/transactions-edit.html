@@ -1,0 +1,87 @@
+<!-- start: PAGE TITLE -->
+<div ng-controller="TransactionsEditCtrl">
+	<section id="page-title">
+		<div class="row">
+			<div class="col-sm-8">
+				<h1 class="mainTitle" >FORM CREATE TRANSACTIONS</h1>
+			</div>
+			<div ncy-breadcrumb></div>
+		</div>
+	</section>
+	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+		{{alert.msg}}
+	</uib-alert>
+	<!-- end: PAGE TITLE -->
+	<!-- start: FORM VALIDATION -->
+	<div class="container-fluid container-fullw bg-white">
+		<div class="row">
+			<div class="col-md-12">
+				<div >
+					<form name="Form" >
+						<div class="row">
+							<div class="col-md-12">
+								<fieldset>
+
+									<div class="form-group" ng-class="{'has-error':Form.description.$dirty && Form.description.$invalid, 'has-success':Form.description.$valid}">
+										<label class="control-label">
+											Description <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Description" class="form-control" name="description" ng-model="myModel.description"
+											   required />
+										<span class="error text-small block" ng-if="Form.description.$dirty && Form.description.$invalid">First Description is required</span>
+										<span class="success text-small" ng-if="Form.description.$valid">Thank You!</span>
+									</div>
+									<div class="form-group" ng-class="{'has-error':Form.amount.$dirty && Form.amount.$invalid, 'has-success':Form.amount.$valid}">
+										<label class="control-label">
+											Amount <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Amount" class="form-control" name="amount" ng-model="myModel.amount"
+											   required />
+										<span class="error text-small block" ng-if="Form.amount.$dirty && Form.amount.$invalid">First Amount is required</span>
+										<span class="success text-small" ng-if="Form.amount.$valid">Thank You!</span>
+									</div>
+
+									<div class="form-group" ng-class="{'has-error':Form.members_id.$dirty && Form.members_id.$invalid, 'has-success':Form.members_id.$valid}">
+										<label class="control-label">
+											Members_id <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Members_id" class="form-control" name="members_id" ng-model="myModel.members_id"
+											   required />
+										<span class="error text-small block" ng-if="Form.members_id.$dirty && Form.members_id.$invalid">First Members_id is required</span>
+										<span class="success text-small" ng-if="Form.members_id.$valid">Thank You!</span>
+									</div>
+
+									<div class="form-group" ng-class="{'has-error':Form.month.$dirty && Form.month.$invalid, 'has-success':Form.month.$valid}">
+										<label class="control-label">
+											Month <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Month" class="form-control" name="month" ng-model="myModel.month"
+											   required />
+										<span class="error text-small block" ng-if="Form.month.$dirty && Form.month.$invalid">First Month is required</span>
+										<span class="success text-small" ng-if="Form.month.$valid">Thank You!</span>
+									</div>
+
+								</fieldset>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="pull-left">
+									<button md-ink-ripple class="btn btn-primary" ng-click="updateData()"
+											ng-disabled="Form.$invalid || process">Simpan
+									</button>
+									<button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.members"
+											ng-disabled="process">Kembali
+									</button>
+
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end: FORM VALIDATION -->
