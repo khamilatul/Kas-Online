@@ -6,46 +6,46 @@
         <span class="font-bold"><left><font color="black">DATA TRANSACTIONS</font></left></span>
     </div>
     <!--<div ng-show="isLoading" layout="row" layout-sm="column" layout-align="space-around">-->
-        <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
+    <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
     <!--</div>-->
     <!--<div ng-show="isLoaded">-->
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-8 m-b-xs">
-            <span tooltip="Tambah Data">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8 m-b-xs">
+                <span tooltip="Tambah Data">
                 <a md-ink-ripple ui-sref="app.users-create" class="btn btn-sm btn-default">
-                    <i class="glyphicon glyphicon-plus-sign"></i></a>
+                    <i class="glyphicon glyphicon-plus-j"></i></a>
                 </span>
-            <span tooltip="Refresh data">
+                <span tooltip="Refresh data">
                 <button md-ink-ripple class="btn btn-sm btn-default" ng-click="refreshData()">
                     <i class="glyphicon glyphicon-refresh"></i>
                 </button>
             </span>
-                            </div>
-                <div class="col-sm-4">
-                    <div class="input-group pull-right">
-                        <input type="text" class="input-sm form-control" placeholder="Search" ng-model="main.term"
-                               ng-disabled="disUtamrow.txtCari" ng-enter="getData()">
-                <span class="input-group-btn" tooltip="Cari Data">
+            </div>
+            <div class="col-sm-4">
+                <div class="input-group pull-right">
+                    <input type="text" class="input-sm form-control" placeholder="Search" ng-model="main.term" ng-disabled="disUtamrow.txtCari"
+                        ng-enter="getData()">
+                    <span class="input-group-btn" tooltip="Cari Data">
                     <button md-ink-ripple class="btn btn-sm btn-default" type="button" ng-click="getData()"
                             ng-disabled="main.term ==''">Cari
                     </button>
                 </span>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
                 <tr>
                     <th class="col-md-2">Description</th>
                     <th class="col-md-2">Amount</th>
                     <th class="col-md-2">Members_id</th>
                     <th class="col-md-2">Month</th>
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
                 <tr ng-repeat="row in dataTransactions">
                     <td class="col-md-2">{{row.description}}</td>
                     <td class="col-md-2">{{row.amount}}</td>
@@ -53,24 +53,19 @@
                     <td class="col-md-2">{{row.month}}</td>
 
                     <td class="col-md-2">
-                        <button type="button" ng-click="detailurusan(row.id)" md-ink-ripple tooltip="Detail Urusan"
-                                class="btn btn-sm btn-info">
+                        <button type="button" ng-click="detailurusan(row.id)" md-ink-ripple tooltip="Detail Urusan" class="btn btn-sm btn-info">
                             <i class="glyphicon glyphicon-zoom-in"></i>
                         </button>
-                        <a ui-sref="app.members-edit({id:row.id})"  md-ink-ripple tooltip="Edit Data"
-                           class="btn btn-sm btn-default" >
+                        <a ui-sref="app.members-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
-                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data"
-                                class="btn btn-sm btn-danger" >
+                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
-                        <a ui-sref="app.urusan-edit({id:row.id})"  md-ink-ripple tooltip="Edit Data"
-                           class="btn btn-sm btn-default" ng-if="row.is_lock ==''">
+                        <a ui-sref="app.urusan-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="row.is_lock ==''">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
-                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data"
-                                class="btn btn-sm btn-danger" ng-if="row.is_lock ==''">
+                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="row.is_lock ==''">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
                         <button ng-if="row.is_lock =='0'" type="button" ng-click="kunci(row.id)" md-ink-ripple tooltip="Kunci Data" class="btn btn-sm btn-accent">
@@ -79,47 +74,44 @@
                         <button ng-if="row.is_lock == ''" type="button" ng-click="kunci(row.id)" md-ink-ripple tooltip="Kunci Data" class="btn btn-sm btn-accent">
                             <i class="glyphicon glyphicon-lock"></i>
                         </button>
-                        <button type="button" ng-click="buka(row.id)"ng-if="row.is_lock =='1' && dataUser.email == 'engineering@simperkot.com'"  md-ink-ripple tooltip="Buka Kunci Data" class="btn btn-sm btn-accent">
+                        <button type="button" ng-click="buka(row.id)" ng-if="row.is_lock =='1' && dataUser.email == 'engineering@simperkot.com'"
+                            md-ink-ripple tooltip="Buka Kunci Data" class="btn btn-sm btn-accent">
                             <i class="fa fa-unlock-alt"></i>
                         </button>
 
                     </td>
                 </tr>
-                </tbody>
-            </table>
-        </div>
-        <!--panel pagination-->
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-4 text-center-xs" style="margin-top: 27px;">
-                    <small>Menampilkan {{from}}-{{to}} dari {{total}} data</small>
-                </div>
-                <div class="col-sm-8 text-right text-center-xs">
-                    <ul class="pagination m-t-none m-b-none">
-                        <li tooltip="Halaman Pertama">
-                            <button md-ink-ripple class="btn btn-default" type="button" ng-click='firstPage()'
-                                    ng-disabled='current_page == 1 || disUtamrow.btnPagging'><i
-                                    class="fa fa-angle-double-left"></i></button>
-                        </li>
-                        <li tooltip="Halaman Sebelumnya">
-                            <button md-ink-ripple class="btn btn-default" type="button" ng-click='previousPage()'
-                                    ng-disabled='current_page <= 1 || disUtamrow.btnPagging'><i
-                                    class="fa fa-angle-left"></i></button>
-                        </li>
-                        <li tooltip="Halaman Selanjutnya">
-                            <button md-ink-ripple class="btn btn-default" type="button" ng-click='nextPage()'
-                                    ng-disabled='main.page >= last_page || disUtamrow.btnPagging'><i
-                                    class="fa fa-angle-right"></i></button>
-                        </li>
-                        <li tooltip="Halaman Terakhir">
-                            <button md-ink-ripple class="btn btn-default" type="button" ng-click='lastPage()'
-                                    ng-disabled='main.page >= last_page || disUtamrow.btnPagging'><i
-                                    class="fa fa-angle-double-right"></i></button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /Base -->
-        </div>
+            </tbody>
+        </table>
     </div>
+    <!--panel pagination-->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4 text-center-xs" style="margin-top: 27px;">
+                <small>Menampilkan {{from}}-{{to}} dari {{total}} data</small>
+            </div>
+            <div class="col-sm-8 text-right text-center-xs">
+                <ul class="pagination m-t-none m-b-none">
+                    <li tooltip="Halaman Pertama">
+                        <button md-ink-ripple class="btn btn-default" type="button" ng-click='firstPage()' ng-disabled='current_page == 1 || disUtamrow.btnPagging'><i
+                                    class="fa fa-angle-double-left"></i></button>
+                    </li>
+                    <li tooltip="Halaman Sebelumnya">
+                        <button md-ink-ripple class="btn btn-default" type="button" ng-click='previousPage()' ng-disabled='current_page <= 1 || disUtamrow.btnPagging'><i
+                                    class="fa fa-angle-left"></i></button>
+                    </li>
+                    <li tooltip="Halaman Selanjutnya">
+                        <button md-ink-ripple class="btn btn-default" type="button" ng-click='nextPage()' ng-disabled='main.page >= last_page || disUtamrow.btnPagging'><i
+                                    class="fa fa-angle-right"></i></button>
+                    </li>
+                    <li tooltip="Halaman Terakhir">
+                        <button md-ink-ripple class="btn btn-default" type="button" ng-click='lastPage()' ng-disabled='main.page >= last_page || disUtamrow.btnPagging'><i
+                                    class="fa fa-angle-double-right"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /Base -->
+    </div>
+</div>
 </div>
