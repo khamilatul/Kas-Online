@@ -11,6 +11,13 @@ app.factory('transactions', ['$http', function ($http) {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest'}
             });
         },
+        getmembers: function (page, term) {
+            return $http({
+                method: 'get',
+                url: '/api/members?page=' + page + '&term=' + term,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest'}
+            });
+        },
 
         getLastmembers: function () {
             return $http({

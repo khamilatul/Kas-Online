@@ -86,7 +86,7 @@ app.controller('MembersCreateCtrl', ['$state', '$scope', 'members','$timeout', '
                             toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                         }
                         //Clear Input
-                    }  
+                    }
 
                 })
                 .error(function (data, status) {
