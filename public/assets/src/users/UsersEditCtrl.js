@@ -1,4 +1,4 @@
-app.controller('UsersEditCtrl', ['$state', '$scope', 'users','$timeout', 'SweetAlert','toaster','$http','$stateParams', function ($state, $scope, users, $timeout, SweetAlert,toaster, $stateParams) {
+app.controller('UsersEditCtrl', ['$state', '$scope', 'users', '$uibModal', '$log', '$timeout', 'SweetAlert', 'toaster', '$http', '$stateParams', function ($state, $scope, users, $uibModal, $log, $timeout, SweetAlert, toaster, $stateParams) {
     $scope.id = $scope.$stateParams.id;
     //edit users
     //If Id is empty, then redirected
@@ -6,6 +6,7 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users','$timeout', 'SweetA
         $state.go("app.users")
     }
     $scope.master = $scope.myModel;
+
     $scope.form = {
 
         submit: function (form) {
@@ -46,64 +47,63 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users','$timeout', 'SweetA
     //Run Ajax
     users.show($scope.id)
         .success(function (data) {
-            $scope.myModel= data;
+            $scope.myModel = data;
         });
     //Submit Data
     $scope.updateData = function () {
+        $scope.alerts = [];
 
         //Set process status
         $scope.process = true;
 
         //Close Alert
-        $scope.alertset.show = 'hide';
+        // $scope.alertset.show = 'hide';
 
         //Check validation status
-        if ($scope.myModel.$valid) {
+        if ($scope.Form.$valid) {
             //run Ajax
+
+            console.log('dfghjklj')
             users.update($scope.myModel)
                 .success(function (data) {
-                    if (data.success == true) {
+                    if (data.updated == true) {
                         //If back to list after submitting
-                        if (isBack = true) {
-                            //Redirect to akun
-                            $scope.alertset.show = 'hide';
-                            $state.go('app.users');
-                            $scope.showToast('green', 'Edit Data Berhasil !');
-                        }
-                    } else {
-                        $scope.process = false;
-                        //$scope.alertset.class = 'orange';
-                        $scope.showToast('red', 'Edit Data Gagal !');
-                        $scope.alertset.class = 'red';
+                        //Redirect to akun
+                        // $scope.alertset.show = 'hide';
+                        $state.go('app.users');
+                        $scope.toaster = {
+                            type: 'success',
+                            title: 'Sukses',
+                            text: 'Edit Data Berhasil!'
+                        };
+                        toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                     }
+
                     //Set Alert message
-                    $scope.alertset.show = '';
-                    $scope.alertset.msg = data.result;
 
                 })
+
                 .error(function (data, status) {
-                    switch (status) {
-                        case 401 :
-                            $scope.redirect();
-                            break;
-                        case 500 :
-                            $scope.sup();
-                            $scope.process = false;
-                            $scope.alertset.msg = "Internal Server Errors";
-                            $scope.alertset.show = 'show';
-                            $scope.showToast('red', 'Simpan Data Gagal !');
-                            $scope.alertset.class = 'red';
-                            break;
-                        case 422 :
-                            $scope.sup();
-                            $scope.process = false;
-                            $scope.alertset.msg = data.validation;
-                            $scope.alertset.show = 'show';
-                            $scope.showToast('red', 'Simpan Data Gagal !');
-                            $scope.alertset.class = 'red';
-                            break;
+                    // unauthorized
+                    if (status === 401) {
+                        //redirect to login
+                        $scope.redirect();
                     }
+                    $scope.sup();
+                    // Stop Loading
+                    $scope.process = false;
+                    $scope.alerts.push({
+                        type: 'danger',
+                        msg: data.validation
+                    });
+                    $scope.toaster = {
+                        type: 'error',
+                        title: 'Gagal',
+                        text: 'Simpan Data Gagal!'
+                    };
+                    toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                 });
+
         }
     };
 

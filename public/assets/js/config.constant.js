@@ -54,14 +54,17 @@ app.constant('JS_REQUIRES', {
         'chatCtrl': 'assets/js/controllers/chatCtrl.js',
         'dynamicTableCtrl': 'assets/js/controllers/dynamicTableCtrl.js',
         'NotificationIconsCtrl': 'assets/js/controllers/notificationIconsCtrl.js',
+       
         'membersCtrl'    : 'assets/src/members/MembersCtrl.js',
         'memberscreateCtrl'    : 'assets/src/members/MembersCreateCtrl.js',
         'memberseditCtrl'    : 'assets/src/members/MembersEditCtrl.js',
         'members_service': 'assets/src/members/members-service.js',
-        'usersCtrl'    : 'assets/src/users/UsersCtrl.js',
-        'userscreateCtrl'    : 'assets/src/users/UserscreateCtrl.js',
-        'userseditCtrl'    : 'assets/src/users/UserseditCtrl.js',
+       
+        'UsersCtrl'    : 'assets/src/users/UsersCtrl.js',
+        'UserscreateCtrl'    : 'assets/src/users/UserscreateCtrl.js',
+        'UserseditCtrl'    : 'assets/src/users/UserseditCtrl.js',
         'users_service': 'assets/src/users/users-service.js',
+       
         'transactionsCtrl'    : 'assets/src/transactions/TransactionsCtrl.js',
         'transactionscreateCtrl'    : 'assets/src/transactions/TransactionscreateCtrl.js',
         'transactionseditCtrl'    : 'assets/src/transactions/TransactionseditCtrl.js',

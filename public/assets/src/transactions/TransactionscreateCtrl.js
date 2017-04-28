@@ -1,10 +1,36 @@
-app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions','$timeout', 'SweetAlert','toaster','$uibModal','$log','$http', function ($state, $scope, transactions,$timeout, SweetAlert,toaster,$uibModal,$log) {
+app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions', '$timeout', 'SweetAlert', 'toaster', '$uibModal', '$log', '$http', function ($state, $scope, transactions, $timeout, SweetAlert, toaster, $uibModal, $log) {
     //Init input addForm variable
     //create transactions
 
     $scope.process = false;
 
     $scope.master = $scope.myModel;
+    $scope.dtmembers = ''
+    $scope.openmembers = function (size) {
+
+        var modalInstance = $uibModal.open({
+            templateUrl: 'assets/src/transactions/members.dialog.html',
+            controller: 'ModalMembers',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (data) {
+            // $scope.selected = selectedItem;
+            // $scope.myModel ={}
+            $scope.dtmembers = data
+            $scope.myModel.members = data.name
+
+            console.log(data.name);
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
     $scope.form = {
 
         submit: function (form) {
@@ -40,39 +66,15 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions','$t
         }
 
     };
-    $scope.dtmembers = ''
-    $scope.openmembers = function (size) {
-
-        var modalInstance = $uibModal.open({
-            templateUrl: 'assets/src/transactions/members.dialog.html',
-            controller: 'ModalMembers',
-            size: size,
-            resolve: {
-                items: function () {
-                    return $scope.items;
-                }
-            }
-        });
-
-        modalInstance.result.then(function (data) {
-            // $scope.selected = selectedItem;
-            $scope.myModel ={}
-            $scope.dtmembers.id = data.id
-            $scope.myModel.description= data.name
-
-            console.log(data.name);
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
     $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);
     };
     $scope.clearInput = function () {
-        $scope.myModel.name = null;
-        $scope.myModel.email= null;
-        $scope.myModel.class= null;
-        $scope.myModel.phone= null;
+        $scope.myModel.members = null;
+        $scope.myModel.description = null;
+        $scope.myModel.amount = null;
+        $scope.myModel.members_id = null;
+        $scope.myModel.month = null;
     };
 
     $scope.submitData = function (isBack) {
@@ -84,6 +86,7 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions','$t
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax
+            $scope.myModel.members_id = $scope.dtmembers.id;
             transactions.store($scope.myModel)
                 .success(function (data) {
                     if (data.created == true) {
@@ -95,7 +98,7 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions','$t
                                 title: 'Sukses',
                                 text: 'Simpan Data Berhasil!'
                             };
-                                toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+                            toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                         } else {
                             $scope.clearInput();
                             $scope.sup();
@@ -112,7 +115,7 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions','$t
                             toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                         }
                         //Clear Input
-                    }  
+                    }
 
                 })
                 .error(function (data, status) {

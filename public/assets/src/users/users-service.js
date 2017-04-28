@@ -8,11 +8,11 @@ app.factory('users', ['$http', function ($http) {
             return $http({
                 method: 'get',
                 url: '/api/users?page=' + page + '&term=' + term,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest'}
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' }
             });
         },
 
-        getLastmembers: function () {
+        getLastusers: function () {
             return $http({
                 method: 'get',
                 url: '/api/get-last-users',

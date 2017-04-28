@@ -22,41 +22,62 @@
 							<div class="col-md-12">
 								<fieldset>
 
-									<div class="form-group" ng-class="{'has-error':Form.description.$dirty && Form.description.$invalid, 'has-success':Form.description.$valid}">
+																	<div class="form-group" ng-class="{'has-error':Form.description.$dirty && Form.description.$invalid, 'has-success':Form.description.$valid}">
 										<label class="control-label">
-											Description <span class="symbol required"></span>
-										</label>
-										<input type="text" placeholder="Enter your Description" class="form-control" name="description" ng-model="myModel.description"
-											   required />
+										 Description <span class="symbol required"></span>
+									</label>
+											<input type="text" placeholder="Enter your Description" class="form-control" name="description" ng-model="myModel.description" required />
 										<span class="error text-small block" ng-if="Form.description.$dirty && Form.description.$invalid">First Description is required</span>
 										<span class="success text-small" ng-if="Form.description.$valid">Thank You!</span>
+								
 									</div>
 									<div class="form-group" ng-class="{'has-error':Form.amount.$dirty && Form.amount.$invalid, 'has-success':Form.amount.$valid}">
 										<label class="control-label">
-											Amount <span class="symbol required"></span>
-										</label>
-										<input type="text" placeholder="Enter your Amount" class="form-control" name="amount" ng-model="myModel.amount"
-											   required />
+										 Amount <span class="symbol required"></span>
+									</label>
+										<input type="text" placeholder="Enter your Amount" class="form-control" name="amount" ng-model="myModel.amount" required
+										/>
 										<span class="error text-small block" ng-if="Form.amount.$dirty && Form.amount.$invalid">First Amount is required</span>
 										<span class="success text-small" ng-if="Form.amount.$valid">Thank You!</span>
 									</div>
 
 									<div class="form-group" ng-class="{'has-error':Form.members_id.$dirty && Form.members_id.$invalid, 'has-success':Form.members_id.$valid}">
 										<label class="control-label">
-											Members_id <span class="symbol required"></span>
-										</label>
-										<input type="text" placeholder="Enter your Members_id" class="form-control" name="members_id" ng-model="myModel.members_id"
-											   required />
-										<span class="error text-small block" ng-if="Form.members_id.$dirty && Form.members_id.$invalid">First Members_id is required</span>
-										<span class="success text-small" ng-if="Form.members_id.$valid">Thank You!</span>
+										Members <span class="symbol required"></span>
+									</label>
+															<p class="input-group">
+											<input type="text" placeholder="Enter your Members" class="form-control" name="members" ng-model="myModel.members" required readonly/>
+											<span class="input-group-btn">
+											<button class="btn btn-default" ng-click="openmembers('lg')" md-ink-ripple
+												tooltip="Pilih Members"><i
+												class="glyphicon glyphicon-list"></i></button>
+
+										<span class="error text-small block" ng-if="Form.members.$dirty && Form.members.$invalid">First Members is required</span>
+
+											<span class="success text-small" ng-if="Form.members.$valid">Thank You!</span>
+											</span>
 									</div>
 
 									<div class="form-group" ng-class="{'has-error':Form.month.$dirty && Form.month.$invalid, 'has-success':Form.month.$valid}">
 										<label class="control-label">
-											Month <span class="symbol required"></span>
-										</label>
-										<input type="text" placeholder="Enter your Month" class="form-control" name="month" ng-model="myModel.month"
-											   required />
+										Month <span class="symbol required"></span>
+									</label>
+										<select class="form-control" name="month" ng-model="myModel.month" required>
+										<option value="" disabled selected>&nbsp;</option>
+										<option value="JANUARI">Januari</option>
+										<option value="FEBRUARI">Februari</option>
+										<option value="MARET">Maret</option>
+										<option value="APRIL">April</option>
+										<option value="MEI">Mei</option>
+										<option value="JUNI">Juni</option>
+										<option value="JULI">Juli</option>
+										<option value="AGUSTUS">Agustus</option>
+										<option value="SEPTEMBER">September</option>
+										<option value="OKTOBER">Oktober</option>
+										<option value="NOVEMBER">November</option>
+										<option value="DESEMBER">Desember</option>
+									</select>
+									
 										<span class="error text-small block" ng-if="Form.month.$dirty && Form.month.$invalid">First Month is required</span>
 										<span class="success text-small" ng-if="Form.month.$valid">Thank You!</span>
 									</div>
@@ -71,7 +92,7 @@
 									<button md-ink-ripple class="btn btn-primary" ng-click="updateData()"
 											ng-disabled="Form.$invalid || process">Simpan
 									</button>
-									<button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.members"
+									<button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.transactions"
 											ng-disabled="process">Kembali
 									</button>
 

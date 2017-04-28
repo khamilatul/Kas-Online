@@ -71,7 +71,7 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             url: '/users',
             templateUrl: 'assets/src/users/users-list.html',
             title: 'Data Users',
-            resolve: loadSequence('usersCtrl', 'users_service'),
+            resolve: loadSequence('UsersCtrl', 'users_service'),
 
         })
         //users Create
@@ -79,7 +79,7 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             url: '/users-create',
             templateUrl: 'assets//src/users/users-create.html',
             title: 'Tambah Data Users',
-            resolve: loadSequence('userscreateCtrl', 'users_service'),
+            resolve: loadSequence('UserscreateCtrl', 'users_service'),
         })
         
         //users Edit
@@ -87,12 +87,12 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             url: '/users-edit/:id',
             templateUrl: 'assets//src/users/users-edit.html',
             title: 'Edit Data Users',
-            resolve: loadSequence('userseditCtrl', 'users_service'),
+            resolve: loadSequence('UserseditCtrl', 'users_service'),
         })
 
         //transactions
         .state('app.transactions', {
-            url: '/transactions',
+            url: '/transactions-list',
             templateUrl: 'assets/src/transactions/transactions-list.html',
             title: 'Data Transactions',
             resolve: loadSequence('transactionsCtrl', 'transactions_service'),

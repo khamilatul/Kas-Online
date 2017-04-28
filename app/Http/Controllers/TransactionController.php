@@ -65,7 +65,7 @@ class TransactionController extends Controller
      * @apiParam {Float} phone phone of transaction
      * @apiSuccess {Number} id id of transaction
      */
-    public function store(TransactionCreateRequest $request)
+    public function store(Request $request)
     {
         return $this->transaction->create($request->all());
     }

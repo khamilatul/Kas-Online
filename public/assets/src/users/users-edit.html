@@ -1,9 +1,9 @@
 <!-- start: PAGE TITLE -->
-<div ng-controller="MembersEditCtrl">
+<div ng-controller="UsersEditCtrl">
 	<section id="page-title">
 		<div class="row">
 			<div class="col-sm-8">
-				<h1 class="mainTitle" >FORM CREATE MEMBERS</h1>
+				<h1 class="mainTitle">FORM EDIT USERS</h1>
 			</div>
 			<div ncy-breadcrumb></div>
 		</div>
@@ -16,49 +16,49 @@
 	<div class="container-fluid container-fullw bg-white">
 		<div class="row">
 			<div class="col-md-12">
-				<div >
-					<form name="Form" >
+				<div>
+					<form name="Form">
 						<div class="row">
 							<div class="col-md-12">
 								<fieldset>
 
-									<div class="form-group" ng-class="{'has-error':Form.name.$dirty && Form.name.$invalid, 'has-success':Form.name.$valid}">
+									<div class="form-group" ng-class="{'has-error':Form.description.$dirty && Form.description.$invalid, 'has-success':Form.description.$valid}">
 										<label class="control-label">
-											Name <span class="symbol required"></span>
+											Description <span class="symbol required"></span>
 										</label>
-										<input type="text" placeholder="Enter your Name" class="form-control" name="name" ng-model="myModel.name"
-											   required />
-										<span class="error text-small block" ng-if="Form.name.$dirty && Form.name.$invalid">First Name is required</span>
-										<span class="success text-small" ng-if="Form.name.$valid">Thank You!</span>
-									</div>
-									<div class="form-group" ng-class="{'has-error':Form.class.$dirty && Form.class.$invalid, 'has-success':Form.class.$valid}">
-										<label class="control-label">
-											Phone <span class="symbol required"></span>
-										</label>
-										<input type="text" placeholder="Enter your Class" class="form-control" name="class" ng-model="myModel.class"
-											   required />
-										<span class="error text-small block" ng-if="Form.class.$dirty && Form.class.$invalid">First Class is required</span>
-										<span class="success text-small" ng-if="Form.class.$valid">Thank You!</span>
+										<input type="text" placeholder="Enter your Description" class="form-control" name="description" ng-model="myModel.description"
+										 required />
+										<span class="error text-small block" ng-if="Form.description.$dirty && Form.description.$invalid">First Description is required</span>
+										<span class="success text-small" ng-if="Form.description.$valid">Thank You!</span>
 									</div>
 
-									<div class="form-group" ng-class="{'has-error':Form.email.$dirty && Form.email.$invalid, 'has-success':Form.email.$valid}">
+									<div class="form-group" ng-class="{'has-error':Form.amount.$dirty && Form.amount.$invalid, 'has-success':Form.amount.$valid}">
 										<label class="control-label">
-											Email <span class="symbol required"></span>
+											Amount <span class="symbol required"></span>
 										</label>
-										<input type="email" placeholder="Enter a valid E-mail" class="form-control" name="email" ng-model="myModel.email" required>
-										<span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$error.required">Email is required.</span>
-										<span class="error text-small block" ng-if="Form.email.$error.email">Please, enter a valid email address.</span>
-										<span class="success text-small" ng-if="Form.email.$valid">It's a valid e-mail!</span>
+										<input type="text" placeholder="Enter your Amount" class="form-control" name="amount" ng-model="myModel.amount" required
+										/>
+										<span class="error text-small block" ng-if="Form.amount.$dirty && Form.amount.$invalid">First Amount is required</span>
+										<span class="success text-small" ng-if="Form.amount.$valid">Thank You!</span>
 									</div>
 
-									<div class="form-group" ng-class="{'has-error':Form.phone.$dirty && Form.phone.$invalid, 'has-success':Form.phone.$valid}">
+									<div class="form-group" ng-class="{'has-error':Form.member_id.$dirty && Form.member_id.$invalid, 'has-success':Form.member_id.$valid}">
 										<label class="control-label">
-											Class <span class="symbol required"></span>
+											Member_id <span class="symbol required"></span>
 										</label>
-										<input type="text" placeholder="Enter your Class" class="form-control" name="phone" ng-model="myModel.phone"
-											   required />
-										<span class="error text-small block" ng-if="Form.phone.$dirty && Form.phone.$invalid">First Phone is required</span>
-										<span class="success text-small" ng-if="Form.phone.$valid">Thank You!</span>
+										<input type="text" placeholder="Enter your Member_id" class="form-control" name="member_id" ng-model="myModel.member_id"
+										 required />
+										<span class="error text-small block" ng-if="Form.member_id.$dirty && Form.member_id.$invalid">First Member_id is required</span>
+										<span class="success text-small" ng-if="Form.member_id.$valid">Thank You!</span>
+									</div>
+
+									<div class="form-group" ng-class="{'has-error':Form.month.$dirty && Form.month.$invalid, 'has-success':Form.month.$valid}">
+										<label class="control-label">
+											Month <span class="symbol required"></span>
+										</label>
+										<input type="text" placeholder="Enter your Month" class="form-control" name="month" ng-model="myModel.month" required />
+										<span class="error text-small block" ng-if="Form.month.$dirty && Form.month.$invalid">First Month is required</span>
+										<span class="success text-small" ng-if="Form.month.$valid">Thank You!</span>
 									</div>
 
 								</fieldset>
@@ -68,11 +68,9 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="pull-left">
-									<button md-ink-ripple class="btn btn-primary" ng-click="updateData()"
-											ng-disabled="Form.$invalid || process">Simpan
+									<button md-ink-ripple class="btn btn-primary" ng-click="updateData()" ng-disabled="Form.$invalid || process">Simpan
 									</button>
-									<button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.members"
-											ng-disabled="process">Kembali
+									<button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.users" ng-disabled="process">Kembali
 									</button>
 
 								</div>

@@ -3,7 +3,7 @@
 	<section id="page-title">
 		<div class="row">
 			<div class="col-sm-8">
-				<h1 class="mainTitle" >FORM CREATE MEMBERS</h1>
+				<h1 class="mainTitle" >FORM EDIT MEMBERS</h1>
 			</div>
 			<div ncy-breadcrumb></div>
 		</div>
@@ -31,6 +31,7 @@
 										<span class="error text-small block" ng-if="Form.name.$dirty && Form.name.$invalid">First Name is required</span>
 										<span class="success text-small" ng-if="Form.name.$valid">Thank You!</span>
 									</div>
+									
 									<div class="form-group" ng-class="{'has-error':Form.class.$dirty && Form.class.$invalid, 'has-success':Form.class.$valid}">
 										<label class="control-label">
 											Phone <span class="symbol required"></span>
