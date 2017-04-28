@@ -46,6 +46,8 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users','$timeout', 'Swee
         $scope.myModel.name = null;
         $scope.myModel.email= null;
         $scope.myModel.class= null;
+        $scope.myModel.level= null;
+        $scope.myModel.password= null;
         $scope.myModel.phone= null;
     };
 

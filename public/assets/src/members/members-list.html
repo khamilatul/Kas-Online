@@ -45,18 +45,19 @@
                 <thead>
                 <tr>
                     <th class="col-md-2">Nama</th>
+                    <th class="col-md-2">Class</th>
                     <th class="col-md-2">Email</th>
                     <th class="col-md-2">Phone</th>
-                    <th class="col-md-2">Class</th>
                     <th class="col-md-2">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="row in dataMembers">
                     <td class="col-md-2">{{row.name}}</td>
+                    <td class="col-md-2">{{row.class}}</td>
                     <td class="col-md-2">{{row.email}}</td>
                     <td class="col-md-2">{{row.phone}}</td>
-                    <td class="col-md-2">{{row.class}}</td>
+                    
 
                     <td class="col-md-2">
                         <a ui-sref="app.members-edit({id:row.id})"  md-ink-ripple tooltip="Edit Data"

@@ -3,12 +3,9 @@
 </div>
 <div class="panel panel-default" ng-controller="UsersCtrl">
     <div class="panel-heading bg-white" style="background: #b3c4c7;">
-        <span class="font-bold"><left><font color="black">DATA Users</font></left></span>
+        <span class="font-bold"><left><font color="black">DATA USERS</font></left></span>
     </div>
-    <!--<div ng-show="isLoading" layout="row" layout-sm="column" layout-align="space-around">-->
-    <!--<md-progress-circular md-mode="indeterminate"></md-progress-circular>-->
-    <!--</div>-->
-    <!--<div ng-show="isLoaded">-->
+
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-8 m-b-xs">
@@ -40,27 +37,25 @@
             <thead>
                 <tr>
                     <th class="col-md-2">Nama</th>
-                    <th class="col-md-2">Email</th>
-                    <th class="col-md-2">Phone</th>
                     <th class="col-md-2">Class</th>
                     <th class="col-md-2">Level</th>
+                    <th class="col-md-2">Phone</th>
                     <th class="col-md-2">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="row in dataUsers">
                     <td class="col-md-2">{{row.name}}</td>
-                    <td class="col-md-2">{{row.email}}</td>
-                    <td class="col-md-2">{{row.phone}}</td>
                     <td class="col-md-2">{{row.class}}</td>
                     <td class="col-md-2">
                         <span ng-if="row.level==0" class="label label-sm label-warning">administrator</span>
                         <span ng-if="row.level==1" class="label label-sm label-success">user</span>
                     </td>
+                    <td class="col-md-2">{{row.phone}}</td>
 
                     <td class="col-md-2">
 
-                        <a ui-sref="app.members-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default">
+                        <a ui-sref="app.users-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
                         <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger">

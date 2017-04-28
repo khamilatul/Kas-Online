@@ -6,7 +6,11 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users', '$uibModal', '$log
         $state.go("app.users")
     }
     $scope.master = $scope.myModel;
-
+    //Run Ajax
+    users.show($scope.id)
+        .success(function (data) {
+            $scope.myModel = data;
+        });
     $scope.form = {
 
         submit: function (form) {
@@ -44,11 +48,7 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users', '$uibModal', '$log
     };
 
 
-    //Run Ajax
-    users.show($scope.id)
-        .success(function (data) {
-            $scope.myModel = data;
-        });
+
     //Submit Data
     $scope.updateData = function () {
         $scope.alerts = [];
