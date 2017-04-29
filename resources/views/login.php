@@ -26,14 +26,11 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/plugins.css">
   <!-- Clip-Two Theme -->
-  {{--<link rel="stylesheet" data-ng-href="../assets/css/themes/app.layout.theme.css" />--}}
+
 </head>
 <!-- start: LOGIN -->
 <div class="row">
   <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-    {{--<div class="logo">--}}
-      {{--<img ng-src="{{app.layout.logo}}" alt="{{app.name}}"/>--}}
-    {{--</div>--}}
     <!-- start: LOGIN BOX -->
     <div class="box-login">
       <form class="subscribe" accept-charset="UTF-8" action="api/post-login" method="post">
@@ -55,7 +52,7 @@
           </p>
           <div class="form-group">
 						<span class="input-icon">
-							<input type="text" class="form-control" name="email" placeholder="Email">
+							<input type="text" class="form-control" name="name" placeholder="Name">
 							<i class="fa fa-user"></i> </span>
           </div>
           <div class="form-group form-actions">
@@ -86,42 +83,10 @@
         </fieldset>
       </form>
       <!-- start: COPYRIGHT -->
-      {{--<div class="copyright">--}}
-        {{--{{app.year}} &copy; {{ app.name }} by {{ app.author }}.--}}
-      {{--</div>--}}
       <!-- end: COPYRIGHT -->
     </div>
     <!-- end: LOGIN BOX -->
   </div>
 </div>
 <!-- end: LOGIN -->
-
-
-
-
-<script src="../assets/js/app.js"></script>
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/config.constant.js"></script>
-<script src="../assets/js/config.router.js"></script>
-<!-- Clip-Two Directives -->
-<script src="../assets/js/directives/toggle.js"></script>
-<script src="../assets/js/directives/perfect-scrollbar.js"></script>
-<script src="../assets/js/directives/empty-links.js"></script>
-<script src="../assets/js/directives/sidebars.js"></script>
-<script src="../assets/js/directives/off-click.js"></script>
-<script src="../assets/js/directives/full-height.js"></script>
-<script src="../assets/js/directives/panel-tools.js"></script>
-<script src="../assets/js/directives/char-limit.js"></script>
-<script src="../assets/js/directives/dismiss.js"></script>
-<script src="../assets/js/directives/compare-to.js"></script>
-<script src="../assets/js/directives/select.js"></script>
-<script src="../assets/js/directives/messages.js"></script>
-<script src="../assets/js/directives/chat.js"></script>
-<script src="../assets/js/directives/sparkline.js"></script>
-<script src="../assets/js/directives/touchspin.js"></script>
-<script src="../assets/js/directives/file-upload.js"></script>
-<!-- Clip-Two Controllers -->
-<script src="../assets/js/controllers/mainCtrl.js"></script>
-<script src="../assets/js/controllers/inboxCtrl.js"></script>
-<script src="../assets/js/controllers/bootstrapCtrl.js"></script>
 </html>

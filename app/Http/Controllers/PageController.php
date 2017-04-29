@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\Entities\User;
-
 /**
  * Class PageController
  *
@@ -20,7 +18,6 @@ class PageController extends Controller
      *
      * @return \Illuminate\View\View
      */
-
     public function __construct()
     {
         $this->middleware('guest', ['only' => ['getLogin']]);
@@ -31,7 +28,6 @@ class PageController extends Controller
     {
         return view('login');
     }
-
     /**
      * @return string
      */
@@ -39,12 +35,12 @@ class PageController extends Controller
     {
         return csrf_token();
     }
-
     public function backoffice()
     {
         return view('backoffice');
 
     }
+
 
 
 }

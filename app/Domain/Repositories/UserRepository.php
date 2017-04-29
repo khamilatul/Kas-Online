@@ -62,7 +62,7 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
             'class'    => e($data['class']),
             'level'   => e($data['level']),
             'phone'   => e($data['phone']),
-            'password' => e($data['password']),
+            'password' => bcrypt($data['password']),
         ]);
 
     }
@@ -79,7 +79,6 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
             'class'    => e($data['class']),
             'level'   => e($data['level']),
             'phone'   => e($data['phone']),
-            'password' => e($data['password']),
         ]);
     }
 

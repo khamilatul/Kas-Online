@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Master\UserFormRequest;
+use App\Http\Requests\User\UserLoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,33 +27,39 @@ class LoginController extends Controller
      *
      * @var string
      */
+    // protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
-    public function postLogin(UserFormRequest $request)
+    public function postLogin(UserLoginRequest $request)
     {
-        if (Auth::attempt($request->only('email', 'password'), true)) {
-
-            session()->put('email', Auth::user()->email);
+        if (Auth::attempt($request->only('name', 'password'), true)) {
             session()->put('name', Auth::user()->name);
             session()->put('level', Auth::user()->level);
             session()->put('user_id', Auth::user()->id);
 
-//aksi untuk yang data user sudah lengkap
-            return redirect()->route('frontoffice');
+            
+            // Authentication passed...
+            return redirect()->route('backoffice');
+        } else {
+            session()->flash('auth_message', 'Kombinasi email dan password salah!');
+            return redirect()->route('login');
         }
-        else {
-                session()->flash('auth_message', 'Kombinasi Email dan Password Salah!');
-                return redirect()->route('login');
-            }
-        }
-    
+
+    }
 
     public function getLogout()
     {
         Auth::logout();
 
         return redirect()->route('login');
-    }}
+    }
+}

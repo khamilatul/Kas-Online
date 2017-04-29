@@ -104,5 +104,24 @@ class UserController extends Controller
     {
         return $this->user->delete($id);
     }
-
+public function getSession()
+    {
+        if (session('name') == null) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'result' => 'redirect'
+                ], 401
+            );
+        }
+     
+                return response()->json([
+                    'success' => true,
+                    'result' => [
+                        'name' => session('name'),
+                        'user_id' => session('user_id'),
+                        'level' => session('level'),
+     
+                    ]]);
+            }
 }

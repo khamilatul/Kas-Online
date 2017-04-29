@@ -21,6 +21,7 @@ Route::resource('users','UserController');
 Route::resource('members','MemberController');
 Route::resource('transactions','TransactionController');
 Route::resource('contacts','ContactController');
+Route::get('get-session', 'UserController@getSession');
 ////----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ////auth
 Route::group(['namespace' => 'Auth'], function () {

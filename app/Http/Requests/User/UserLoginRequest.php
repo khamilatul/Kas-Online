@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Member;
+namespace App\Http\Requests\User;
 
 use App\Http\Requests\Request;
 
@@ -9,7 +9,7 @@ use App\Http\Requests\Request;
  *
  * @package App\Http\Requests\User
  */
-class MemberEditRequest extends Request
+class UserLoginRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,10 @@ class MemberEditRequest extends Request
      */
     protected $attrs = [
         'name'    => 'Name',
-        'email'   => 'Email',
-        'phone'   => 'Phone',
+       // 'class'   => 'Class',
+       // 'level' => 'Level',
+       // 'phone'   => 'Phone',
+        'password'   => 'Password'
     ];
 
     /**
@@ -41,8 +43,10 @@ class MemberEditRequest extends Request
     {
         return [
             'name'    => 'required|max:225',
-            'email'   => 'required|email|max:225',
-            'phone'   => 'required|max:30'
+            //'class' => 'required|max:60',
+            //'level' => 'required|max:60',
+           //'phone'   => 'required|max:30',
+            'password'   => 'required|max:30'
         ];
     }
 
