@@ -66,7 +66,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
         // execute sql insert
         return parent::create([
             'name'    => e($data['name']),
-            'class'    => e($data['name']),
+            'class'    => e($data['class']),
             'email'   => e($data['email']),
             'phone'   => e($data['phone']),
             'users_id' => 10
@@ -83,7 +83,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
     {
         return parent::update($id, [
             'name'    => e($data['name']),
-            'class'    => e($data['name']),
+            'class'    => e($data['class']),
             'email'   => e($data['email']),
             'phone'   => e($data['phone']),
             'users_id' => e($data['users_id'])
