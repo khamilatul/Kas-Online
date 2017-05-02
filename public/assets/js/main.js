@@ -49,6 +49,7 @@ function ($rootScope, $state, $stateParams,mainapp) {
 			scrollTop: 0
 		}, "slow");
 	}
+
 	$rootScope.dataUser = '';
     mainapp.getusession()
         .success(function (data) {
@@ -72,7 +73,22 @@ function ($rootScope, $state, $stateParams,mainapp) {
         job: 'ng-Dev',
         picture: 'app/img/user/02.jpg'
     };
-}]);
+}])
+
+.directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if (event.which === 13) {
+                    scope.$apply(function () {
+                        scope.$eval(attrs.ngEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })
+
 // translate config
 app.config(['$translateProvider',
 function ($translateProvider) {
