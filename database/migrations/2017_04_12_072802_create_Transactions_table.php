@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->string('amount')->unique();
             $table->string('members_id');
             $table->string('month');
+            $table->string('users_id');
             $table->timestamps();
             $table->softDeletes();
         });
