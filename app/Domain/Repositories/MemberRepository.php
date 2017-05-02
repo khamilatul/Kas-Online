@@ -50,11 +50,20 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-       $member = $this->model
-            ->where('name', 'like', '%' . $search . '%')
+      $akun = $this->model
+            ->join('users', 'members.users_id', '=', 'users.id')
+            ->where(function ($query) use ($search) {
+                $query->where('members.name', 'like', '%' . $search . '%')
+                    ->orWhere('members.class', 'like', '%' . $search . '%')
+                    ->orWhere('members.email', 'like', '%' . $search . '%')
+                    ->orWhere('members.phone', 'like', '%' . $search . '%')
+                    ->orWhere('users.name', 'like', '%' . $search . '%');
+            })
+            ->select('members.*')
             ->paginate($limit)
+            
             ->toArray();
-            return $member;
+        return $akun;
     }
 
     /**

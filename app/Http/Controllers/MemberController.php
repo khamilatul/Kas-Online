@@ -33,7 +33,7 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->member->paginate(10, $request->input('page'), $column = ['*'], '', $request->input('search'));
+        return $this->member->paginate(10, $request->input('page'), $column = ['*'], '', $request->input('term'));
     }
 
     /**
