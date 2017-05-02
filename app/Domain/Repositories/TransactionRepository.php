@@ -47,9 +47,17 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-        return parent::paginate($limit, $page, $column, 'description', $search);
+        $akun = $this->model
+        ->join('members', 'transactions.members_id', '=', 'members.id')
+       ->where(function ($query) use ($search) {
+                $query->where('transactions.month', 'like', '%' . $search . '%')
+                    ->orWhere('transactions.amount', 'like', '%' . $search . '%')
+                    ->orWhere('members.name', 'like', '%' . $search . '%');
+       })              
+    ->paginate($limit)
+            ->toArray();
+            return $akun;
     }
-
     /**
      * @param array $data
      * @return \Symfony\Component\HttpFoundation\Response
