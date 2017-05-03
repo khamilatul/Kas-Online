@@ -43,6 +43,7 @@ class LoginController extends Controller
     {
         if (Auth::attempt($request->only('name', 'password'), true)) {
             session()->put('name', Auth::user()->name);
+            session()->put('class', Auth::user()->class);
             session()->put('level', Auth::user()->level);
             session()->put('user_id', Auth::user()->id);
 

@@ -18,14 +18,19 @@ class Transaction extends Model
      */
 
     protected $fillable = [
-        'description', 'amount', 'members_id', 'month',
+        'description', 'amount', 'members_id', 'month','users_id',
     ];
 
-    protected $with = ['members'];
+    protected $with = ['members','users'];
 
     public function members()
     {
         return $this->belongsTo('App\Domain\Entities\Member', 'members_id');
+    }
+
+     public function users()
+    {
+        return $this->belongsTo('App\Domain\Entities\User', 'users_id');
     }
 
 }

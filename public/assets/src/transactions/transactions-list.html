@@ -13,7 +13,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-8 m-b-xs">
-                <span tooltip="Tambah Data">
+                <span tooltip="Tambah Data" ng-if="dataUser.level==1">
                 <a md-ink-ripple ui-sref="app.transactions-create" class="btn btn-sm btn-default">
                     <i class="glyphicon glyphicon-plus-sign"></i></a>
                 </span>
@@ -44,7 +44,8 @@
                     <th class="col-md-2">Amount</th>
                     <th class="col-md-2">Member</th>
                     <th class="col-md-2">Month</th>
-                    <th class="col-md-2">Aksi</th>
+                    <th class="col-md-2">Users</th>
+                    <th class="col-md-2" ng-if="dataUser.level==1">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,13 +54,15 @@
                     <td class="col-md-2">{{row.amount}}</td>
                     <td class="col-md-2">{{row.members.name}}</td>
                     <td class="col-md-2">{{row.month}}</td>
+                    <td class="col-md-2">{{row.users.name}}</td>
+                    
 
-                    <td class="col-md-2">
+                    <td class="col-md-2" ng-if="dataUser.level==1">
                         
-                        <a ui-sref="app.transactions-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default">
+                        <a ui-sref="app.transactions-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="dataUser.level==1">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
-                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger">
+                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level==1">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
             

@@ -1,11 +1,15 @@
 'use strict';
 
-app.controller('MembersCtrl', ['$scope', 'members', 'SweetAlert', '$http','$timeout', function ($scope, members,SweetAlert) {
+app.controller('MembersCtrl', ['$scope', 'members', 'SweetAlert','$state', '$http','$timeout', function ($scope, members,SweetAlert,$state) {
 //urussan tampilan
     $scope.main = {
         page: 1,
         term: ''
     };
+
+  if ($scope.dataUser.level == 0 ) {
+        $state.go("app.dashboard")
+    }
 
     $scope.isLoading = true;
     $scope.isLoaded = false;

@@ -3,6 +3,11 @@ app.controller('MembersCreateCtrl', ['$state', '$scope', 'members','$timeout', '
     //create members
     $scope.process = false;
 
+      if ($scope.dataUser.level == 0 ) {
+        $state.go("app.dashboard")
+    }
+
+
     $scope.master = $scope.myModel;
     $scope.form = {
 

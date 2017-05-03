@@ -52,6 +52,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
         // query to aql
       $akun = $this->model
             ->join('users', 'members.users_id', '=', 'users.id')
+            ->where('users.class',session('class'))
             ->where(function ($query) use ($search) {
                 $query->where('members.name', 'like', '%' . $search . '%')
                     ->orWhere('members.class', 'like', '%' . $search . '%')

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="apple-touch-fullscreen" content="yes" />
-  <title data-ng-bind="pageTitle()">Clip-Two - Angular Bootstrap Admin Template</title>
+  <title data-ng-bind="pageTitle()">Kas-Online - Angular Bootstrap Admin Template</title>
   <!-- Google fonts -->
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
   <!-- Bootstrap -->
@@ -22,10 +22,10 @@
   <link rel="stylesheet" href="../bower_components/angular-loading-bar/build/loading-bar.min.css">
   <!-- Animate Css -->
   <link rel="stylesheet" href="../bower_components/animate.css/animate.min.css">
-  <!-- Clip-Two CSS -->
+  <!-- Kas-Online CSS -->
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/plugins.css">
-  <!-- Clip-Two Theme -->
+  <!-- Kas-Online Theme -->
   {{--<link rel="stylesheet" data-ng-href="../assets/css/themes/app.layout.theme.css" />--}}
 </head>
 <body ng-controller="AppCtrl">
@@ -60,12 +60,12 @@
 <script src="../bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
 <!-- Angular Scroll -->
 <script src="../bower_components/angular-scroll/angular-scroll.min.js"></script>
-<!-- Clip-Two Scripts -->
+<!-- Kas-Online Scripts -->
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/config.constant.js"></script>
 <script src="../assets/js/config.router.js"></script>
-<!-- Clip-Two Directives -->
+<!-- Kas-Online Directives -->
 <script src="../assets/js/directives/toggle.js"></script>
 <script src="../assets/js/directives/perfect-scrollbar.js"></script>
 <script src="../assets/js/directives/empty-links.js"></script>
@@ -82,7 +82,7 @@
 <script src="../assets/js/directives/sparkline.js"></script>
 <script src="../assets/js/directives/touchspin.js"></script>
 <script src="../assets/js/directives/file-upload.js"></script>
-<!-- Clip-Two Controllers -->
+<!-- Kas-Online Controllers -->
 <script src="../assets/js/controllers/mainCtrl.js"></script>
 <script src="../assets/js/controllers/inboxCtrl.js"></script>
 <script src="../assets/js/controllers/bootstrapCtrl.js"></script>

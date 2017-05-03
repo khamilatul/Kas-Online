@@ -121,6 +121,7 @@ public function getSession()
                         'name' => session('name'),
                         'user_id' => session('user_id'),
                         'level' => session('level'),
+                        'class' => session('class'),
      
                     ]]);
             }

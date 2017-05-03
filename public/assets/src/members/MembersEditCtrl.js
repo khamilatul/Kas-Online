@@ -5,6 +5,10 @@ app.controller('MembersEditCtrl', ['$state', '$scope', 'members', '$uibModal', '
     if ($scope.id == null || $scope.id == '') {
         $state.go("app.members")
     }
+
+     if ($scope.dataUser.level == 0 ) {
+        $state.go("app.dashboard")
+    }
     $scope.master = $scope.myModel;
 
     $scope.form = {

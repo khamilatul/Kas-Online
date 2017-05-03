@@ -7,6 +7,7 @@ app.controller('UsersCtrl', ['$scope', 'users', 'SweetAlert', '$http','$timeout'
         term: ''
     };
 
+  
     $scope.isLoading = true;
     $scope.isLoaded = false;
 

@@ -49,12 +49,17 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         // query to aql
         $akun = $this->model
         ->join('members', 'transactions.members_id', '=', 'members.id')
+        ->join('users', 'transactions.users_id', '=', 'users.id')
+        ->where ('users.class',session('class'))
        ->where(function ($query) use ($search) {
                 $query->where('transactions.month', 'like', '%' . $search . '%')
                     ->orWhere('transactions.amount', 'like', '%' . $search . '%')
-                    ->orWhere('members.name', 'like', '%' . $search . '%');
-       })              
+                    ->orWhere('members.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.name', 'like', '%' . $search . '%');
+       })
+    ->select('transactions.*')
     ->paginate($limit)
+
             ->toArray();
             return $akun;
     }
@@ -70,6 +75,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
             'amount'    => e($data['amount']),
             'members_id'   => e($data['members_id']),
             'month'   => e($data['month']),
+            'users_id'   =>session('user_id')
         ]);
 
     }
