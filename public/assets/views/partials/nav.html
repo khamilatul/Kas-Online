@@ -7,12 +7,12 @@
 		<a class="s-remove" href="#" ng-toggle-class="search-open" target=".navbar-form">
 			<i class="ti-close"></i>
 		</a>
-		<div class="form-group">
+		<!--<div class="form-group">
 			<input type="text" class="form-control" placeholder="{{ 'sidebar.search.PLACEHOLDER' | translate }}">
 			<button class="btn search-button" type="submit">
 				<i class="ti-search"></i>
 			</button>
-		</div>
+		</div>-->
 	</form>
 </div>
 <!-- end: SEARCH FORM -->
@@ -62,7 +62,7 @@
 		</li>
 
 		
-		<li ng-class="{'active open':$state.includes('app.ui')}" ng-if="dataUser.level==1">
+		<li ng-class="{'active open':$state.includes('app.ui')}" ng-if="dataUser.level!=0">
 		<a href="javascript:void(0)">
 			<div class="item-content">
 				<div class="item-media">

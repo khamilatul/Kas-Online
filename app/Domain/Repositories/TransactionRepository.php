@@ -47,6 +47,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
+        if(session('level') != 3){
         $akun = $this->model
         ->join('members', 'transactions.members_id', '=', 'members.id')
         ->join('users', 'transactions.users_id', '=', 'users.id')
@@ -62,6 +63,23 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
 
             ->toArray();
             return $akun;
+    }
+       if(session('level') == 3){
+        $akun = $this->model
+        ->join('members', 'transactions.members_id', '=', 'members.id')
+        ->join('users', 'transactions.users_id', '=', 'users.id')
+       ->where(function ($query) use ($search) {
+                $query->where('transactions.month', 'like', '%' . $search . '%')
+                    ->orWhere('transactions.amount', 'like', '%' . $search . '%')
+                    ->orWhere('members.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.name', 'like', '%' . $search . '%');
+       })
+    ->select('transactions.*')
+    ->paginate($limit)
+
+            ->toArray();
+            return $akun;
+    }
     }
     /**
      * @param array $data

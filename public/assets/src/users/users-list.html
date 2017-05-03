@@ -9,7 +9,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-8 m-b-xs">
-                <span tooltip="Tambah Data">
+                <span tooltip="Tambah Data" ng-if="dataUser.level!=0">
                 <a md-ink-ripple ui-sref="app.users-create" class="btn btn-sm btn-default">
                     <i class="glyphicon glyphicon-plus-sign"></i></a>
                 </span>
@@ -48,18 +48,23 @@
                     <td class="col-md-2">{{row.name}}</td>
                     <td class="col-md-2">{{row.class}}</td>
                     <td class="col-md-2">
-                        <span ng-if="row.level==0" class="label label-sm label-warning">member</span>
-                        <span ng-if="row.level==1" class="label label-sm label-success">user</span>
+                        <span ng-if="row.level==0" class="label label-sm label-warning">Member</span>
+                        <span ng-if="row.level==1" class="label label-sm label-success">User</span>
                     </td>
                     <td class="col-md-2">{{row.phone}}</td>
 
                     <td class="col-md-2">
-
-                        <a ui-sref="app.users-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default">
+                        <span ng-if="dataUser.level!=0">
+                        <a ui-sref="app.users-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" >
                             <i class="glyphicon glyphicon-edit"></i>
-                        </a>
-                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger">
-                            <i class="glyphicon glyphicon-trash"></i>
+                        </a></span>
+                        <span ng-if="dataUser.level==0">
+                        <a ui-sref="app.users-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="row.level==0">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a></span>
+ 
+                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level!=0">
+                            <i class="glyphicon glyphicon-trash" ></i>
                         </button>
 
                     </td>

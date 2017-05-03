@@ -50,6 +50,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
+     if(session('level') != 3){
       $akun = $this->model
             ->join('users', 'members.users_id', '=', 'users.id')
             ->where('users.class',session('class'))
@@ -65,6 +66,23 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
             
             ->toArray();
         return $akun;
+     }
+     if(session('level') == 3){
+      $akun = $this->model
+            ->join('users', 'members.users_id', '=', 'users.id')
+            ->where(function ($query) use ($search) {
+                $query->where('members.name', 'like', '%' . $search . '%')
+                    ->orWhere('members.class', 'like', '%' . $search . '%')
+                    ->orWhere('members.email', 'like', '%' . $search . '%')
+                    ->orWhere('members.phone', 'like', '%' . $search . '%')
+                    ->orWhere('users.name', 'like', '%' . $search . '%');
+            })
+            ->select('members.*')
+            ->paginate($limit)
+            
+            ->toArray();
+        return $akun;
+     }
     }
 
     /**
@@ -79,7 +97,7 @@ class MemberRepository extends AbstractRepository implements MemberInterface, Cr
             'class'    => e($data['class']),
             'email'   => e($data['email']),
             'phone'   => e($data['phone']),
-            'users_id' => 10
+            'users_id' => session('user_id'),
         ]);
 
     }

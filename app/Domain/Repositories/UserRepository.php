@@ -47,6 +47,19 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
+if(session('level')!= 3){
+       $akun = $this->model
+       ->where('class',session('class'))
+       ->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('class', 'like', '%' . $search . '%')
+                    ->orWhere('level', 'like', '%' . $search . '%');
+            })
+            ->paginate($limit)
+            ->toArray();
+            return $akun;
+}
+if(session('level')== 3){
        $akun = $this->model
        ->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%')
@@ -56,6 +69,7 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
             ->paginate($limit)
             ->toArray();
             return $akun;
+}
     }
 
     /**

@@ -1,4 +1,4 @@
-app.controller('UsersCreateCtrl', ['$state', '$scope', 'users','$timeout', 'SweetAlert','toaster','$http', function ($state, $scope, users,$timeout, SweetAlert,toaster) {
+app.controller('UsersCreateCtrl', ['$state', '$scope', 'users', '$timeout', 'SweetAlert', 'toaster', '$http', function ($state, $scope, users, $timeout, SweetAlert, toaster) {
     //Init input addForm variable
     //create users
     $scope.process = false;
@@ -44,19 +44,24 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users','$timeout', 'Swee
     };
     $scope.clearInput = function () {
         $scope.myModel.name = null;
-        $scope.myModel.email= null;
-        $scope.myModel.class= null;
-        $scope.myModel.level= null;
-        $scope.myModel.password= null;
-        $scope.myModel.phone= null;
+        $scope.myModel.email = null;
+        $scope.myModel.class = null;
+        $scope.myModel.level = null;
+        $scope.myModel.password = null;
+        $scope.myModel.password2 = null;
+        $scope.myModel.phone = null;
     };
+
 
     $scope.submitData = function (isBack) {
         $scope.alerts = [];
         //Set process status
         $scope.process = true;
         //Close Alert
-
+        if ($scope.dataUser.level == 1) {
+            $scope.myModel.class = $scope.dataUser.class
+            $scope.myModel.level = '0'
+        }
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax
@@ -71,7 +76,7 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users','$timeout', 'Swee
                                 title: 'Sukses',
                                 text: 'Simpan Data Berhasil!'
                             };
-                                toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+                            toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                         } else {
                             $scope.clearInput();
                             $scope.sup();
@@ -88,7 +93,7 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users','$timeout', 'Swee
                             toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
                         }
                         //Clear Input
-                    }  
+                    }
 
                 })
                 .error(function (data, status) {
