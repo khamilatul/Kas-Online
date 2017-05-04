@@ -59,10 +59,10 @@
 
                     <td class="col-md-2" ng-if="dataUser.level!=0">
                         
-                        <a ui-sref="app.transactions-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="dataUser.level==1">
+                        <a ui-sref="app.transactions-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="dataUser.level!=0">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
-                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level==1">
+                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level!=0">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
             
