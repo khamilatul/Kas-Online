@@ -67,7 +67,7 @@ body {
   font-size: 13px;
   padding: 0;
   margin: 0;
-  background: #f7f7f8;
+  background: #87DFD6;
   -webkit-font-smoothing: antialiased !important;
 }
 body.bg_style_1 {
@@ -362,7 +362,7 @@ h5.over-title {
 }
 .navbar .navbar-header {
   z-index: 10;
-  background: #ffffff;
+  background: #87DFD6;
   border-bottom: 1px solid #c8c7cc;
   position: relative;
   height: 65px;
@@ -412,9 +412,9 @@ h5.over-title {
   color: #aeacb4;
 }
 .navbar .navbar-collapse {
-  border-bottom: 1px solid #c8c7cc;
+  border-bottom: 1px solid #2F9296;
   border-top: none;
-  background: #ffffff;
+  background: #87DFD6;
   padding-left: 15px !important;
   padding-right: 15px !important;
   position: relative;
@@ -643,7 +643,7 @@ h5.over-title {
 }
 @media (max-width: 767px) {
   .navbar .navbar-right > li {
-    border-bottom: 1px solid #c8c7cc;
+    border-bottom: 1px solid #46B7B9;
   }
   .navbar .navbar-right > li:last-child {
     margin-bottom: 40px;
