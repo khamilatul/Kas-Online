@@ -2,7 +2,9 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users', '$timeout', 'Swe
     //Init input addForm variable
     //create users
     $scope.process = false;
-
+if ($scope.dataUser.level == 0 ) {
+        $state.go("app.dashboard")
+    }
     $scope.master = $scope.myModel;
     $scope.form = {
 

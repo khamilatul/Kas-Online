@@ -4,6 +4,8 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users', '$uibModal', '$log
     //If Id is empty, then redirected
     if ($scope.id == null || $scope.id == '') {
         $state.go("app.users")
+    }if ($scope.dataUser.level == 0 ) {
+        $state.go("app.dashboard")
     }
     $scope.master = $scope.myModel;
     //Run Ajax

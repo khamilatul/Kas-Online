@@ -6,7 +6,9 @@ app.controller('UsersCtrl', ['$scope', 'users', 'SweetAlert', '$http','$timeout'
         page: 1,
         term: ''
     };
-
+if ($scope.dataUser.level == 0 ) {
+        $state.go("app.dashboard")
+    }
   
     $scope.isLoading = true;
     $scope.isLoaded = false;
