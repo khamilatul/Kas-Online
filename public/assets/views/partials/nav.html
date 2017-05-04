@@ -33,48 +33,46 @@
 			</div>
 		</a>
 	</li>
-	<li ng-class="{'active open':$state.includes('app.ui')}">
-		<a href="javascript:void(0)">
+
+	<li ui-sref-active="active">
+		<a ui-sref="app.user">
 			<div class="item-content">
 				<div class="item-media">
 					<i class="ti-user"></i>
 				</div>
 				<div class="item-inner">
-					<a ui-sref="app.users">
-					<span class="title" > Users </span>
+					<span class="title"> User </span>
 				</div>
-				
 			</div>
 		</a>
 	</li>
-		<li ng-class="{'active open':$state.includes('app.ui')}">
-		<a href="javascript:void(0)">
+
+		<li ui-sref-active="active">
+		<a ui-sref="app.transaction">
 			<div class="item-content">
 				<div class="item-media">
 					<i class="ti-pencil-alt"></i>
 				</div>
 				<div class="item-inner">
-					<a ui-sref="app.transactions">
-					<span class="title" > Transactions </span>
-				</div>	
+					<span class="title"> Transaction </span>
+				</div>
 			</div>
 		</a>
-		</li>
+	</li>
 
-		
-		<li ng-class="{'active open':$state.includes('app.ui')}" ng-if="dataUser.level!=0">
-		<a href="javascript:void(0)">
+<li ui-sref-active="active">
+		<a ui-sref="app.member">
 			<div class="item-content">
 				<div class="item-media">
 					<i class="ti-id-badge"></i>
 				</div>
 				<div class="item-inner">
-					<a ui-sref="app.members">
-					<span class="title" > Members </span>
+					<span class="title"> Member </span>
 				</div>
 			</div>
 		</a>
-		</li>
+	</li>
+
 		<!--<ul class="sub-menu">
 			<li ui-sref-active="active">
 				<a ui-sref="app.members">
