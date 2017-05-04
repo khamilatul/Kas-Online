@@ -1,5 +1,5 @@
 <!-- start: SEARCH FORM -->
-<div class="search-form">
+<!--<div class="search-form">
 	<a class="s-open" href="#">
 		<i class="ti-search"></i>
 	</a>
@@ -7,14 +7,14 @@
 		<a class="s-remove" href="#" ng-toggle-class="search-open" target=".navbar-form">
 			<i class="ti-close"></i>
 		</a>
-		<!--<div class="form-group">
+		<div class="form-group">
 			<input type="text" class="form-control" placeholder="{{ 'sidebar.search.PLACEHOLDER' | translate }}">
 			<button class="btn search-button" type="submit">
 				<i class="ti-search"></i>
 			</button>
-		</div>-->
+		</div>
 	</form>
-</div>
+</div>-->
 <!-- end: SEARCH FORM -->
 <!-- start: MAIN NAVIGATION MENU -->
 <div class="navbar-title">
@@ -34,7 +34,7 @@
 		</a>
 	</li>
 
-	<li ui-sref-active="active">
+	<li ui-sref-active="active" ng-if="dataUser.level !=0">
 		<a ui-sref="app.members"> <!-- Link Masuk Halaman members -->
 			<div class="item-content">
 				<div class="item-media">
@@ -61,7 +61,7 @@
 	</li>
 
 		
-		<li ui-sref-active="active">
+		<li ui-sref-active="active" ng-if="dataUser.level !=0">
 		<a ui-sref="app.users"> <!-- Link Masuk Halaman users -->
 			<div class="item-content">
 				<div class="item-media">
