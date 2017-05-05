@@ -8,8 +8,8 @@
 
 namespace App\Http\Requests\Master;
 
-use Illuminate\Contracts\Validation\Validator;
 use App\Http\Requests\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 
 class PassRequest extends Request

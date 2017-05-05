@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Transaction;
 
 use App\Http\Requests\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 /**
  * Class UserCreateRequest
@@ -53,9 +54,32 @@ class TransactionEditRequest extends Request
      *
      * @return mixed
      */
-    public function validator($validator)
+    /* Menampilkan error */
+public function validator($validator)
     {
         return $validator->make($this->all(), $this->container->call([$this, 'rules']), $this->messages(), $this->attrs);
+    }
+
+    /**
+     * @param Validator $validator
+     *
+     * @return array
+     *
+     */
+    protected function formatErrors(Validator $validator)
+    {
+        $message = $validator->errors();
+
+        return [
+            'success' => false,
+            'validation' => [
+                'description'     => $message->first('description'),
+                'amount'          => $message->first('amount'),
+                'members_id'      => $message->first('members_id'),
+                'month'           => $message->first('month'),
+                'users_id'        => $message->first('users_id')
+            ]
+        ];
     }
 
 }

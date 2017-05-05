@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Transaction;
 
 use App\Http\Requests\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 /**
  * Class UserCreateRequest

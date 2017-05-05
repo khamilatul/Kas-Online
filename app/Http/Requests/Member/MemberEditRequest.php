@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Member;
 
 use App\Http\Requests\Request;
+use Illuminate\Contracts\Validation\Validator;
 
 /**
  * Class UserCreateRequest
@@ -51,9 +52,31 @@ class MemberEditRequest extends Request
      *
      * @return mixed
      */
-    public function validator($validator)
+    /* Menampilkan error */
+public function validator($validator)
     {
         return $validator->make($this->all(), $this->container->call([$this, 'rules']), $this->messages(), $this->attrs);
     }
 
+    /**
+     * @param Validator $validator
+     *
+     * @return array
+     *
+     */
+    protected function formatErrors(Validator $validator)
+    {
+        $message = $validator->errors();
+
+        return [
+            'success' => false,
+            'validation' => [
+                'name'  => $message->first('name'),
+                'class' => $message->first('class'),
+                'email' => $message->first('email'),
+                'phone' => $message->first('phone'),
+                'users_id' => $message->first('users_id')
+            ]
+        ];
+    }
 }
