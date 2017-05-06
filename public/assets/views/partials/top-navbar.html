@@ -23,6 +23,12 @@
         <li>
           <a ui-sref="app.pages.user" translate="topbar.user.PROFILE"> My Profile </a>
         </li>
+  <li>
+          <a > <span ng-if="dataUser.level == '0'">Members</span>
+          <span ng-if="dataUser.level == '1'">Users</span>
+          <span ng-if="dataUser.level == '2'">Engineering</span>
+          </a>
+        </li>
   
         <li>
           <a  href="api/logout" translate="topbar.user.LOGOUT"> Log Out </a>
