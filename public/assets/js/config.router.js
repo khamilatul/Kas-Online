@@ -81,6 +81,14 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             title: 'Tambah Data Users',
             resolve: loadSequence('UserscreateCtrl', 'users_service'),
         })
+
+         //users password
+        .state('app.users-password', {
+            url: '/users-password',
+            templateUrl: 'assets//src/users/users-password.html',
+            title: 'Tambah Data Users',
+            resolve: loadSequence('UserspasswordCtrl', 'users_service'),
+        })
         
         //users Edit
         .state('app.users-edit', {

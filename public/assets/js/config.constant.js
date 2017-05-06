@@ -61,6 +61,7 @@ app.constant('JS_REQUIRES', {
         'members_service': 'assets/src/members/members-service.js',
        
         'UsersCtrl'    : 'assets/src/users/UsersCtrl.js',
+        'UserspasswordCtrl'    : 'assets/src/users/UsersPassword.js',
         'UserscreateCtrl'    : 'assets/src/users/UserscreateCtrl.js',
         'UserseditCtrl'    : 'assets/src/users/UserseditCtrl.js',
         'users_service': 'assets/src/users/users-service.js',
@@ -69,6 +70,7 @@ app.constant('JS_REQUIRES', {
         'transactionscreateCtrl'    : 'assets/src/transactions/TransactionscreateCtrl.js',
         'transactionseditCtrl'    : 'assets/src/transactions/TransactionseditCtrl.js',
         'transactions_service': 'assets/src/transactions/Transactions-service.js',
+
         
         //*** Filters
         'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'

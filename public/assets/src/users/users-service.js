@@ -44,13 +44,24 @@ app.factory('users', ['$http', function ($http) {
         },
 
         //Update data
-        update: function (inputData) {
+
+        
+        updatepassword: function (inputData) {
+            return $http({
+                method: 'put',
+                url: 'api/updatePass-users/',
+                data: $.param(inputData)
+            });
+        },
+
+         update: function (inputData) {
             return $http({
                 method: 'put',
                 url: '/api/users/' + inputData.id,
                 data: $.param(inputData)
             });
         },
+
         kunci: function (_id) {
             return $http({
                 method: 'put',

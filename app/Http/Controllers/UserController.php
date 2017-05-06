@@ -6,6 +6,8 @@ use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserEditRequest;
 use Illuminate\Http\Request;
 use App\Domain\Repositories\UserRepository;
+use App\Http\Requests\User\PasswordRequest;
+
 
 class UserController extends Controller
 {
@@ -125,4 +127,9 @@ public function getSession()
      
                     ]]);
             }
+
+            public function updatePass(PasswordRequest $request)
+    {
+        return $this->user->updatePassword($request->all());
+    }
 }

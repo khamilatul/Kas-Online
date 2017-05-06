@@ -72,7 +72,6 @@ public function validator($validator)
             'success' => false,
             'validation' => [
                 'name'  => $message->first('name'),
-                'class' => $message->first('class'),
                 'email' => $message->first('email'),
                 'phone' => $message->first('phone'),
                 'users_id' => $message->first('users_id')
