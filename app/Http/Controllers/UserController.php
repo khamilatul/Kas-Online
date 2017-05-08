@@ -38,6 +38,11 @@ class UserController extends Controller
         return $this->user->paginate(10, $request->input('page'), $column = ['*'], '', $request->input('term'));
     }
 
+    public function kelas(Request $request)
+    {
+        return $this->user->kelas(10, $request->input('page'), $column = ['*'], '', $request->input('term'));
+    }
+
     /**
      * @api {get} api/contacts/id Request Get User
      * @apiName GetUser

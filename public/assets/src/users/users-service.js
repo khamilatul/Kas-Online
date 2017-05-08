@@ -12,6 +12,15 @@ app.factory('users', ['$http', function ($http) {
             });
         },
 
+        getkelas: function (page, term) {
+            return $http({
+                method: 'get',
+                url: '/api/getkelas?page=' + page + '&term=' + term,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' }
+            });
+        },
+
+
         getLastusers: function () {
             return $http({
                 method: 'get',

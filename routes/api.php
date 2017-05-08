@@ -23,6 +23,7 @@ Route::resource('transactions','TransactionController');
 Route::resource('contacts','ContactController');
 Route::get('get-session', 'UserController@getSession');
 Route::put('updatePass-users', 'UserController@updatePass');
+Route::get('getkelas', 'UserController@kelas');
 
 
 ////----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

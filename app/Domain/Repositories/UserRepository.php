@@ -44,6 +44,53 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
      * @param string $search
      * @return \Illuminate\Pagination\Paginator
      */
+
+public function kelas($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
+    {
+
+$cari_rincian = \DB::table('users')->select('class')->get();
+        $result = [];
+        foreach ($cari_rincian as $key => $value) {
+            $result[] = $value->class;
+        }
+
+        // --> Flatten  array
+        $array_id = [];
+        $array_length = count($result);
+        for ($i = 0; $i <= $array_length - 1; $i++) {
+            array_push($array_id, $result[$i]);
+        }
+
+        $desa = \DB::table('kelas') 
+            ->whereNotIn('kelas.id', function ($q) use ($array_id) {
+                $q->select('users.class')
+                    ->from('users')
+                    ->whereIn('users.class', $array_id)
+                    ->groupBy('users.class');
+            })
+            ->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->paginate($limit)
+            ->toArray();
+        return $desa;
+
+
+
+
+
+
+    //  $user = \DB::table('kelas')
+    //    ->where(function ($query) use ($search) {
+    //             $query->where('name', 'like', '%' . $search . '%');
+    //         })
+    //         ->paginate($limit)
+    //         ->toArray();
+    //         return $user;
+    }
+
+
+
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
