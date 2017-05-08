@@ -85,6 +85,15 @@ if ($scope.dataUser.level == 0 ) {
                         }
                         //Clear Input
                     }
+                    else{
+                        $scope.process = false;
+                            $scope.toaster = {
+                                type: 'error',
+                                title: 'CekData',
+                                text: data.result.message
+                            };
+                            toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text); 
+                    }
 
                 })
                 .error(function (data, status) {
