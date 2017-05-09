@@ -119,6 +119,37 @@ if(session('level')== 3){
 }
     }
 
+    public function paginateuser($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
+    {
+        // query to aql
+if(session('level')!= 3){
+       $akun = $this->model
+       ->where('class',session('class'))
+       ->where('level',0)
+       ->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('class', 'like', '%' . $search . '%')
+                    ->orWhere('level', 'like', '%' . $search . '%');
+            })
+            ->paginate($limit)
+            ->toArray();
+            return $akun;
+}
+if(session('level')== 3){
+       $akun = $this->model
+       ->where('level',0)
+       ->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('class', 'like', '%' . $search . '%')
+                    ->orWhere('level', 'like', '%' . $search . '%');
+            })
+            ->paginate($limit)
+            ->toArray();
+            return $akun;
+}
+    }
+
+
     /**
      * @param array $data
      * @return \Symfony\Component\HttpFoundation\Response
@@ -132,6 +163,8 @@ if(session('level')== 3){
             'level'   => e($data['level']),
             'phone'   => e($data['phone']),
             'password' => bcrypt($data['password']),
+            'min_transaksi' =>($data['min_transaksi']),
+           
         ]);
 
     }
@@ -148,6 +181,7 @@ if(session('level')== 3){
             'class'    => e($data['class']),
             'level'   => e($data['level']),
             'phone'   => e($data['phone']),
+            'min_transaksi'   => e($data['min_transaksi']),
         ]);
     }
 

@@ -1,13 +1,13 @@
-app.controller('UsersCreateCtrl', ['$state', '$scope', 'users', '$timeout', 'SweetAlert', 'toaster','$uibModal','$log', '$http', function ($state, $scope, users, $timeout, SweetAlert, toaster,$uibModal,$log) {
+app.controller('UsersCreateCtrl', ['$state', '$scope', 'users', '$timeout', 'SweetAlert', 'toaster', '$uibModal', '$log', '$http', function ($state, $scope, users, $timeout, SweetAlert, toaster, $uibModal, $log) {
     //Init input addForm variable
     //create users
     $scope.process = false;
-    $scope.myModel ={};
-if ($scope.dataUser.level == 0 ) {
+    $scope.myModel = {};
+    if ($scope.dataUser.level == 0) {
         $state.go("app.dashboard")
     }
     $scope.master = $scope.myModel;
-        $scope.openkelas_id = function (size) {
+    $scope.openkelas_id = function (size) {
 
         var modalInstance = $uibModal.open({
             templateUrl: 'assets/src/users/users.dialog.html',
@@ -76,6 +76,7 @@ if ($scope.dataUser.level == 0 ) {
         $scope.myModel.password = null;
         $scope.myModel.password2 = null;
         $scope.myModel.phone = null;
+        $scope.myModel.min_transaksi = null;
     };
 
 
@@ -87,13 +88,13 @@ if ($scope.dataUser.level == 0 ) {
         if ($scope.dataUser.level == 1) {
             $scope.myModel.class = $scope.dataUser.class
             $scope.myModel.level = '0'
-       
-     }
-      if ($scope.dataUser.level == 3) {
+
+        }
+        if ($scope.dataUser.level == 3) {
             $scope.myModel.class = $scope.dtkelas.id
-       
-     }
-     $scope.dtkelas
+
+        }
+        $scope.dtkelas
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax

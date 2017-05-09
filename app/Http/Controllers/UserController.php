@@ -37,6 +37,10 @@ class UserController extends Controller
     {
         return $this->user->paginate(10, $request->input('page'), $column = ['*'], '', $request->input('term'));
     }
+    public function paginateuser(Request $request)
+    {
+        return $this->user->paginateuser(10, $request->input('page'), $column = ['*'], '', $request->input('term'));
+    }
 
     public function kelas(Request $request)
     {
