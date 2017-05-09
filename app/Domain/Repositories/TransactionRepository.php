@@ -87,9 +87,8 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     {
         // execute sql insert
         return parent::create([
-            'description'    => e($data['description']),
+            'description'    =>0,
             'amount'    => e($data['amount']),
-            // 'members_id'   => e($data['members_id']),
             'month'   => e($data['month']),
             'users_id'   =>e($data['users_id'])
         ]);

@@ -51,22 +51,25 @@
             <tbody>
                 <tr ng-repeat="row in dataTransactions">
                     <td class="col-md-2">{{row.description}}</td>
+                        <span ng-if="row.description==0" class="label label-sm label-warning">Belum Bayar</span>
+                        <span ng-if="row.description==1" class="label label-sm label-success">Belum Lunas</span>
+                        <span ng-if="row.description==2" class="label label-sm label-info">Lunas</span>
                     <td class="col-md-2">{{row.amount}}</td>
                     <td class="col-md-2">{{row.users.name}}</td>
                     <td class="col-md-2">{{row.month}}</td>
                     <td class="col-md-2">{{row.users.class}}</td>
-                    
+
 
                     <td class="col-md-2" ng-if="dataUser.level!=0">
-                        
+
                         <a ui-sref="app.transactions-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="dataUser.level!=0">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
                         <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level!=0">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
-            
-                       
+
+
 
                     </td>
                 </tr>
