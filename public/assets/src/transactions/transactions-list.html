@@ -44,8 +44,7 @@
                     <th class="col-md-2">Amount</th>
                     <th class="col-md-2">Member</th>
                     <th class="col-md-2">Month</th>
-                    <th class="col-md-2">Users</th>
-                    <th class="col-md-2">Aksi</th>
+                    <th class="col-md-2">Kelas</th>
                     <th class="col-md-2" ng-if="dataUser.level==1">Aksi</th>
                 </tr>
             </thead>
@@ -53,9 +52,9 @@
                 <tr ng-repeat="row in dataTransactions">
                     <td class="col-md-2">{{row.description}}</td>
                     <td class="col-md-2">{{row.amount}}</td>
-                    <td class="col-md-2">{{row.members.name}}</td>
-                    <td class="col-md-2">{{row.month}}</td>
                     <td class="col-md-2">{{row.users.name}}</td>
+                    <td class="col-md-2">{{row.month}}</td>
+                    <td class="col-md-2">{{row.users.class}}</td>
                     
 
                     <td class="col-md-2" ng-if="dataUser.level!=0">

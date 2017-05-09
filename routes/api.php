@@ -22,6 +22,9 @@ Route::resource('members','MemberController');
 Route::resource('transactions','TransactionController');
 Route::resource('contacts','ContactController');
 Route::get('get-session', 'UserController@getSession');
+Route::get('users-by-transaksi', 'UserController@paginateuser');
+
+
 Route::put('updatePass-users', 'UserController@updatePass');
 Route::get('getkelas', 'UserController@kelas');
 

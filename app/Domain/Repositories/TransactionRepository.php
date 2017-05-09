@@ -49,13 +49,12 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         // query to aql
         if(session('level') != 3){
         $akun = $this->model
-        ->join('members', 'transactions.members_id', '=', 'members.id')
         ->join('users', 'transactions.users_id', '=', 'users.id')
         ->where ('users.class',session('class'))
        ->where(function ($query) use ($search) {
                 $query->where('transactions.month', 'like', '%' . $search . '%')
                     ->orWhere('transactions.amount', 'like', '%' . $search . '%')
-                    ->orWhere('members.name', 'like', '%' . $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('users.name', 'like', '%' . $search . '%');
        })
     ->select('transactions.*')
@@ -66,12 +65,11 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     }
        if(session('level') == 3){
         $akun = $this->model
-        ->join('members', 'transactions.members_id', '=', 'members.id')
         ->join('users', 'transactions.users_id', '=', 'users.id')
        ->where(function ($query) use ($search) {
                 $query->where('transactions.month', 'like', '%' . $search . '%')
                     ->orWhere('transactions.amount', 'like', '%' . $search . '%')
-                    ->orWhere('members.name', 'like', '%' . $search . '%')
+                    ->orWhere('name', 'like', '%' . $search . '%')
                     ->orWhere('users.name', 'like', '%' . $search . '%');
        })
     ->select('transactions.*')
@@ -91,9 +89,9 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         return parent::create([
             'description'    => e($data['description']),
             'amount'    => e($data['amount']),
-            'members_id'   => e($data['members_id']),
+            // 'members_id'   => e($data['members_id']),
             'month'   => e($data['month']),
-            'users_id'   =>session('user_id')
+            'users_id'   =>e($data['users_id'])
         ]);
 
     }
@@ -108,8 +106,9 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         return parent::update($id, [
            'description'    => e($data['description']),
             'amount'    => e($data['amount']),
-            'members_id'   => e($data['members_id']),
+            // 'members_id'   => e($data['members_id']),
             'month'   => e($data['month']),
+            'users_id'   =>e($data['users_id'])
         ]);
     }
 

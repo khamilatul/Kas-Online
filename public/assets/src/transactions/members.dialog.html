@@ -1,7 +1,4 @@
 <md-dialog style="width: 1200px;">
-    <div class="panel-heading bg-white" style="background: #558b2f;">
-        <span class="font-bold"><center><font color="white">DATA PERANGKAT DAERAH</font></center></span>
-    </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-8 m-b-xs">
@@ -19,13 +16,15 @@
             </div>
         </div>
     </div>
-       <center> <h3 class="mainTitle">MEMBER</h3> </center>
+    <center>
+        <h3 class="mainTitle">MEMBER</h3>
+    </center>
     <table class="table table-striped table-hover">
         <tr>
             <th class="col-md-2">Nama</th>
-            <th class="col-md-2">Email</th>
-            <th class="col-md-2">Phone</th>
             <th class="col-md-2">Class</th>
+            <th class="col-md-2">Level</th>
+            <th class="col-md-2">Phone</th>
             <th class="col-md-2">Aksi</th>
         </tr>
     </table>
@@ -41,9 +40,13 @@
                     <tbody>
                         <tr ng-repeat="row in input">
                             <td class="col-md-2">{{row.name}}</td>
-                            <td class="col-md-2">{{row.email}}</td>
-                            <td class="col-md-2">{{row.phone}}</td>
                             <td class="col-md-2">{{row.class}}</td>
+                            <td class="col-md-2">
+                                <span ng-if="row.level==0" class="label label-sm label-warning">Member</span>
+                                <span ng-if="row.level==1" class="label label-sm label-success">User</span>
+                                <span ng-if="row.level==2" class="label label-sm label-info">Engineering</span>
+                            </td>
+                            <td class="col-md-2">{{row.phone}}</td>
                             <td class="col-md-2">
                                 <button ng-click="pilih(row)" md-ink-ripple tooltip="Pilih Data" class="btn btn-sm btn-info">
                                 <i class="glyphicon glyphicon-check"></i>

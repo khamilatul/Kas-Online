@@ -16,8 +16,7 @@ class CreateTransactionsTable extends Migration
          Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
-            $table->string('amount')->unique();
-            $table->string('members_id');
+            $table->string('amount');
             $table->string('month');
             $table->string('users_id');
             $table->timestamps();

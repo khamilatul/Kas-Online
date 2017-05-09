@@ -21,7 +21,7 @@ class Transaction extends Model
         'description', 'amount' , 'month','users_id',
     ];
 
-    protected $with = ['members','users'];
+    protected $with = ['users'];
 
     public function members()
     {

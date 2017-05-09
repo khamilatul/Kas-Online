@@ -14,7 +14,7 @@ app.factory('transactions', ['$http', function ($http) {
         getmembers: function (page, term) {
             return $http({
                 method: 'get',
-                url: '/api/members?page=' + page + '&term=' + term,
+                url: '/api/users-by-transaksi?page=' + page + '&term=' + term,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest'}
             });
         },

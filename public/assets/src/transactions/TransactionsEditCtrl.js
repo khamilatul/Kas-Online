@@ -73,7 +73,7 @@ app.controller('TransactionsEditCtrl', ['$state', '$scope', 'transactions', '$ui
     transactions.show($scope.id)
         .success(function (data) {
             $scope.myModel = data;
-            $scope.myModel.members = data.members.name;
+            $scope.myModel.members = data.users.name;
         });
     //Submit Data
     $scope.updateData = function () {
@@ -89,8 +89,7 @@ app.controller('TransactionsEditCtrl', ['$state', '$scope', 'transactions', '$ui
         if ($scope.Form.$valid) {
             //run Ajax
             if ($scope.dtmembers.id != null) {
-                console.log('dsdsd')
-                $scope.myModel.members_id = $scope.dtmembers.id;
+                $scope.myModel.users_id = $scope.dtmembers.id;
             }
             // console.log('dfghjklj')
             transactions.update($scope.myModel)

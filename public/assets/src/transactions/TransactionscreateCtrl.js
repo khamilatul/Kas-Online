@@ -86,7 +86,7 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions', '$
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax
-            $scope.myModel.members_id = $scope.dtmembers.id;
+            $scope.myModel.users_id = $scope.dtmembers.id;
             transactions.store($scope.myModel)
                 .success(function (data) {
                     if (data.created == true) {
