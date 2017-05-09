@@ -43,28 +43,28 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
         }
     })
     //members
-        .state('app.members', {
-            url: '/members',
-            templateUrl: 'assets/src/members/members-list.html',
-            title: 'Data Members',
-            resolve: loadSequence('membersCtrl', 'members_service'),
+        // .state('app.members', {
+        //     url: '/members',
+        //     templateUrl: 'assets/src/members/members-list.html',
+        //     title: 'Data Members',
+        //     resolve: loadSequence('membersCtrl', 'members_service'),
 
-        })
+        // })
         //members Create
-        .state('app.members-create', {
-            url: '/members-create',
-            templateUrl: 'assets//src/members/members-create.html',
-            title: 'Tambah Data Members',
-            resolve: loadSequence('memberscreateCtrl', 'members_service'),
-        })
+        // .state('app.members-create', {
+        //     url: '/members-create',
+        //     templateUrl: 'assets//src/members/members-create.html',
+        //     title: 'Tambah Data Members',
+        //     resolve: loadSequence('memberscreateCtrl', 'members_service'),
+        // })
         
         //members Edit
-        .state('app.members-edit', {
-            url: '/members-edit/:id',
-            templateUrl: 'assets//src/members/members-edit.html',
-            title: 'Edit Data Members',
-            resolve: loadSequence('memberseditCtrl', 'members_service'),
-        })
+        // .state('app.members-edit', {
+        //     url: '/members-edit/:id',
+        //     templateUrl: 'assets//src/members/members-edit.html',
+        //     title: 'Edit Data Members',
+        //     resolve: loadSequence('memberseditCtrl', 'members_service'),
+        // })
 
         //users
         .state('app.users', {

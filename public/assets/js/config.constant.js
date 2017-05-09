@@ -55,10 +55,10 @@ app.constant('JS_REQUIRES', {
         'dynamicTableCtrl': 'assets/js/controllers/dynamicTableCtrl.js',
         'NotificationIconsCtrl': 'assets/js/controllers/notificationIconsCtrl.js',
        
-        'membersCtrl'    : 'assets/src/members/MembersCtrl.js',
-        'memberscreateCtrl'    : 'assets/src/members/MembersCreateCtrl.js',
-        'memberseditCtrl'    : 'assets/src/members/MembersEditCtrl.js',
-        'members_service': 'assets/src/members/members-service.js',
+        // 'membersCtrl'    : 'assets/src/members/MembersCtrl.js',
+        // 'memberscreateCtrl'    : 'assets/src/members/MembersCreateCtrl.js',
+        // 'memberseditCtrl'    : 'assets/src/members/MembersEditCtrl.js',
+        // 'members_service': 'assets/src/members/members-service.js',
        
         'UsersCtrl'    : 'assets/src/users/UsersCtrl.js',
         'UserspasswordCtrl'    : 'assets/src/users/UsersPassword.js',
