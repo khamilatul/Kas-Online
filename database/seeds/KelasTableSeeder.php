@@ -29,7 +29,6 @@ class KelasTableSeeder extends Seeder
             ['id' => 11, 'name' => '10 TEI 1',  'created_at' => \Carbon\Carbon::now()],
             ['id' => 12, 'name' => '10 TEI 2',  'created_at' => \Carbon\Carbon::now()],
             ['id' => 13, 'name' => '10 TEI 3',  'created_at' => \Carbon\Carbon::now()],
-            ['id' => 14, 'name' => '10 TEI 3',  'created_at' => \Carbon\Carbon::now()],
             ['id' => 15, 'name' => '11 RPL 1',  'created_at' => \Carbon\Carbon::now()],
             ['id' => 16, 'name' => '11 RPL 2',  'created_at' => \Carbon\Carbon::now()],
             ['id' => 17, 'name' => '11 RPL 3',  'created_at' => \Carbon\Carbon::now()],
