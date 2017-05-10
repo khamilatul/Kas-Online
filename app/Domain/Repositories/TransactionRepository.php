@@ -86,8 +86,8 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     public function create(array $data)
     {
         $user = User::find($data['users_id']);
-        $cari = $this->model->where('users_id', $data['users_id'])->where('month', $data['month'])->sum('amount');
-        $cari2 = $this->model->where('users_id', $data['users_id'])->where('month', $data['month'])->min('kurang');
+        $cari = $this->model->where('users_id', $data['users_id'])->where('month', $data['month'])->whereNull('deleted_at')->sum('amount');
+        $cari2 = $this->model->where('users_id', $data['users_id'])->where('month', $data['month'])->whereNull('deleted_at')->min('kurang');
         if($cari2 == null) {
             $cek2 = 0;
 
@@ -119,7 +119,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
                 return response()->json(
                     [
                         'success' => false,
-                        'result' => 'Kas Melebihi ambang batas kurang '.$cari2,
+                        'result' => 'Kas Melebihi ambang batas kurang Rp. '.number_format($cari2),
                     ]
                 );
 
