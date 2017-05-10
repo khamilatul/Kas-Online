@@ -62,7 +62,7 @@ app.constant('JS_REQUIRES', {
        
         'UsersCtrl'    : 'assets/src/users/UsersCtrl.js',
         'UserspasswordCtrl'    : 'assets/src/users/UsersPassword.js',
-        'UserscreateCtrl'    : 'assets/src/users/UserscreateCtrl.js',
+        'UserscreateCtrl'    : 'assets/src/users/UsersCreateCtrl.js',
         'UserseditCtrl'    : 'assets/src/users/UserseditCtrl.js',
         'users_service': 'assets/src/users/users-service.js',
        

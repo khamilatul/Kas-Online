@@ -48,7 +48,7 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
 public function kelas($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
 
-$cari_rincian = \DB::table('users')->select('class')->get();
+$cari_rincian = \DB::table('users')->select('class')->whereNull('deleted_at')->get();
         $result = [];
         foreach ($cari_rincian as $key => $value) {
             $result[] = $value->class;

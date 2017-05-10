@@ -43,6 +43,16 @@ function ($rootScope, $state, $stateParams,mainapp) {
             theme: 'theme-1', // indicate the theme chosen for your project
             logo: 'assets/images/logo.png', // relative path of the project logo
         }
+
+    };
+    $rootScope.convertToRupiah = function (angka) {
+        if (angka == null || angka == '') {
+            angka = 0;
+        }
+        var rupiah = '';
+        var angkarev = angka.toString().split('').reverse().join('');
+        for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+        return rupiah.split('', rupiah.length - 1).reverse().join('');
     };
 	$rootScope.sup = function () {
 		$("div, .ng-scope").animate({
@@ -67,6 +77,7 @@ function ($rootScope, $state, $stateParams,mainapp) {
     $rootScope.redirect = function () {
         window.location = "/api/logout";
     };
+
 
     $rootScope.user = {
         name: 'Peter',

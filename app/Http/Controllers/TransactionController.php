@@ -22,6 +22,7 @@ class TransactionController extends Controller
     public function __construct(TransactionInterface $transaction)
     {
         $this->transaction = $transaction;
+        $this->middleware('auth');
     }
 
     /**

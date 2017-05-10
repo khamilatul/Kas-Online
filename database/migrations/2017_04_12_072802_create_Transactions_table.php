@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->string('description');
             $table->string('amount');
             $table->string('month');
+            $table->string('kurang')->default(0);
             $table->string('users_id');
             $table->timestamps();
             $table->softDeletes();

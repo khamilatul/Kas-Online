@@ -1,7 +1,7 @@
 app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions', '$timeout', 'SweetAlert', 'toaster', '$uibModal', '$log', '$http', function ($state, $scope, transactions, $timeout, SweetAlert, toaster, $uibModal, $log) {
     //Init input addForm variable
     //create transactions
-
+    $scope.myModel ={}
     $scope.process = false;
 
     $scope.master = $scope.myModel;
@@ -86,6 +86,7 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions', '$
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax
+            $scope.myModel.amount = $scope.myModel.amount.toString().replace(/,.*|[^0-9]/g, '');
             $scope.myModel.users_id = $scope.dtmembers.id;
             transactions.store($scope.myModel)
                 .success(function (data) {
@@ -116,7 +117,21 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions', '$
                         }
                         //Clear Input
                     }
+                    $scope.process = false;
 
+                    if(data.success == false) {
+                        $scope.sup();
+                        $scope.alerts.push({
+                            type: 'warning',
+                            msg: data.result
+                        });
+                        $scope.toaster = {
+                            type: 'warning',
+                            title: 'Cek',
+                            text: 'Data Gagal DiSimpan!'
+                        };
+                        toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+                    }
                 })
                 .error(function (data, status) {
                     // unauthorized
@@ -148,7 +163,7 @@ app.controller('ModalMembers', ['$state', '$scope', 'transactions', '$uibModalIn
         page: 1,
         term: ''
     };
-
+    
     $scope.isLoading = true;
     $scope.isLoaded = false;
 
@@ -311,4 +326,14 @@ app.controller('ModalMembers', ['$state', '$scope', 'transactions', '$uibModalIn
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     }
+    $scope.convertToRupiah = function (angka) {
+        if (angka == null || angka == '') {
+            angka = 0;
+        }
+        var rupiah = '';
+        var angkarev = angka.toString().split('').reverse().join('');
+        for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+        return rupiah.split('', rupiah.length - 1).reverse().join('');
+    };
+
 }]);

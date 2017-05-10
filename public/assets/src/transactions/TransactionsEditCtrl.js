@@ -91,6 +91,8 @@ app.controller('TransactionsEditCtrl', ['$state', '$scope', 'transactions', '$ui
             if ($scope.dtmembers.id != null) {
                 $scope.myModel.users_id = $scope.dtmembers.id;
             }
+            $scope.myModel.amount = $scope.myModel.amount.toString().replace(/,.*|[^0-9]/g, '');
+
             // console.log('dfghjklj')
             transactions.update($scope.myModel)
                 .success(function (data) {

@@ -18,7 +18,7 @@ class Transaction extends Model
      */
 
     protected $fillable = [
-        'description', 'amount' , 'month','users_id',
+        'description', 'amount' , 'month','users_id','kurang',
     ];
 
     protected $with = ['users'];
