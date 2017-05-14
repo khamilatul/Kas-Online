@@ -94,7 +94,7 @@ $cari_rincian = \DB::table('users')->select('class')->whereNull('deleted_at')->g
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-if(session('level')!= 3){
+if(session('level')== 0){
        $akun = $this->model
        ->where('class',session('class'))
        ->where(function ($query) use ($search) {
@@ -106,7 +106,21 @@ if(session('level')!= 3){
             ->toArray();
             return $akun;
 }
-if(session('level')== 3){
+if(session('level')== 1){
+       $akun = $this->model
+       ->where('class',session('class'))
+       ->whereNotIn('id',[session('user_id')])
+       ->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('class', 'like', '%' . $search . '%')
+                    ->orWhere('level', 'like', '%' . $search . '%');
+            })
+            ->paginate($limit)
+            ->toArray();
+            return $akun;
+}
+
+if(session('level')== 2){
        $akun = $this->model
        ->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%')
@@ -122,7 +136,7 @@ if(session('level')== 3){
     public function paginateuser($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-if(session('level')!= 3){
+if(session('level')!= 2){
        $akun = $this->model
        ->where('class',session('class'))
        ->where('level',0)
@@ -135,7 +149,7 @@ if(session('level')!= 3){
             ->toArray();
             return $akun;
 }
-if(session('level')== 3){
+if(session('level')== 2){
        $akun = $this->model
        ->where('level',0)
        ->where(function ($query) use ($search) {
