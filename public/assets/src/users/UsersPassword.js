@@ -1,6 +1,31 @@
-app.controller('UsersPasswordCtrl', ['$state', '$scope', 'users', '$timeout', 'SweetAlert', 'toaster', '$http', function ($state, $scope, users, $timeout, SweetAlert, toaster) {
+app.controller('UsersPasswordCtrl', ['$state', '$scope', 'users', '$timeout', 'SweetAlert', 'toaster','flowFactory', '$http', function ($state, $scope, users, $timeout, SweetAlert, toaster,flowFactory) {
     //Init input addForm variable
     //create users
+        $scope.removeImage = function () {
+        $scope.noImage = true;
+    };
+    $scope.obj = new Flow();
+
+    $scope.userInfo = {
+        firstName: 'Peter',
+        lastName: 'Clark',
+        url: 'www.example.com',
+        email: 'peter@example.com',
+        phone: '(641)-734-4763',
+        gender: 'male',
+        zipCode: '12345',
+        city: 'London (UK)',
+        avatar: 'assets/images/avatar-1-xl.jpg',
+        twitter: '',
+        github: '',
+        facebook: '',
+        linkedin: '',
+        google: '',
+        skype: 'peterclark82'
+    };
+    if ($scope.userInfo.avatar == '') {
+        $scope.noImage = true;
+    }
     $scope.process = false;
 if ($scope.dataUser.level == 0 ) {
         $state.go("app.dashboard")

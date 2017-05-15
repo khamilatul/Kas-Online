@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="apple-touch-fullscreen" content="yes" />
-  <title data-ng-bind="pageTitle()">Kas-Online Projek-Akhir</title>
+  <title data-ng-bind="pageTitle()">Login</title>
   <!-- Google fonts -->
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
   <!-- Bootstrap -->
@@ -33,7 +33,6 @@
   <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
     <!-- start: LOGIN BOX -->
     <div class="box-login">
-      <form class="subscribe" accept-charset="UTF-8" action="api/post-login" method="post">
         <h4>
           <?php if (session()->has('auth_messagee')) { ?>
           <h7 style="color: red"><?php echo session()->get('auth_messagee') ?></h7>
@@ -50,18 +49,21 @@
           <p>
             Please enter your name and password to log in.
           </p>
+      <form accept-charset="UTF-8" action="api/post-login" method="post">
+
+          <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
           <div class="form-group">
-						<span class="input-icon">
-							<input type="text" class="form-control" name="name" placeholder="Name">
-							<i class="fa fa-user"></i> </span>
+            <span class="input-icon">
+              <input type="text" class="form-control" name="name" placeholder="Username">
+              <i class="fa fa-user"></i> </span>
           </div>
           <div class="form-group form-actions">
-						<span class="input-icon">
-							<input type="password" class="form-control password" name="password" placeholder="Password">
-							<i class="fa fa-lock"></i>
-							<a class="forgot" ui-sref="login.forgot">
-								I forgot my password
-							</a> </span>
+            <span class="input-icon">
+              <input type="password" class="form-control password" name="password" placeholder="Password">
+              <i class="fa fa-lock"></i>
+              <a class="forgot" ui-sref="login.forgot">
+                I forgot my password
+              </a> </span>
           </div>
           <div class="form-actions">
             <div class="checkbox clip-check check-primary">
@@ -74,12 +76,12 @@
               Login <i class="fa fa-arrow-circle-right"></i>
             </button>
           </div>
-          <div class="new-account">
+          <!--<div class="new-account">
             Don't have an account yet?
             <a ui-sref="login.registration">
               Create an account
             </a>
-          </div>
+          </div>-->
         </fieldset>
       </form>
       <!-- start: COPYRIGHT -->

@@ -1,11 +1,13 @@
 <?php
 
+
 namespace App\Domain\Repositories;
 
 use App\Domain\Entities\Transaction;
 use App\Domain\Contracts\TransactionInterface;
 use App\Domain\Contracts\Crudable;
 use App\Domain\Entities\User;
+use Carbon\Carbon;
 
 
 /**
@@ -85,9 +87,68 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
      */
     public function create(array $data)
     {
+        $now = Carbon::today();
+        $expired =$now->month;
+            if ($data['month']==''){
+                
+                if($expired == 1){
+                $bulan='Januari';
+                }
+
+                if($expired == 2){
+                $bulan='Februari';
+                }
+
+                if($expired == 3){
+                $bulan='Maret';
+                }
+
+                if($expired == 4){
+                $bulan='April';
+                }
+
+                if($expired == 5){
+                $bulan='Mei';
+                }
+
+                if($expired == 6){
+                $bulan='Juni';
+                }
+
+                if($expired == 7){
+                $bulan='Juli';
+                }
+
+                if($expired == 8){
+                $bulan='Agustus';
+                }
+
+                if($expired == 9){
+                $bulan='September';
+                }
+
+                if($expired == 10){
+                $bulan='Oktober';
+                }
+
+                if($expired == 11){
+                $bulan='November';
+                }
+
+                if($expired == 12){
+                $bulan='Desember';
+                }
+
+            }
+            else {
+                $bulan=$data['month'];
+
+            }
         $user = User::find($data['users_id']);
-        $cari = $this->model->where('users_id', $data['users_id'])->where('month', $data['month'])->whereNull('deleted_at')->sum('amount');
-        $cari2 = $this->model->where('users_id', $data['users_id'])->where('month', $data['month'])->whereNull('deleted_at')->min('kurang');
+        $cari = $this->model->where('users_id', $data['users_id'])->where('month', $bulan)->whereNull('deleted_at')->sum('amount');
+        $cari2 = $this->model->where('users_id', $data['users_id'])->where('month', $bulan)->whereNull('deleted_at')->min('kurang');
+            
+
         if($cari2 == null) {
             $cek2 = 0;
 
@@ -97,11 +158,11 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
 
         }
 
-        if ($data['amount'] > $user->min_transaksi) {
+        if ($data['amount'] > session('min_transaksi')) {
             return response()->json(
                 [
                     'success' => false,
-                    'result' => 'Kas Melebihi batas bulan ' . $data['month'],
+                    'result' => 'Kas Melebihi batas bulan ' . $bulan,
                 ]
             );
           
@@ -111,7 +172,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
                 return response()->json(
                     [
                         'success' => false,
-                        'result' => 'Kas Bulan '. $data['month']. ' Sudah Lunas',
+                        'result' => 'Kas Bulan '. $bulan. ' Sudah Lunas',
                     ]
                 );
             }
@@ -127,7 +188,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
 
         }
         if (intval($cari) == 0) {
-            $hasil = $user->min_transaksi - $data['amount'];
+            $hasil = session('min_transaksi') - $data['amount'];
         } else if (intval($cari) <= intval($cari2)) {
             $hasil = intval($cari2) - intval($data['amount']);
         }
@@ -139,7 +200,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
             $hasil2 = $hasil;
             $status = '1';
         }
-        $relasi = $this->model->where('users_id', $data['users_id'])->where('month', $data['month'])->select('id as transaksi_id')->get();
+        $relasi = $this->model->where('users_id', $data['users_id'])->where('month', $bulan)->select('id as transaksi_id')->get();
 //        dump($relasi);
         $result = [];
         foreach ($relasi as $key => $value) {
@@ -164,7 +225,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         return parent::create([
             'description' => $status,
             'amount' => e($data['amount']),
-            'month' => e($data['month']),
+            'month' => e($bulan),
             'users_id' => e($data['users_id']),
             'kurang' => $hasil2
 
@@ -181,9 +242,9 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     {
         return parent::update($id, [
             'description' => e($data['description']),
-            'amount' => e($data['amount']),
+            'amount' => e($bulan),
             // 'members_id'   => e($data['members_id']),
-            'month' => e($data['month']),
+            'month' => e($bulan),
             'users_id' => e($data['users_id'])
         ]);
     }
@@ -196,8 +257,14 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     {
         $transaksi = Transaction::find($id);
 
-        $relasi = $this->model->where('users_id', $transaksi['users_id'])->where('month', $transaksi['month'])->select('id as transaksi_id')->get();
-            $kurang =$transaksi->amount + $transaksi->kurang;
+        $relasi = $this->model->where('users_id', $transaksi['users_id'])->where('month', $transaksi->month)->select('id as transaksi_id')->get();
+            if($transaksi->kurang =='Lunas'){
+                $kuranguang = '0';
+            }
+            else{
+                $kuranguang = $transaksi->kurang;
+            }
+            $kurang =$transaksi->amount + $kuranguang;
 //        dump($relasi);
         $result = [];
         foreach ($relasi as $key => $value) {

@@ -46,6 +46,8 @@ class LoginController extends Controller
             session()->put('class', Auth::user()->class);
             session()->put('level', Auth::user()->level);
             session()->put('user_id', Auth::user()->id);
+            session()->put('min_transaksi', Auth::user()->min_transaksi);
+
 
             
             // Authentication passed...

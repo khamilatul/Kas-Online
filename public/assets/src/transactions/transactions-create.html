@@ -3,9 +3,9 @@
     <section id="page-title">
         <div class="row">
             <div class="col-sm-8">
-                <h1 class="mainTitle">FORM CREATE TRANSACTIONS</h1>
+                <h1><font face="Lucida Handwriting">FORM CREATE TRANSACTIONS</font></h1>
             </div>
-            <div ncy-breadcrumb></div>
+            <!--<div ncy-breadcrumb></div>-->
         </div>
     </section>
     <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
@@ -21,15 +21,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <fieldset>
-                                    <div class="form-group"
-                                         ng-class="{'has-error':Form.members_id.$dirty && Form.members_id.$invalid, 'has-success':Form.members_id.$valid}">
+                                    <div class="form-group" ng-class="{'has-error':Form.members_id.$dirty && Form.members_id.$invalid, 'has-success':Form.members_id.$valid}">
                                         <label class="control-label">
-                                            Members <span class="symbol required"></span>
+                                            Member <span class="symbol required"></span>
                                         </label>
                                         <p class="input-group">
-                                            <input type="text" placeholder="Enter your Members" class="form-control"
-                                                   name="members" ng-model="myModel.members" required readonly/>
-											<span class="input-group-btn">
+                                            <input type="text" placeholder="Enter your Members" class="form-control" name="members" ng-model="myModel.members" required
+                                                readonly/>
+                                            <span class="input-group-btn">
 											<button class="btn btn-default" ng-click="openmembers('lg')" md-ink-ripple
                                                     tooltip="Pilih Members"><i
                                                     class="glyphicon glyphicon-list"></i></button>
@@ -37,30 +36,25 @@
 										<span class="error text-small block"
                                               ng-if="Form.members.$dirty && Form.members.$invalid">First Members is required</span>
 
-											<span class="success text-small"
-                                                  ng-if="Form.members.$valid">Thank You!</span>
-											</span>
+                                            <span class="success text-small" ng-if="Form.members.$valid">Thank You!</span>
+                                            </span>
                                     </div>
-                                    <div class="form-group"
-                                         ng-class="{'has-error':Form.amount.$dirty && Form.amount.$invalid, 'has-success':Form.amount.$valid}">
+                                    <div class="form-group" ng-class="{'has-error':Form.amount.$dirty && Form.amount.$invalid, 'has-success':Form.amount.$valid}">
                                         <label class="control-label">
                                             Amount <span class="symbol required"></span>
                                         </label>
-                                        <input type="text" placeholder="Enter your Amount" class="form-control"
-                                               name="amount" ng-model="myModel.amount" required onfocus="convertToRupiah(this);"
-                                               onkeyup="convertToRupiah(this);"/>
-                                        <span class="error text-small block"
-                                              ng-if="Form.amount.$dirty && Form.amount.$invalid">First Amount is required</span>
+                                        <input type="text" placeholder="Enter your Amount" class="form-control" name="amount" ng-model="myModel.amount" required
+                                            onfocus="convertToRupiah(this);" onkeyup="convertToRupiah(this);" />
+                                        <span class="error text-small block" ng-if="Form.amount.$dirty && Form.amount.$invalid">First Amount is required</span>
                                         <span class="success text-small" ng-if="Form.amount.$valid">Thank You!</span>
                                     </div>
 
-                                    <div class="form-group"
-                                         ng-class="{'has-error':Form.month.$dirty && Form.month.$invalid, 'has-success':Form.month.$valid}">
+                                    <div class="form-group" ng-class="{'has-error':Form.month.$dirty && Form.month.$invalid, 'has-success':Form.month.$valid}">
                                         <label class="control-label">
                                             Month <span class="symbol required"></span>
                                         </label>
-                                        <select class="form-control" name="month" ng-model="myModel.month" required>
-                                            <option value="" disabled selected>Select month</option>
+                                        <select class="form-control" name="month" ng-model="myModel.month" >
+                                            <option value="" >Select month</option>
                                             <option value="JANUARI">Januari</option>
                                             <option value="FEBRUARI">Februari</option>
                                             <option value="MARET">Maret</option>
@@ -75,8 +69,7 @@
                                             <option value="DESEMBER">Desember</option>
                                         </select>
 
-                                        <span class="error text-small block"
-                                              ng-if="Form.month.$dirty && Form.month.$invalid">First Month is required</span>
+                                        <span class="error text-small block" ng-if="Form.month.$dirty && Form.month.$invalid">First Month is required</span>
                                         <span class="success text-small" ng-if="Form.month.$valid">Thank You!</span>
                                     </div>
 
@@ -88,18 +81,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="pull-left">
-                                    <button md-ink-ripple class="btn btn-primary" ng-click="submitData(false)"
-                                            ng-disabled="Form.$invalid || process">Simpan
+                                    <button md-ink-ripple class="btn btn-primary" ng-click="submitData(false)" ng-disabled="Form.$invalid || process">Simpan
                                     </button>
-                                    <button md-ink-ripple class="btn btn-primary" ng-click="submitData(true)"
-                                            ng-disabled="Form.$invalid || process">Simpan & Kembali
+                                    <button md-ink-ripple class="btn btn-primary" ng-click="submitData(true)" ng-disabled="Form.$invalid || process">Simpan & Kembali
                                     </button>
-                                    <button type="reset" class="btn btn-primary btn-o" ng-disabled="process"
-                                            ng-click="form.reset(Form)">
+                                    <button type="reset" class="btn btn-primary btn-o" ng-disabled="process" ng-click="form.reset(Form)">
                                         Reset
                                     </button>
-                                    <button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.transactions"
-                                            ng-disabled="process">Kembali
+                                    <button md-ink-ripple class="btn btn-primary btn-o" ui-sref="app.transactions" ng-disabled="process">Kembali
                                     </button>
                                 </div>
                             </div>
@@ -112,7 +101,6 @@
 </div>
 <!-- end: FORM VALIDATION -->
 <script>
-
     function convertToRupiah(objek) {
         separator = ".";
         a = objek.value;
@@ -130,4 +118,5 @@
         }
         objek.value = c;
     }
+
 </script>

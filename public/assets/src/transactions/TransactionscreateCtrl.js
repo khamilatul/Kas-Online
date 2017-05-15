@@ -87,6 +87,9 @@ app.controller('TransactionsCreateCtrl', ['$state', '$scope', 'transactions', '$
         if ($scope.Form.$valid) {
             //run Ajax
             $scope.myModel.amount = $scope.myModel.amount.toString().replace(/,.*|[^0-9]/g, '');
+            if($scope.myModel.month ==null){
+               $scope.myModel.month=''; 
+            }
             $scope.myModel.users_id = $scope.dtmembers.id;
             transactions.store($scope.myModel)
                 .success(function (data) {
