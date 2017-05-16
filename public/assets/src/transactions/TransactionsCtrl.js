@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('TransactionsCtrl', ['$scope', 'transactions', 'SweetAlert', '$http','$timeout', function ($scope, transactions,SweetAlert) {
+app.controller('TransactionsCtrl', ['$scope', 'transactions', 'SweetAlert','$uibModal','$log', '$http','$timeout', function ($scope, transactions,SweetAlert,$uibModal,$log) {
 //urussan tampilan
     $scope.main = {
         page: 1,
@@ -18,6 +18,25 @@ app.controller('TransactionsCtrl', ['$scope', 'transactions', 'SweetAlert', '$ht
             $scope.isLoading = false;
             $scope.isLoaded = true;
         }
+    };
+    $scope.transactions = function (id) {
+
+        var modalInstance = $uibModal.open({
+            templateUrl: 'assets/src/transactions/detail.dialog.html',
+            controller: 'Transactionsdetail2Ctrl',
+            size: 'lg',
+            resolve: {
+                item: function () {
+                    return id;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
     };
 
     //Init Alert status
@@ -220,6 +239,35 @@ app.controller('TransactionsCtrl', ['$scope', 'transactions', 'SweetAlert', '$ht
                 });
             }
         });
+    };
+
+
+}]);
+app.controller('Transactionsdetail2Ctrl', ['$scope', 'transactions', 'SweetAlert', '$uibModal','$log','$uibModalInstance','toaster','item','$http','$timeout', function ($scope, transactions,SweetAlert,$uibModal,$log,$uibModalInstance,toaster,item) {
+//urussan tampilan
+    $scope.myModel ={}
+    
+    $scope.isLoading = true;
+    $scope.isLoaded = false;
+
+    $scope.setLoader = function (status) {
+        if (status == true) {
+            $scope.isLoading = true;
+            $scope.isLoaded = false;
+        } else {
+            $scope.isLoading = false;
+            $scope.isLoaded = true;
+        }
+    };
+    $scope.id =item
+    transactions.show($scope.id)
+        .success(function (data) {
+            $scope.setLoader(false);
+            $scope.myModel = data;
+        });
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
     };
 
 

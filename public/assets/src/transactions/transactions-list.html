@@ -41,10 +41,10 @@
             <thead>
                 <tr>
                     <th class="col-md-1">Description</th>
-                    <th class="col-md-2">Amount</th>
-                    <th class="col-md-2">Member</th>
+                    <th class="col-md-1">Amount</th>
+                    <th class="col-md-1">Member</th>
                     <th class="col-md-1">Month</th>
-                    <th class="col-md-2">Kelas</th>
+                    <th class="col-md-1">Kelas</th>
                     <th class="col-md-2">Kurang Angsuran</th>
                     <th class="col-md-2" ng-if="dataUser.level==1">Aksi</th>
                 </tr>
@@ -56,22 +56,23 @@
                         <span ng-if="row.description==1" class="label label-sm label-success">Belum Lunas</span>
                         <span ng-if="row.description==2" class="label label-sm label-info">Lunas</span>
                     </td>
-                    <td class="col-md-2">{{convertToRupiah(row.amount)}}</td>
-                    <td class="col-md-2">{{row.users.name}}</td>
+                    <td class="col-md-1">{{convertToRupiah(row.amount)}}</td>
+                    <td class="col-md-1">{{row.users.name}}</td>
                     <td class="col-md-1">{{row.month}}</td>
-                    <td class="col-md-2">{{row.users.class}}</td>
+                    <td class="col-md-1">{{row.users.class}}</td>
                     <td class="col-md-2">
                         <span ng-if="row.kurang =='Lunas'"> {{row.kurang}}</span>
                         <span ng-if="row.kurang !='Lunas'"> {{convertToRupiah(row.kurang)}}</span>
                         </td>
-                    <td class="col-md-2" ng-if="dataUser.level!=0">
-
-                        <!--<a ui-sref="app.transactions-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="dataUser.level!=0">-->
-                            <!--<i class="glyphicon glyphicon-edit"></i>-->
-                        <!--</a>-->
+                        <td class="col-md-2">
+                            <!--detail-->
+                            <button type="button" ng-click="transactions(row.id)" md-ink-ripple tooltip="Detail Transactions" class="btn btn-sm btn-info">
+                            <i class="glyphicon glyphicon-zoom-in"></i>
+                        </button>
                         <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level!=0">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
+                        
 
 
 

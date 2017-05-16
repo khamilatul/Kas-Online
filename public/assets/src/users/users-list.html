@@ -36,42 +36,47 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th class="col-md-2">Nama</th>
-                    <th class="col-md-2">Class</th>
-                    <th class="col-md-2">Level</th>
-                    <th class="col-md-2">Phone</th>
-                    <th class="col-md-2">Minimal Transaksi</th>
+                    <th class="col-md-1">Nama</th>
+                    <th class="col-md-1">Class</th>
+                    <th class="col-md-1">Level</th>
+                    <th class="col-md-1">Phone</th>
+                    <th class="col-md-1">Minimal Transaksi</th>
                     <th class="col-md-2">Email</th>
                     <th class="col-md-2">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="row in dataUsers">
-                    <td class="col-md-2">{{row.name}}</td>
-                    <td class="col-md-2">{{row.class}}</td>
-                    <td class="col-md-2">
+                    <td class="col-md-1">{{row.name}}</td>
+                    <td class="col-md-1">{{row.class}}</td>
+                    <td class="col-md-1">
                         <span ng-if="row.level==0" class="label label-sm label-warning">Member</span>
                         <span ng-if="row.level==1" class="label label-sm label-success">User</span>
                         <span ng-if="row.level==2" class="label label-sm label-info">Engineering</span>
                     </td>
-                    <td class="col-md-2">{{row.phone}}</td>
+                    <td class="col-md-1">{{row.phone}}</td>
                     <td class="col-md-2">{{row.min_transaksi}}</td>
+                    <td class="col-md-1">{{row.email}}</td>
 
-                    <td class="col-md-2">
-                        <span ng-if="dataUser.level!=0">
+                        <td class="col-md-2">
+                            <!--detail-->
+                            <button type="button" ng-click="users(row.id)" md-ink-ripple tooltip="Detail Users" class="btn btn-sm btn-info">
+                            <i class="glyphicon glyphicon-zoom-in"></i>
+                        </button>
+                            <span ng-if="dataUser.level!=0">
                         <a ui-sref="app.users-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" >
                             <i class="glyphicon glyphicon-edit"></i>
                         </a></span>
-                        <span ng-if="dataUser.level==0">
+                            <span ng-if="dataUser.level==0">
                         <a ui-sref="app.users-edit({id:row.id})" md-ink-ripple tooltip="Edit Data" class="btn btn-sm btn-default" ng-if="row.level==0">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a></span>
- 
-                        <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level!=0">
+
+                            <button type="button" ng-click="hapus(row.id)" md-ink-ripple tooltip="Hapus Data" class="btn btn-sm btn-danger" ng-if="dataUser.level!=0">
                             <i class="glyphicon glyphicon-trash" ></i>
                         </button>
 
-                    </td>
+                        </td>
                 </tr>
             </tbody>
         </table>
