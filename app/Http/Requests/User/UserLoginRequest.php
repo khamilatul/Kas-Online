@@ -27,7 +27,7 @@ class UserLoginRequest extends Request
      * @var array
      */
     protected $attrs = [
-        'name'    => 'Name',
+        'email'    => 'EMAIL',
        // 'class'   => 'Class',
        // 'level' => 'Level',
        // 'phone'   => 'Phone',
@@ -42,7 +42,7 @@ class UserLoginRequest extends Request
     public function rules()
     {
         return [
-            'name'    => 'required|max:225',
+            'email'    => 'required|max:225',
             //'class' => 'required|max:60',
             //'level' => 'required|max:60',
            //'phone'   => 'required|max:30',
@@ -74,10 +74,7 @@ public function validator($validator)
         return [
             'success' => false,
             'validation' => [
-                'name'      => $message->first('name'),
-                'class'     => $message->first('class'),
-                'level'     => $message->first('level'),
-                'phone'     => $message->first('phone'),
+                'email'      => $message->first('email'),
                 'password'  => $message->first('password')
             ]
         ];

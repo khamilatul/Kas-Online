@@ -178,6 +178,7 @@ if(session('level')== 2){
             'phone'   => e($data['phone']),
             'password' => bcrypt($data['password']),
             'min_transaksi' =>($data['min_transaksi']),
+            'email' =>e($data['email']),
            
         ]);
 
@@ -196,6 +197,7 @@ if(session('level')== 2){
             'level'   => e($data['level']),
             'phone'   => e($data['phone']),
             'min_transaksi'   => e($data['min_transaksi']),
+            'email'   => e($data['email']),
         ]);
     }
 

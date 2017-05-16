@@ -54,7 +54,7 @@
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
           <div class="form-group">
             <span class="input-icon">
-              <input type="text" class="form-control" name="name" placeholder="Username">
+              <input type="email" class="form-control" name="email" placeholder="Email">
               <i class="fa fa-user"></i> </span>
           </div>
           <div class="form-group form-actions">

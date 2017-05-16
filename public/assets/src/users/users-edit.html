@@ -46,6 +46,14 @@
 										<span class="error text-small block" ng-if="Form.min_transaksi.$dirty && Form.min_transaksi.$invalid"> Min Transaksiis required</span>
 										<span class="success text-small" ng-if="Form.min_transaksi.$valid">Thank You!</span>
 									</div>
+									<div class="form-group" ng-class="{'has-error':Form.email.$dirty && Form.email.$invalid, 'has-success':Form.email.$valid}">
+										<label class="control-label">
+										 Email <span class="symbol required"></span>
+									</label>
+										<input type="text" placeholder="Enter your  Email" class="form-control" name="email" ng-model="myModel.email" required />
+										<span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$invalid">Email is required</span>
+										<span class="success text-small" ng-if="Form.email.$valid">Thank You!</span>
+									</div>
 
 									<!--<div class="form-group" ng-class="{'has-error':Form.class.$dirty && Form.class.$invalid, 'has-success':Form.class.$valid}"ng-if="dataUser.level==3">
 										<label class="control-label">

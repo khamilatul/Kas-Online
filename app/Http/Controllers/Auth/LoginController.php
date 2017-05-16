@@ -41,8 +41,10 @@ class LoginController extends Controller
 
     public function postLogin(UserLoginRequest $request)
     {
-        if (Auth::attempt($request->only('name', 'password'), true)) {
+        // return $request->all();
+        if (Auth::attempt($request->only('email', 'password'), true)) {
             session()->put('name', Auth::user()->name);
+            session()->put('email', Auth::user()->email);
             session()->put('class', Auth::user()->class);
             session()->put('level', Auth::user()->level);
             session()->put('user_id', Auth::user()->id);

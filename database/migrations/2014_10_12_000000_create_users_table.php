@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('password');
             $table->string('min_transaksi');
+            $table->string('email');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

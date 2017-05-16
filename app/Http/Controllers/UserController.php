@@ -131,10 +131,12 @@ public function getSession()
                     'success' => true,
                     'result' => [
                         'name' => session('name'),
+                        'email' => session('email'),
                         'user_id' => session('user_id'),
                         'level' => session('level'),
                         'class' => session('class'),
                         'min_transaksi' => session('min_transaksi'),
+     
      
                     ]]);
             }
