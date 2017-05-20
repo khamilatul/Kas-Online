@@ -170,7 +170,9 @@ if(session('level')== 2){
      */
     public function create(array $data)
     {
-        // execute sql insert
+try{
+        if(session('level')!= '1')
+{        // execute sql insert
         return parent::create([
             'name'    => e($data['name']),
             'class'    => e($data['class']),
@@ -181,9 +183,44 @@ if(session('level')== 2){
             'email' =>e($data['email']),
            
         ]);
+}
+        if(session('level')== '1')
+{        // execute sql insert
+        $password = str_random(10);
+        $simpan= parent::create([
+            'name'    => e($data['name']),
+            'class'    => e($data['class']),
+            'level'   => e($data['level']),
+            'phone'   => e($data['phone']),
+            'password' => bcrypt($password),
+            'min_transaksi' =>($data['min_transaksi']),
+            'email' =>e($data['email']),
+           
+        ]);
 
+
+\Mail::send('emails/frontoffice', [
+
+                'name' => '',
+                'email' => $data['email'],
+                'password' => $password,], function ($message) use ($data) {
+
+                $message->to($data['email']);
+
+                $message->subject('Info dari e-SP2DTRACK');
+
+            });
+            return $simpan;
     }
+}
+catch (\Exception $e) {
+            // store errors to log
+            Log::error('class : ' . OrganisasiRepository::class . ' method : create | ' . $e);
 
+            return $this->createError();
+        }
+ 
+    }
     /**
      * @param $id
      * @param array $data
