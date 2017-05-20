@@ -45,10 +45,10 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
      * @return \Illuminate\Pagination\Paginator
      */
 
-public function kelas($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
+    public function kelas($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
 
-$cari_rincian = \DB::table('users')->select('class')->whereNull('deleted_at')->get();
+        $cari_rincian = \DB::table('users')->select('class')->whereNull('deleted_at')->get();
         $result = [];
         foreach ($cari_rincian as $key => $value) {
             $result[] = $value->class;
@@ -61,7 +61,7 @@ $cari_rincian = \DB::table('users')->select('class')->whereNull('deleted_at')->g
             array_push($array_id, $result[$i]);
         }
 
-        $desa = \DB::table('kelas') 
+        $desa = \DB::table('kelas')
             ->whereNotIn('kelas.id', function ($q) use ($array_id) {
                 $q->select('users.class')
                     ->from('users')
@@ -76,91 +76,86 @@ $cari_rincian = \DB::table('users')->select('class')->whereNull('deleted_at')->g
         return $desa;
 
 
-
-
-
-
-    //  $user = \DB::table('kelas')
-    //    ->where(function ($query) use ($search) {
-    //             $query->where('name', 'like', '%' . $search . '%');
-    //         })
-    //         ->paginate($limit)
-    //         ->toArray();
-    //         return $user;
+        //  $user = \DB::table('kelas')
+        //    ->where(function ($query) use ($search) {
+        //             $query->where('name', 'like', '%' . $search . '%');
+        //         })
+        //         ->paginate($limit)
+        //         ->toArray();
+        //         return $user;
     }
-
 
 
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-if(session('level')== 0){
-       $akun = $this->model
-       ->where('class',session('class'))
-       ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('class', 'like', '%' . $search . '%')
-                    ->orWhere('level', 'like', '%' . $search . '%');
-            })
-            ->paginate($limit)
-            ->toArray();
+        if (session('level') == 0) {
+            $akun = $this->model
+                ->where('class', session('class'))
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('class', 'like', '%' . $search . '%')
+                        ->orWhere('level', 'like', '%' . $search . '%');
+                })
+                ->paginate($limit)
+                ->toArray();
             return $akun;
-}
-if(session('level')== 1){
-       $akun = $this->model
-       ->where('class',session('class'))
-       ->whereNotIn('id',[session('user_id')])
-       ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('class', 'like', '%' . $search . '%')
-                    ->orWhere('level', 'like', '%' . $search . '%');
-            })
-            ->paginate($limit)
-            ->toArray();
+        }
+        if (session('level') == 1) {
+            $akun = $this->model
+                ->where('class', session('class'))
+                ->whereNotIn('id', [session('user_id')])
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('class', 'like', '%' . $search . '%')
+                        ->orWhere('level', 'like', '%' . $search . '%');
+                })
+                ->paginate($limit)
+                ->toArray();
             return $akun;
-}
+        }
 
-if(session('level')== 2){
-       $akun = $this->model
-       ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('class', 'like', '%' . $search . '%')
-                    ->orWhere('level', 'like', '%' . $search . '%');
-            })
-            ->paginate($limit)
-            ->toArray();
+        if (session('level') == 2) {
+            $akun = $this->model
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('class', 'like', '%' . $search . '%')
+                        ->orWhere('level', 'like', '%' . $search . '%');
+                })
+                ->paginate($limit)
+                ->toArray();
             return $akun;
-}
+        }
     }
 
     public function paginateuser($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
     {
         // query to aql
-if(session('level')!= 2){
-       $akun = $this->model
-       ->where('class',session('class'))
-       ->where('level',0)
-       ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('class', 'like', '%' . $search . '%')
-                    ->orWhere('level', 'like', '%' . $search . '%');
-            })
-            ->paginate($limit)
-            ->toArray();
+        if (session('level') != 2) {
+            $akun = $this->model
+                ->where('class', session('class'))
+                ->where('level', 0)
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('class', 'like', '%' . $search . '%')
+                        ->orWhere('level', 'like', '%' . $search . '%');
+                })
+                ->paginate($limit)
+                ->toArray();
             return $akun;
-}
-if(session('level')== 2){
-       $akun = $this->model
-       ->where('level',0)
-       ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('class', 'like', '%' . $search . '%')
-                    ->orWhere('level', 'like', '%' . $search . '%');
-            })
-            ->paginate($limit)
-            ->toArray();
+        }
+        if (session('level') == 2) {
+            $akun = $this->model
+                ->where('level', 0)
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('class', 'like', '%' . $search . '%')
+                        ->orWhere('level', 'like', '%' . $search . '%');
+                })
+                ->paginate($limit)
+                ->toArray();
             return $akun;
-}
+        }
     }
 
 
@@ -170,57 +165,55 @@ if(session('level')== 2){
      */
     public function create(array $data)
     {
-try{
-        if(session('level')!= '1')
-{        // execute sql insert
-        return parent::create([
-            'name'    => e($data['name']),
-            'class'    => e($data['class']),
-            'level'   => e($data['level']),
-            'phone'   => e($data['phone']),
-            'password' => bcrypt($data['password']),
-            'min_transaksi' =>($data['min_transaksi']),
-            'email' =>e($data['email']),
-           
-        ]);
-}
-        if(session('level')== '1')
-{        // execute sql insert
-        $password = str_random(10);
-        $simpan= parent::create([
-            'name'    => e($data['name']),
-            'class'    => e($data['class']),
-            'level'   => e($data['level']),
-            'phone'   => e($data['phone']),
-            'password' => bcrypt($password),
-            'min_transaksi' =>($data['min_transaksi']),
-            'email' =>e($data['email']),
-           
-        ]);
+        try {
+            if (session('level') != '1') {        // execute sql insert
+                return parent::create([
+                    'name' => e($data['name']),
+                    'class' => e($data['class']),
+                    'level' => e($data['level']),
+                    'phone' => e($data['phone']),
+                    'password' => bcrypt($data['password']),
+                    'min_transaksi' => ($data['min_transaksi']),
+                    'email' => e($data['email']),
+
+                ]);
+            }
+            if (session('level') == '1') {        // execute sql insert
+                $password = str_random(10);
+                $simpan = parent::create([
+                    'name' => e($data['name']),
+                    'class' => e($data['class']),
+                    'level' => e($data['level']),
+                    'phone' => e($data['phone']),
+                    'password' => bcrypt($password),
+                    'min_transaksi' => ($data['min_transaksi']),
+                    'email' => e($data['email']),
+
+                ]);
 
 
-\Mail::send('emails/frontoffice', [
+                \Mail::send('emails/frontoffice', [
 
-                'name' => '',
-                'email' => $data['email'],
-                'password' => $password,], function ($message) use ($data) {
+                    'name' => $data['email'],
+                    'email' => $data['email'],
+                    'password' => $password,], function ($message) use ($data) {
 
-                $message->to($data['email']);
+                    $message->to($data['email']);
 
-                $message->subject('Info dari e-SP2DTRACK');
+                    $message->subject('Info dari KAS ONLINE');
 
-            });
-            return $simpan;
-    }
-}
-catch (\Exception $e) {
+                });
+                return $simpan;
+            }
+        } catch (\Exception $e) {
             // store errors to log
-            Log::error('class : ' . OrganisasiRepository::class . ' method : create | ' . $e);
+            \Log::error('class : ' . UserRepository::class . ' method : create | ' . $e);
 
-            return $this->createError();
+            return $e;
         }
- 
+
     }
+
     /**
      * @param $id
      * @param array $data
@@ -229,12 +222,12 @@ catch (\Exception $e) {
     public function update($id, array $data)
     {
         return parent::update($id, [
-            'name'    => e($data['name']),
-            'class'    => e($data['class']),
-            'level'   => e($data['level']),
-            'phone'   => e($data['phone']),
-            'min_transaksi'   => e($data['min_transaksi']),
-            'email'   => e($data['email']),
+            'name' => e($data['name']),
+            'class' => e($data['class']),
+            'level' => e($data['level']),
+            'phone' => e($data['phone']),
+            'min_transaksi' => e($data['min_transaksi']),
+            'email' => e($data['email']),
         ]);
     }
 
@@ -257,6 +250,7 @@ catch (\Exception $e) {
     {
         return parent::find($id, $columns);
     }
+
     public function updatePassword(array $data)
     {
         try {
@@ -266,7 +260,7 @@ catch (\Exception $e) {
 
                 if (\Hash::check($data['old_password'], $old_password)) {
                     // flush cache with tags
-     
+
                     $user->password = bcrypt($data['new_password']);
                     $user->save();
 

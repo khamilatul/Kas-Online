@@ -19,7 +19,7 @@
 <div style="background: #fff; box-shadow: 4px 4px 2px #bbb; width: 600px; margin: auto; padding: 50px 25px; border-radius: 5px;">
 
     <h4 style="margin: 5px; padding: 0; color: #cc4433; text-align: center;">
-        <img src="{{ $message->embed(public_path() . '/app/images/logo.png') }}" width="100px">
+        <img src="{{ $message->embed(public_path() . '/assets/images/logo2.png') }}" width="100px">
 
           <center>  <span style="Margin-top:0;font-weight:normal;font-family:sans-serif;Margin-bottom:15px;text-align:center;font-size:13px;line-height:19px;color:#97a3b1;Margin:0">
                 <em><a style="text-decoration: none;font-style:normal;color:#1bb4d5 ;"
