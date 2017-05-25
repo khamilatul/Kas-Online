@@ -60,6 +60,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
                         ->orWhere('name', 'like', '%' . $search . '%')
                         ->orWhere('users.name', 'like', '%' . $search . '%');
                 })
+                ->orderBy('users.name','asc')
                 ->select('transactions.*')
                 ->paginate($limit)
                 ->toArray();
