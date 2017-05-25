@@ -98,6 +98,8 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users', '$timeout', 'Swe
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax
+            $scope.myModel.min_transaksi = $scope.myModel.min_transaksi.toString().replace(/,.*|[^0-9]/g, '');
+
             users.store($scope.myModel)
                 .success(function (data) {
                     if (data.created == true) {

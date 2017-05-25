@@ -65,7 +65,7 @@ app.controller('UsersEditCtrl', ['$state', '$scope', 'users', '$uibModal', '$log
         if ($scope.Form.$valid) {
             //run Ajax
 
-            console.log('dfghjklj')
+        $scope.myModel.min_transaksi = $scope.myModel.min_transaksi.toString().replace(/,.*|[^0-9]/g, '');
             users.update($scope.myModel)
                 .success(function (data) {
                     if (data.updated == true) {

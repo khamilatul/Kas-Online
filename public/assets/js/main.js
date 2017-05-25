@@ -49,6 +49,7 @@ function ($rootScope, $state, $stateParams,mainapp) {
         if (angka == null || angka == '') {
             angka = 0;
         }
+        
         var rupiah = '';
         var angkarev = angka.toString().split('').reverse().join('');
         for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';

@@ -5,7 +5,7 @@
 			<div class="col-sm-8">
 				<h1 class="mainTitle">FORM CREATE USERS</h1>
 			</div>
-			<div ncy-breadcrumb></div>
+			<!--<div ncy-breadcrumb></div>-->
 		</div>
 	</section>
 	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
@@ -98,7 +98,7 @@
 								<label class="control-label">
 										 Min Transaksi <span class="symbol required"></span>
 									</label>
-								<input type="text" placeholder="Enter your Min Transaksi" class="form-control" name="min_transaksi" ng-model="myModel.min_transaksi"
+								<input type="text" placeholder="Enter your Min Transaksi" class="form-control" name="min_transaksi" ng-model="myModel.min_transaksi"   onfocus="convertToRupiah(this);" onkeyup="convertToRupiah(this);" 
 								 required />
 								<span class="error text-small block" ng-if="Form.min_transaksi.$dirty && Form.min_transaksi.$invalid">Min Transaksi is required</span>
 								<span class="success text-small" ng-if="Form.min_transaksi.$valid">Thank You!</span>
@@ -141,3 +141,23 @@
 </div>
 </div>
 <!-- end: FORM VALIDATION -->
+<script>
+    function convertToRupiah(objek) {
+        separator = ".";
+        a = objek.value;
+        b = a.replace(/[^\d]/g, "");
+        c = "";
+        panjang = b.length;
+        j = 0;
+        for (i = panjang; i > 0; i--) {
+            j = j + 1;
+            if (((j % 3) == 1) && (j != 1)) {
+                c = b.substr(i - 1, 1) + separator + c;
+            } else {
+                c = b.substr(i - 1, 1) + c;
+            }
+        }
+        objek.value = 'Rp.' +c;
+    }
+
+</script>
