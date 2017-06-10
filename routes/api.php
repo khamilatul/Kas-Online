@@ -39,3 +39,9 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('post-login', 'LoginController@getLogin');
     Route::post('post-login', 'LoginController@postLogin');
 });
+Route::group(['namespace' => 'Cetak'], function () {
+
+    // Authentication routes...
+    Route::get('cetak-kas/{id}', 'CetakKas@Transaksi');
+
+});

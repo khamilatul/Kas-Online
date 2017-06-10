@@ -149,7 +149,6 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
         $cari = $this->model->where('users_id', $data['users_id'])->where('month', $bulan)->whereNull('deleted_at')->sum('amount');
         $cari2 = $this->model->where('users_id', $data['users_id'])->where('month', $bulan)->whereNull('deleted_at')->min('kurang');
             
-
         if($cari2 == null) {
             $cek2 = 0;
 
@@ -298,6 +297,37 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
     public function findById($id, array $columns = ['*'])
     {
         return parent::find($id, $columns);
+    }
+     public function getByPagecetak($id)
+    {
+        // query to aql
+        $akun = $this->model
+                    ->join('users', 'transactions.users_id', '=', 'users.id')
+            ->where('users.class', $id)
+        ->select('*','transactions.id as id_transaks')->groupBy('users_id','month')->orderBy('users_id', 'DESC')->get();
+    //  dump($akun);
+        $result = [];
+        foreach ($akun as $key => $value) {
+            $result[] = $value->id_transaks;
+        }
+        // --> Flatten  array
+        $array_id = [];
+        $array_length = count($result);
+        for ($i = 0; $i <= $array_length - 1; $i++) {
+            array_push($array_id, $result[$i]);
+        };
+// dump($ak);
+        $AsalUsul = $this->model
+            ->join('users', 'transactions.users_id', '=', 'users.id')
+            // ->where('users.class', $id)
+            ->whereIn('transactions.id', $array_id)
+            ->select(
+                'users.name',
+                'transactions.month',
+                'transactions.kurang',
+                'transactions.description')
+            ->get();
+        return $AsalUsul;
     }
 
 }
