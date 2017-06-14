@@ -21,7 +21,6 @@
 						<div class="row">
 							<div class="col-md-12">
 								<fieldset>
-
 									<div class="form-group" ng-class="{'has-error':Form.name.$dirty && Form.name.$invalid, 'has-success':Form.name.$valid}">
 										<label class="control-label">
 										 Name <span class="symbol required"></span>
@@ -53,6 +52,14 @@
 										<input type="text" placeholder="Enter your  Email" class="form-control" name="email" ng-model="myModel.email" required />
 										<span class="error text-small block" ng-if="Form.email.$dirty && Form.email.$invalid">Email is required</span>
 										<span class="success text-small" ng-if="Form.email.$valid">Thank You!</span>
+									</div>
+									<div class="form-group" ng-class="{'has-error':Form.nis.$dirty && Form.nis.$invalid, 'has-success':Form.nis.$valid}">
+										<label class="control-label">
+										 NIS <span class="symbol required"></span>
+									</label>
+										<input type="text" placeholder="Enter your nis" class="form-control" name="nis" ng-model="myModel.nis" required />
+										<span class="error text-small block" ng-if="Form.nis.$dirty && Form.nis.$invalid">NIS is required</span>
+										<span class="success text-small" ng-if="Form.nis.$valid">Thank You!</span>
 									</div>
 
 									<!--<div class="form-group" ng-class="{'has-error':Form.class.$dirty && Form.class.$invalid, 'has-success':Form.class.$valid}"ng-if="dataUser.level==3">

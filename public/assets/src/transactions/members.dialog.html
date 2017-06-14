@@ -48,7 +48,7 @@
                                 <span ng-if="row.level==2" class="label label-sm label-info">Engineering</span>
                             </td>
                             <td class="col-md-2">{{row.phone}}</td>
-                            <td class="col-md-2">{{convertToRupiah(dataUser.min_transaksi)}}</td>
+                            <td class="col-md-2">{{convertToRupiah(row.min_transaksi)}}</td>
                             <td class="col-md-2">
                                 <button ng-click="pilih(row)" md-ink-ripple tooltip="Pilih Data" class="btn btn-sm btn-info">
                                 <i class="glyphicon glyphicon-check"></i>

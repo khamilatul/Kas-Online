@@ -136,6 +136,7 @@ public function getSession()
                         'level' => session('level'),
                         'class' => session('class'),
                         'min_transaksi' => session('min_transaksi'),
+                        'NIS' => session('NIS'),
      
      
                     ]]);

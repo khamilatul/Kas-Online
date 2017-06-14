@@ -74,6 +74,8 @@ class CetakKas extends Controller
         }
         $pdf->SetFont($this->font, 'B', 16);
         $pdf->Ln(10);
+        $pdf->Cell(8, 15, 'No', 1, 0, 'C');
+        $pdf->Cell(50, 15, 'NIS', 1, 0, 'C');
         $pdf->Cell(50, 15, 'Siswa', 1, 0, 'C');
         $pdf->Cell(50, 15, 'Bulan', 1, 0, 'C');
         $pdf->Cell(50, 15, 'Kurang Angsuran', 1, 0, 'C');
@@ -114,7 +116,7 @@ class CetakKas extends Controller
         $pdf->Ln(15);
         $pdf->AddFont('Tahoma', 'B', 'tahomabd.php');
         $pdf->AddFont('Tahoma', '', 'tahoma.php');
-        $pdf->SetFont('Tahoma', '', 14);
+        $pdf->SetFont('Tahoma', '', 16);
         $pdf->Cell(0, 0, 'PEMERINTAH KABUPATEN MALANG', 0, 0, 'C');
         $pdf->Ln(5);
         $pdf->Cell(0, 0, 'DINAS PENDIDIKAN KABUPATEN MALANG', 0, 0, 'C');
@@ -128,38 +130,49 @@ class CetakKas extends Controller
         $pdf->Cell(0, 0, 'Jl. Raya Kedungpedaringan Telp. 0341-3957770341 Fax. 0341-394776', 0, 0, 'C');
         $pdf->Ln(5);
         $pdf->Cell(0, 0, 'Kode Pos 65163 Email : smkn1kepanjen@ymail.com Web : smkn1kepanjen.sch.id', 0, 0, 'C');
-        $pdf->Ln(5);
-        $pdf->SetFont('Tahoma', 'B', 12);
-
-        $pdf->Cell(0, 0, $id, 0, 0, 'C');
         $pdf->SetFont('Tahoma', '', 12);
         
         $pdf->Ln(5);
-        $pdf->Cell(270, 0, '', 1, 0, 'C');
+        $pdf->Cell(280, 0, '', 1, 0, 'C');
         $pdf->Ln(0);
-        $pdf->Cell(270, 0, '', 1, 0, 'C');
+        $pdf->Cell(280, 0, '', 1, 0, 'C');
         $pdf->Ln(0);
-        $pdf->Cell(270, 0, '', 1, 0, 'C');
+        $pdf->Cell(280, 0, '', 1, 0, 'C');
         $pdf->Ln(0);
-        $pdf->Cell(270, 0, '', 1, 0, 'C');
+        $pdf->Cell(280, 0, '', 1, 0, 'C');
         $pdf->Ln(0);
-        $pdf->Cell(270, 0, '', 1, 0, 'C');
+        $pdf->Cell(280, 0, '', 1, 0, 'C');
         $pdf->Ln(0);
-        $pdf->Cell(270, 0.5, '', 1, 0, 'C');
+        $pdf->Cell(280, 0.5, '', 1, 0, 'C');
         $pdf->Ln(1);
-        $pdf->Cell(270, 0, '', 1, 0, 'C');
-        $this->Column($pdf,$id);
-        $pdf->SetFont('Tahoma', '', 11);
+        $pdf->Cell(280, 0, '', 1, 0, 'C');
+        $pdf->Ln(10);
+                
+        $pdf->SetFont('Tahoma', 'B', 16);
 
+        $pdf->Cell(0, 0,'Daftrar Transaksi Kelas '. $id, 0, 0, 'C');
+$pdf->SetFont('Tahoma', '', 11);
+        $this->Column($pdf,$id);
 
         $jumlah = $this->transaksi->getByPagecetak($id);
  
- $pdf->SetAligns(['C', 'C', 'C','C']);
-        $pdf->SetWidths([50, 50, 50,50]);
+ $pdf->SetAligns(['C','C','C', 'C', 'C','C']);
+        $pdf->SetWidths([8,50,50, 50, 50,50]);
          if ($jumlah == null) {
         } else {
+            $no =1;
             foreach ($jumlah as $row) {
-                $pdf->Row([$row->name, $row->month, $row->kurang,$row->description]);
+            if($row->description ==0){
+            $deskripsi='Belum Bayar';
+            }
+            if($row->description ==1){
+            $deskripsi='Belum Lunas';
+            }
+            if($row->description ==2){
+            $deskripsi='Lunas';
+            }
+
+                $pdf->Row([$no++,$row->nis, $row->name, $row->month, $row->kurang,$deskripsi]);
             }
             $this->butuh = true;
             $pdf->Ln(20);

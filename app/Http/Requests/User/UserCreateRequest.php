@@ -34,7 +34,8 @@ class UserCreateRequest extends Request
         'phone'   => 'Phone',
         // 'password'   => 'Password',
         'min_transaksi'   => 'min_transaksi',
-        'email'   => 'email'
+        'email'   => 'email',
+        'nis'   => 'nis',
     ];
 
     /**
@@ -46,12 +47,13 @@ class UserCreateRequest extends Request
     {
         return [
             'name'    => 'required|max:225',
-             'class' => 'required|max:60',
+            'class' => 'required|max:60',
             'level' => 'required|max:60',
             'phone'   => 'required|max:30',
             // 'password'   => 'required|max:30',
             'min_transaksi'   => 'required|max:30',
-            'email'   => 'unique:users,email|max:30'
+            'email'   => 'unique:users,email|max:30',
+            'nis'   => 'required|max:30',
         ];
     }
 
@@ -85,7 +87,8 @@ public function validator($validator)
                 'phone'     => $message->first('phone'),
                 // 'password'  => $message->first('password'),
                 'min_transaksi'  => $message->first('min_transaksi'),
-                'email'  => $message->first('email')
+                'email'  => $message->first('email'),
+                'nis'  => $message->first('nis')
             ]
         ];
     }

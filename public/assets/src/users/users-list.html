@@ -36,6 +36,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th class="col-md-1">NIS</th>
                     <th class="col-md-1">Nama</th>
                     <th class="col-md-1">Class</th>
                     <th class="col-md-1">Level</th>
@@ -47,6 +48,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="row in dataUsers">
+                    <td class="col-md-1">{{row.nis}}</td>
                     <td class="col-md-1">{{row.name}}</td>
                     <td class="col-md-1">{{row.class}}</td>
                     <td class="col-md-1">
@@ -55,7 +57,7 @@
                         <span ng-if="row.level==2" class="label label-sm label-info">Engineering</span>
                     </td>
                     <td class="col-md-1">{{row.phone}}</td>
-                    <td class="col-md-2">Rp. {{convertToRupiah(row.min_transaksi)}}</td>
+                    <td class="col-md-1">Rp. {{convertToRupiah(row.min_transaksi)}}</td>
                     <td class="col-md-1">{{row.email}}</td>
 
                         <td class="col-md-2">

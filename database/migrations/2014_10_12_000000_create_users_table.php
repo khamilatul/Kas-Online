@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('min_transaksi');
             $table->string('email');
+            $table->string('nis');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

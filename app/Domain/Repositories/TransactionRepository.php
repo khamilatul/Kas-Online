@@ -93,51 +93,51 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
             if ($data['month']==''){
                 
                 if($expired == 1){
-                $bulan='Januari';
+                $bulan='JANUARI';
                 }
 
                 if($expired == 2){
-                $bulan='Februari';
+                $bulan='FEBRUARI';
                 }
 
                 if($expired == 3){
-                $bulan='Maret';
+                $bulan='MARET';
                 }
 
                 if($expired == 4){
-                $bulan='April';
+                $bulan='APRIL';
                 }
 
                 if($expired == 5){
-                $bulan='Mei';
+                $bulan='MEI';
                 }
 
                 if($expired == 6){
-                $bulan='Juni';
+                $bulan='JUNI';
                 }
 
                 if($expired == 7){
-                $bulan='Juli';
+                $bulan='JULI';
                 }
 
                 if($expired == 8){
-                $bulan='Agustus';
+                $bulan='AGUSTUS';
                 }
 
                 if($expired == 9){
-                $bulan='September';
+                $bulan='SEPTEMBER';
                 }
 
                 if($expired == 10){
-                $bulan='Oktober';
+                $bulan='OKTOBER';
                 }
 
                 if($expired == 11){
-                $bulan='November';
+                $bulan='NOVEMBER';
                 }
 
                 if($expired == 12){
-                $bulan='Desember';
+                $bulan='DESEMBER';
                 }
 
             }
@@ -158,7 +158,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
 
         }
 
-        if ($data['amount'] > session('min_transaksi')) {
+        if ($data['amount'] > $user->min_transaksi) {
             return response()->json(
                 [
                     'success' => false,
@@ -187,12 +187,20 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
             }
 
         }
+        // dump(intval($cari));
+        // dump(intval($cari2));
+        //         dump(intval($cari) <= intval($cari2));
+        // dump(intval($cari2) <= intval($cari));
         if (intval($cari) == 0) {
-            $hasil = session('min_transaksi') - $data['amount'];
-        } else if (intval($cari) <= intval($cari2)) {
+            
+            $hasil = $user->min_transaksi - $data['amount'];
+        } else if ( intval($cari2) <= intval($cari)) {
             $hasil = intval($cari2) - intval($data['amount']);
         }
-//    dump($cari);
+        else if ( intval($cari) <= intval($cari2)) {
+            $hasil = intval($cari2) - intval($data['amount']);
+        }
+//    dump($hasil);
         if ($hasil <= 0) {
             $hasil2 = 'Lunas';
             $status = '2';
@@ -323,6 +331,7 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
             ->whereIn('transactions.id', $array_id)
             ->select(
                 'users.name',
+                'users.nis',
                 'transactions.month',
                 'transactions.kurang',
                 'transactions.description')

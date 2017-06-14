@@ -167,7 +167,7 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
     {
         try {
             if (session('level') != '1') {        // execute sql insert
-                return parent::create([
+                $simpan =parent::create([
                     'name' => e($data['name']),
                     'class' => e($data['class']),
                     'level' => e($data['level']),
@@ -175,7 +175,7 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
                     'password' => bcrypt($data['password']),
                     'min_transaksi' => ($data['min_transaksi']),
                     'email' => e($data['email']),
-
+                    'nis' => e($data['nis']),
                 ]);
             }
             if (session('level') == '1') {        // execute sql insert
@@ -188,13 +188,14 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
                     'password' => bcrypt($password),
                     'min_transaksi' => ($data['min_transaksi']),
                     'email' => e($data['email']),
+                    'nis' => e($data['nis']),
 
                 ]);
 
 
                 \Mail::send('emails/frontoffice', [
 
-                    'name' => $data['email'],
+                    'name' => $data['name'],
                     'email' => $data['email'],
                     'password' => $password,], function ($message) use ($data) {
 
@@ -228,6 +229,7 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
             'phone' => e($data['phone']),
             'min_transaksi' => e($data['min_transaksi']),
             'email' => e($data['email']),
+            'nis' => e($data['nis']),
         ]);
     }
 

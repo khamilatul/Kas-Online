@@ -26,7 +26,7 @@
                        href=""
                        target="_blank">
                         e-SP2DTRACK</a></em><br>
-                Jl Pasir Luhur 28 Telp.085100644484 Desa Jenggolo Kecamatan Kepanjen
+                Jln.Raya Kedungpedaringan TLP(0341)394776,Fax(0341)395777 Kecamatan Kepanjen
                 <br>
                 Kabupaten Malang Provinsi Jawa Timur
             </span>
@@ -39,15 +39,14 @@
         <div style="color:#333; text-align: justify">
             <hr style="color: #eee; margin: 4px 0 0 0">
     <p>
-        Kepada Yth. Bapak/Ibu/Sdr.  {{$name}}
+        Kepada Siswa Atas Nama  {{$name}}
 
     </p>
     <p>
-        Terima Kasih Anda Telah Mendaftar Sebagai Pengguna Administrator
-        Sistem Informasi Manajemen Pelacakan Surat Perintah Pencairan Dana (SP2D)
+        Terima Kasih Anda Telah Mendaftar Sebagai Member dari Kas Kelas {{$kelas}}
     </p>
     <p>
-        Berikut Rincian Data Pendaftaran Anda:
+        Berikut Rincian Data Pendaftaran :
     </p>
     <table style="width: 600px;">
         <tbody>
@@ -62,17 +61,17 @@
         </tbody>
     </table>
     <p>
-        Lakukan Login Sistem Informasi Manajemen Pelacakan Surat Perintah Pencairan Dana (SP2D) melalui link:
+        Lakukan Login Sistem Kas Kelas melalui link:
         <a href="
                 {{ URL::to('login') }}"><button>Klik</button>
         </a>
     </p>
 
-    <p>
+    <!--<p>
         Salam,
-    </p>
+    </p>-->
     <p>
-        Manajemen e-SP2DTRACK
+        Bendahara Kelas{{kelas}}
     </p>
     <p>
         (Email ini Dikendalikan Oleh Sistem/Mesin Otomatis dan Tidak Perlu Dibalas)
@@ -120,8 +119,8 @@
             <p style="Margin-top:0;font-weight:normal;font-family:sans-serif;Margin-bottom:15px;text-align:center;font-size:13px;line-height:19px;color:#97a3b1;Margin:0">
                 <em><a style="text-decoration: none;font-style:normal;color:#1bb4d5 ;"
                        href="http://kodesoft.co.id/"
-                       target="_blank">CV. Kodesoft Media Nusantara</a></em><br>
-                Jl. Pasir Luhur No 28 RT 007 RW 002 Telp.085100644484 Desa Jenggolo<br>
+                       target="_blank">SMK Negeri Kepanjen</a></em><br>
+                Jln.Raya Kedungpedaringan Tlp(0341)394776,Fax(0341)395777<br>
                 Kecamatan Kepanjen Kabupaten Malang Provinsi Jawa Timur
             </p>
         </td>
