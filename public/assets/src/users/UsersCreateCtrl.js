@@ -94,7 +94,6 @@ app.controller('UsersCreateCtrl', ['$state', '$scope', 'users', '$timeout', 'Swe
             $scope.myModel.class = $scope.dtkelas.id
 
         }
-        $scope.dtkelas
         //Check validation status
         if ($scope.Form.$valid) {
             //run Ajax

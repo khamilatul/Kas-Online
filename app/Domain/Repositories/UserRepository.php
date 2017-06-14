@@ -177,6 +177,8 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
                     'email' => e($data['email']),
                     'nis' => e($data['nis']),
                 ]);
+                return $simpan;
+
             }
             if (session('level') == '1') {        // execute sql insert
                 $password = str_random(10);
@@ -197,6 +199,7 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
 
                     'name' => $data['name'],
                     'email' => $data['email'],
+                    'kelas' => $data['class'],
                     'password' => $password,], function ($message) use ($data) {
 
                     $message->to($data['email']);
