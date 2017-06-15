@@ -71,7 +71,7 @@
         Salam,
     </p>-->
     <p>
-        Bendahara Kelas{{kelas}}
+        Bendahara Kelas{{$kelas}}
     </p>
     <p>
         (Email ini Dikendalikan Oleh Sistem/Mesin Otomatis dan Tidak Perlu Dibalas)
