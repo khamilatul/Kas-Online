@@ -10,6 +10,7 @@
   <meta name="HandheldFriendly" content="true" />
   <meta name="apple-touch-fullscreen" content="yes" />
   <title data-ng-bind="pageTitle()">Kas-Online - Projek Akhir</title>
+  <link rel="Shortcut icon" href="../assets/images/favicon.png" type="x-icon">
   <!-- Google fonts -->
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
   <!-- Bootstrap -->
