@@ -102,7 +102,7 @@ class CetakKas extends Controller
         $pdf->SetAutoPageBreak(0, 20);
 //        $this->Cover($pdf, $id);
         $pdf->AddPage();
-        $pdf->SetTitle('Laporan Register Surat Asal Usul');
+        $pdf->SetTitle('Laporan Register Kas');
 
         $pdf->with_cover = true;
         $pdf->is_footer = false;

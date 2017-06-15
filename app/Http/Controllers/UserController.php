@@ -112,10 +112,16 @@ class UserController extends Controller
      * @apiError UserNotFound The <code>id</code> of the User was not found.
      * @apiError NoAccessRight Only authenticated Admins can access the data.
      */
+    
+    public function getlist()
+    {
+        return $this->user->getlist();
+    }
     public function destroy($id)
     {
         return $this->user->delete($id);
     }
+
 public function getSession()
     {
         if (session('name') == null) {

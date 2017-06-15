@@ -19,6 +19,25 @@ app.controller('TransactionsCtrl', ['$scope', 'transactions', 'SweetAlert','$uib
             $scope.isLoaded = true;
         }
     };
+     $scope.open = function (size) {
+
+        var modalInstance = $uibModal.open({
+            templateUrl: 'assets/src/transactions/print.html',
+            controller: 'transactionsdetailCtrl',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
     $scope.transactions = function (id) {
 
         var modalInstance = $uibModal.open({
@@ -271,4 +290,72 @@ app.controller('Transactionsdetail2Ctrl', ['$scope', 'transactions', 'SweetAlert
     };
 
 
+}]);
+app.controller('transactionsdetailCtrl', ['$scope', 'transactions', 'SweetAlert', '$uibModal', '$log', '$uibModalInstance', 'toaster', '$http', '$timeout', function ($scope, transactions, SweetAlert, $uibModal, $log, $uibModalInstance, toaster) {
+//urussan tampilan
+    $scope.myModel = {}
+
+    $scope.isLoading = true;
+    $scope.isLoaded = false;
+
+    $scope.setLoader = function (status) {
+        if (status == true) {
+            $scope.isLoading = true;
+            $scope.isLoaded = false;
+        } else {
+            $scope.isLoading = false;
+            $scope.isLoaded = true;
+        }
+    };
+    $scope.objKelas = []
+    transactions.getkelas()
+        .success(function (data_akun) {
+            if (data_akun.success == false) {
+                $scope.toaster = {
+                    type: 'warning',
+                    title: 'Warning',
+                    text: 'Data Belum Tersedia!'
+                };
+                toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+
+            } else {
+                data_akun.unshift({id: 0, name: 'Silahkan Pilih Kelas'});
+                $scope.objKelas = data_akun;
+                $scope.myModel.kelas = $scope.objKelas[0];
+            }
+
+        })
+        .error(function (data_akun, status) {
+            // unauthorized
+            if (status === 401) {
+                //redirect to login
+                $scope.redirect();
+            }
+            // Stop Loading
+            $scope.toaster = {
+                type: 'warning',
+                title: 'Warning',
+                text: 'Data Belum Tersedia!'
+            };
+            toaster.pop($scope.toaster.type, $scope.toaster.title, $scope.toaster.text);
+
+            console.log(data_akun);
+
+        });
+
+
+    //Init Alert status
+    $scope.alertset = {
+        show: 'hide',
+        class: 'green',
+        msg: ''
+    };
+    //refreshData
+    // go to print preview page
+    $scope.ok = function () {
+                    window.open('../api/cetak-kas/' + $scope.myModel.kelas.name , '_blank');
+    };
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
 }]);

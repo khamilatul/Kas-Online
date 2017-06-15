@@ -84,6 +84,16 @@ class UserRepository extends AbstractRepository implements UserInterface, Crudab
         //         ->toArray();
         //         return $user;
     }
+    public function getlist()
+    {
+
+        $desa = \DB::table('kelas')
+->get()
+            ->toArray();
+        return $desa;
+
+
+    }
 
 
     public function paginate($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')

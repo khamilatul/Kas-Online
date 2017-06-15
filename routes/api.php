@@ -27,6 +27,7 @@ Route::get('users-by-transaksi', 'UserController@paginateuser');
 
 Route::put('updatePass-users', 'UserController@updatePass');
 Route::get('getkelas', 'UserController@kelas');
+Route::get('get-list-kelas', 'UserController@getlist');
 
 
 ////----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

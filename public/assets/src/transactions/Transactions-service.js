@@ -18,6 +18,13 @@ app.factory('transactions', ['$http', function ($http) {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest'}
             });
         },
+        getkelas: function (page, term) {
+            return $http({
+                method: 'get',
+                url: '/api/get-list-kelas?page=' + page + '&term=' + term,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' }
+            });
+        },
 
         getLastmembers: function () {
             return $http({
