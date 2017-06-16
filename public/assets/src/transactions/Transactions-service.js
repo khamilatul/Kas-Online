@@ -71,6 +71,12 @@ app.factory('transactions', ['$http', function ($http) {
                 url: '/api/kunci-transactions/' + _id
             });
         },
+        cekpnguunjung: function (_id) {
+            return $http({
+                method: 'get',
+                url: '/api/jumlah-transaksi/' + _id
+            });
+        },
 
     }
 }]);

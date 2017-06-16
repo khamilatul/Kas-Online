@@ -105,5 +105,10 @@ class TransactionController extends Controller
     {
         return $this->transaction->delete($id);
     }
+    public function cekjumlah($id)
+    {
+        return $this->transaction->cekjumlah($id);
+    }
+
 
 }

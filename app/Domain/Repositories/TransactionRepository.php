@@ -338,5 +338,14 @@ class TransactionRepository extends AbstractRepository implements TransactionInt
             ->get();
         return $AsalUsul;
     }
+public function cekjumlah($id)
+    {
 
+        // query to aql
+        $AsalUsul = $this->model
+            ->where('month', $id)
+            ->sum('amount');
+        
+        return $AsalUsul;
+    }
 }

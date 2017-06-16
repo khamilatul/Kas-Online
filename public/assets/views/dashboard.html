@@ -32,10 +32,53 @@
                     </p>
                 </div>
             </div>
+        </a>
         </div>
     </div>
 </div>
 </div>
+<div class="container-fluid container-fullw padding-bottom-10">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-7 col-lg-8">
+                            <div class="panel panel-white no-radius" id="visits">
+                                <div class="panel-heading border-light">
+                                    <h4 class="panel-title"> Total Transaksi perbulan </h4>
+                                    <ul class="panel-heading-tabs border-light">
+                                        <!--<li>-->
+                                        <!--<div class="pull-right">-->
+                                        <!--<div class="btn-group" uib-dropdown is-open="status.isopen">-->
+                                        <!--<a uib-dropdown-toggle ng-disabled="disabled" class="padding-10">-->
+                                        <!--<i class="ti-more-alt "></i>-->
+                                        <!--</a>-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <!--</li>-->
+                                        <li class="panel-tools">
+                                            <ct-paneltool tool-refresh="load1()"></ct-paneltool>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div uib-collapse="visits" ng-init="visits=false" class="panel-wrapper">
+                                    <div class="panel-body">
+                                        <!-- /// controller:  'VisitsCtrl' -  localtion: assets/js/controllers/dashboardCtrl.js /// -->
+                                        <div ng-controller="VisitsCtrl" class="height-350">
+                                            <canvas class="tc-chart" tc-chartjs-line chart-options="options"
+                                                    chart-data="data" chart-legend="chart1" width="100%"></canvas>
+                                            <div class="margin-top-20">
+                                                <div tc-chartjs-legend chart-legend="chart1"
+                                                     class="inline pull-left"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             </div>
         </div>
     </div>

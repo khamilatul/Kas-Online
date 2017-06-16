@@ -20,9 +20,11 @@ Route::get('/user', function (Request $request) {
 Route::resource('users','UserController');
 Route::resource('members','MemberController');
 Route::resource('transactions','TransactionController');
+Route::get('jumlah-transaksi/{id}', 'TransactionController@cekjumlah');
 Route::resource('contacts','ContactController');
 Route::get('get-session', 'UserController@getSession');
 Route::get('users-by-transaksi', 'UserController@paginateuser');
+
 
 
 Route::put('updatePass-users', 'UserController@updatePass');

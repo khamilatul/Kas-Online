@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" data-ng-app="clipApp">
+<!DOCTYPE HTML>
+
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,86 +10,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="apple-touch-fullscreen" content="yes" />
-  <title data-ng-bind="pageTitle()">Login</title>
-  <!-- Google fonts -->
-  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Themify Icons -->
-  <link rel="stylesheet" href="../bower_components/themify-icons/css/themify-icons.css">
-  <!-- Loading Bar -->
-  <link rel="stylesheet" href="../bower_components/angular-loading-bar/build/loading-bar.min.css">
-  <!-- Animate Css -->
-  <link rel="stylesheet" href="../bower_components/animate.css/animate.min.css">
-  <!-- Clip-Two CSS -->
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/plugins.css">
-  <!-- Clip-Two Theme -->
-
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- X-ICON -->
+  <link rel="shortcut icon" href="logo.png" type="x-icon" />
+  <!-- Reset CSS -->
+  <link rel="stylesheet" href="../assets/css/style1.css" type="text/css" />
 </head>
-<!-- start: LOGIN -->
-<div class="row">
-  <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-    <!-- start: LOGIN BOX -->
-    <div class="box-login">
-        <h4>
-          <?php if (session()->has('auth_messagee')) { ?>
-          <h7 style="color: red"><?php echo session()->get('auth_messagee') ?></h7>
-          <?php } ?>
+<body>
+  <!-- Content Login -->
+  <?php if (session()->has('auth_messagee')) { ?>
+  <h7 style="color: red"><?php echo session()->get('auth_messagee') ?></h7>
+  <?php } ?>
+  <?php if (session()->has('auth_message')) { ?>
+  <h7 style="color: red"><?php echo session()->get('auth_message') ?></h7>
+  <?php } ?>
 
-          <?php if (session()->has('auth_message')) { ?>
-          <h7 style="color: red"><?php echo session()->get('auth_message') ?></h7>
-          <?php } ?></h4>
-
-        <fieldset>
-          <legend>
-            Sign in to your account
-          </legend>
-          <p>
-            Please enter your name and password to log in.
-          </p>
-      <form accept-charset="UTF-8" action="api/post-login" method="post">
-
-          <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"/>
-          <div class="form-group">
-            <span class="input-icon">
-              <input type="email" class="form-control" name="email" placeholder="Email">
-              <i class="fa fa-user"></i> </span>
-          </div>
-          <div class="form-group form-actions">
-            <span class="input-icon">
-              <input type="password" class="form-control password" name="password" placeholder="Password">
-              <i class="fa fa-lock"></i>
-              <a class="forgot" ui-sref="login.forgot">
-                I forgot my password
-              </a> </span>
-          </div>
-          <div class="form-actions">
-            <div class="checkbox clip-check check-primary">
-              <input type="checkbox" id="remember" value="1">
-              <label for="remember">
-                Keep me signed in
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary pull-right">
-              Login <i class="fa fa-arrow-circle-right"></i>
-            </button>
-          </div>
-          <!--<div class="new-account">
-            Don't have an account yet?
-            <a ui-sref="login.registration">
-              Create an account
-            </a>
-          </div>-->
-        </fieldset>
-      </form>
-      <!-- start: COPYRIGHT -->
-      <!-- end: COPYRIGHT -->
+  <form accept-charset="UTF-8" method="post" name="login" action="api/post-login">
+    <div class="login-form">
+      <h1>Login Your Acount</h1>
+      <img src="../assets/images/avatar.png" alt=""/>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Email " id="email" name="email" required/>
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="form-group log-status">
+        <input type="password" class="form-control" placeholder="Password" id="password" name="password" required/>
+        <i class="fa fa-lock"></i>
+      </div>
+      <span class="alert">Invalid Credentials</span>
+      <a class="link" href="#">Forgot your password?</a>
+      <input type="submit" class="log-btn" value="Login" />
     </div>
-    <!-- end: LOGIN BOX -->
-  </div>
-</div>
-<!-- end: LOGIN -->
+  </form>
+  <!-- Reset Animasi -->
+  <article>
+    <p id="text">1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 </p>
+    <a id="reset">1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1</a>
+  </article>
+  <!-- Google JS -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <!-- Reset JS -->
+  <script src="../assets/js/index.js"></script>
+  <script src="../assets/js/index1.js"></script>
+</body>
 </html>
