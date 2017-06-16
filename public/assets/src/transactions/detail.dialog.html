@@ -1,6 +1,6 @@
 <md-dialog style="width: 1200px;">
     <div class="panel-heading bg-white" style="background: #5F8295;">
-        <span class="font-bold"><center><font color="white">DATA KAS ONLINE</font></center></span>
+        <span class="font-bold"><center><font color="#000000;">DATA KAS ONLINE</font></center></span>
     </div>
 
 
@@ -33,10 +33,12 @@
                         <span style="padding-left: 8px;"></span>{{myModel.users.class}}
                     </p>
                 </div>
-            </div>
-            <label class="col-sm-3 control-label">Kurang Angsuran :</label>
-                        <span style="padding-left: 8px;"></span>{{myModel.kurang}}
-                    </p>
+                <label class="col-sm-3 control-label">Kurang Angsuran :</label>
+                    <div ng-if="input.prov_id != ''" class="col-sm-9">
+                        <p class="form-control-static">
+                            <span style="padding-left: 8px;"></span>{{myModel.kurang}}
+                        </p>
+                    </div>
                 </div>
             </div>
 
